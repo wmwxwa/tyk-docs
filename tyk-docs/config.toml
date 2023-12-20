@@ -34,4 +34,15 @@ CanonicalBaseUrl = "https://tyk.io/docs/"
     ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
+<<<<<<< HEAD
 
+=======
+disableKinds = ["taxonomy", "term"]
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
+[outputs]
+  home = ["HTML","pagesurl"]
+>>>>>>> 7a47a205... try to generate urls in version 4.2 for testing (#3767)
