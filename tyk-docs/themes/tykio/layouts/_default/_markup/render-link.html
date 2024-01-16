@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}>{{ .Text }}</a>
+=======
+<a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if and (strings.HasPrefix .Destination "http" ) (not (strings.Contains .Destination "tyk.io/docs") ) }} class="external-links" target="_blank" rel="noopener" {{ end }}>{{ .Text }}</a>
+>>>>>>> 5b245e8e... Add direct link to tyk cloud payment method (add-payment-method.md) (#3835)
