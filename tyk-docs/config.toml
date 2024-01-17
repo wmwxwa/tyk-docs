@@ -3,8 +3,13 @@ languageCode = "en-gb"
 title = "Tyk Documentation"
 theme = "tykio"
 MetaDataFormat = "yaml"
+<<<<<<< HEAD
 enableGitInfo = false
 disableKinds = ["taxonomy", "taxonomyTerm"]
+=======
+enableGitInfo = true
+disableKinds = ["term","taxonomy"]
+>>>>>>> f343fbc2... [DX-973]fix warning  DEPRECATED: Kind taxonomyterm (#3932)
 canonifyURLs = false
 timeout = "60s"
 [params]
