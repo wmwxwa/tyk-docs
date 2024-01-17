@@ -69,7 +69,13 @@
             {{else}}
               <h1>{{.Title}}</h1>
             {{ end }}
+<<<<<<< HEAD
             
+=======
+
+            {{- partial "page_metadata.html" . -}}
+
+>>>>>>> 94433a1f... [DX-119] Adding reading time and move last updated to the top (#3531)
             <div id="main-content">
               {{ block "content" . }}
                 {{ .Content }}
