@@ -42,7 +42,7 @@ The advantages of a 12-month Long-Term Support (LTS) window include:
 2. It allows us to bring you the best capability whilst offering stability.
 3. It allows us to get great product insight and use that to improve the product.
 
-In case there's a need to operate on a version beyond the established LTS policy, potential assistance may be available. However, this requires a discussion with your designated Account Manager."
+In case there's a need to operate on a version beyond the established LTS policy, potential assistance may be available. However, this requires a discussion with your designated Account Manager.
 
 | Version | Full Support Window | Maintenance Support Window | Completely Unsupported From |
 | ---- | ---- | ---- | ---- |
