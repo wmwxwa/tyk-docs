@@ -100,7 +100,7 @@ Tyk has a few different components which can drive questions on what version of 
 
 When we release a new Gateway version, it triggers us to be clear on version compatibility with other areas of the Tyk stack.
 
-As part of the release for the new Gateway LTS version we will commit to show everyone 2 compatibility dimensions:
+As part of the release for the new Gateway LTS version we will commit to show everyone two compatibility dimensions:
 
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backwards compatible with the new Tyk Dashboard and Tyk Gateway versions.
