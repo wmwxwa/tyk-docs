@@ -107,7 +107,7 @@ As part of the release for the new Gateway LTS version we will commit to show ev
 
 The table below is an illustrative example, but shows the intent:
 
-| Gateway Version | Recommended Compatibility | Backwards Compatibility |
+| Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
 | 5.3 LTS | Helm v2.2     | Helm vX - vY |
 |         | MDCB v2.5     | MDCB v1.7 - v2.4 |
