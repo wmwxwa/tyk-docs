@@ -676,6 +676,12 @@ paths:
           schema:
             type: boolean
           description: If true, the new version is set as default version.
+        - name: templateID
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The asset ID of template to apply while creating the OAS API.
       operationId: createApiOAS
       requestBody:
         content:
@@ -899,6 +905,12 @@ paths:
         - $ref: '#/components/parameters/ValidateRequest'
         - $ref: '#/components/parameters/MockResponse'
         - $ref: '#/components/parameters/Authentication'
+        - name: templateID
+          in: query
+          required: false
+          schema:
+            type: string
+          description: The asset ID of template to apply while importing an OAS API.
       requestBody:
         content:
           application/json:
@@ -2370,6 +2382,250 @@ paths:
               example:
                 code: 404
                 message: Stats not found
+  /api/assets:
+    get:
+      summary: Retrieve list of assets
+      description: Retrieves all types of assets with optional kind filter.
+      parameters:
+        - name: kind
+          in: query
+          description: Filter assets by kind (optional).
+          schema:
+            type: string
+            enum:
+              - oas-template
+            default: oas-template
+          example: oas-template
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '400':
+          description: bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 400
+                message:
+                  "unsupported asset kind: 'invalid-asset-kind'"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 500
+                message: something went wrong
+    post:
+      summary: Create an asset
+      description: Create a new asset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+      responses:
+        '201':
+          description: Asset created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 200
+                status: success
+                message: asset created
+        '409':
+          description: conflict on custom asset ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 409
+                message: "asset ID already exists: 'my-custom-asset'"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 500
+                message: something went wrong
+
+  /api/assets/{assetID}:
+    get:
+      summary: Retrieve an asset.
+      description: Retrieve an asset by ID.
+      parameters:
+        - name: assetID
+          in: path
+          description: ID of the asset to retrieve - this value can be the database ID of the asset or the custom ID provided during creation/update.
+          required: true
+          schema:
+            type: string
+          examples:
+            customID:
+              value: my-asset
+            dbID:
+              value: 659b9613a1ed7ef7afdccb9d
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '404':
+          description: asset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 404
+                message: "asset not found: 'my-custom-asset'"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 500
+                message: "error fetching asset: 'my-custom-asset'"
+    put:
+      summary: Update an asset by ID.
+      description: Update an existing asset.
+      parameters:
+        - name: assetID
+          in: path
+          description: ID of the asset to retrieve - this value can be the database ID of the asset or the custom ID provided during creation/update.
+          required: true
+          schema:
+            type: string
+          examples:
+            customID:
+              value: my-asset
+            dbID:
+              value: 659b9613a1ed7ef7afdccb9d
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+      responses:
+        '200':
+          description: Asset updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 200
+                status: success
+                message: asset updated
+        '400':
+          description: cannot change db ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 400
+                status: failure
+                message: cannot change db ID of asset
+        '422':
+          description: Unprocessible entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 422
+                message:
+                  unsupported asset kind
+        '404':
+          description: asset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 404
+                message: asset not found
+        '409':
+          description: conflict on custom asset ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 409
+                message: "asset ID already exists: 'my-custom-asset'"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 500
+                message: something went wrong
+    delete:
+      summary: Delete an asset by ID.
+      description: Remove an asset ID.
+      parameters:
+        - name: assetID
+          in: path
+          description:  ID of the asset to delete - this value can be the database ID of the asset or the custom ID provided during creation/update.
+          required: true
+          schema:
+            type: string
+          examples:
+            customID:
+              value: my-asset
+            dbID:
+              value: 659b9613a1ed7ef7afdccb9d
+      responses:
+        '200':
+          description: Asset removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 200
+                message: asset removed successfully
+        '404':
+          description: asset not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 404
+                message: "asset not found: 'my-custom-asset'"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/apiStatusMessage'
+              example:
+                code: 500
+                message: something went wrong
 
 components:
   securitySchemes:
@@ -4295,6 +4551,34 @@ components:
         license_entitlement_active:
           type: integer
           example: 20
+    Asset:
+      type: object
+      properties:
+        _id:
+          description: database id of asset
+          type: string
+          readOnly: true
+          example: 659b9613a1ed7ef7afdccb9d
+        id:
+          description: custom id of asset that can be provided while creation/updation.
+          type: string
+          example: my-asset
+        kind:
+          description: Type of asset.
+          type: string
+          enum:
+            - oas-template
+          default: oas-template
+          example: oas-template
+        data:
+          type: object
+          description: Data associated with the asset
+          example: { "info": { "title": "oas doc title","version": "1" },"openapi": "3.0.3","paths": { },"x-tyk-api-gateway": { "info": { "orgId": "659f7ebba1ed7e3ab9796caa","name": "oas api","state": { "active": false } },"upstream": { "url": "" },"server": { "listenPath": { "value": "/" } } } }
+        last_updated_at:
+          type: string
+          description: last updated time stamp
+          readOnly: true
+          example: '2024-01-10T08:48:36.183Z'
   parameters:
     UpstreamURL:
       name: upstreamURL
@@ -4340,6 +4624,12 @@ components:
         $ref: '#/components/schemas/BooleanQueryParam'
     Authentication:
       name: authentication
+      in: query
+      description: Enable/disable the authentication mechanism in your Tyk Gateway for your OAS API
+      schema:
+        $ref: '#/components/schemas/BooleanQueryParam'
+    TemplateID:
+      name: templateID
       in: query
       description: Enable/disable the authentication mechanism in your Tyk Gateway for your OAS API
       schema:
