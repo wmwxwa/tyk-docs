@@ -335,8 +335,9 @@ Set this to the URL of your Tyk Dashboard installation. The URL needs to be form
 EV: <b>TYK_GW_POLICIES_POLICYRECORDNAME</b><br />
 Type: `string`<br />
 
-This option is required if `policies.policy_source` is set to `file`.
-Specifies the path of your JSON file containing the available policies.
+This option only applies in OSS deployment when the `policies.policy_source` is either set
+to `file` or an empty string. If `policies.policy_path` is not set, then Tyk will load policies
+from the JSON file specified by `policies.policy_record_name`.
 
 ### policies.allow_explicit_policy_id
 EV: <b>TYK_GW_POLICIES_ALLOWEXPLICITPOLICYID</b><br />
@@ -353,8 +354,10 @@ This option should only be used when moving an installation to a new database.
 EV: <b>TYK_GW_POLICIES_POLICYPATH</b><br />
 Type: `string`<br />
 
-This option is used for storing a policies  if `policies.policy_source` is set to `file`.
-it should be some existing file path on hard drive
+This option only applies in OSS deployment when the `policies.policy_source` is either set
+to `file` or an empty string. If `policies.policy_path` is set, then Tyk will load policies
+from all the JSON files under the directory specified by the `policies.policy_path` option.
+In this configuration, Tyk Gateway will allow policy management through the Gateway API.
 
 ### ports_whitelist
 EV: <b>TYK_GW_PORTWHITELIST</b><br />
@@ -635,6 +638,18 @@ This is to ensure visibility for the management node across all APIs.
 
 ### auth_override
 This is used as part of the RPC / Hybrid back-end configuration in a Tyk Enterprise installation and isn’t used anywhere else.
+
+### enable_leaky_bucket_rate_limiter
+EV: <b>TYK_GW_ENABLELEAKYBUCKETRATELIMITER</b><br />
+Type: `bool`<br />
+
+EnableLeakyBucketRateLimiter enables leaky bucket rate limiting.
+
+LeakyBucket will delay requests so they are processed in a FIFO
+style queue, ensuring a constant request rate and smoothing out
+traffic spikes. This comes at some cost to gateway instances, as
+the connections would be held for a longer time, instead of
+blocking the requests when they go over the defined rate limits.
 
 ### enable_redis_rolling_limiter
 EV: <b>TYK_GW_ENABLEREDISROLLINGLIMITER</b><br />
@@ -1789,89 +1804,89 @@ Type: `int64`<br />
 
 global session lifetime, in seconds.
 
+### kv.KV
+EV: <b>TYK_GW_KV_KV</b><br />
+Type: `struct`<br />
+
+See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/
+
 ### kv.consul.address
-EV: <b>TYK_GW_KV.CONSUL_ADDRESS</b><br />
+EV: <b>TYK_GW_KV_CONSUL_ADDRESS</b><br />
 Type: `string`<br />
 
 Address is the address of the Consul server
 
 ### kv.consul.scheme
-EV: <b>TYK_GW_KV.CONSUL_SCHEME</b><br />
+EV: <b>TYK_GW_KV_CONSUL_SCHEME</b><br />
 Type: `string`<br />
 
 Scheme is the URI scheme for the Consul server
 
 ### kv.consul.datacenter
-EV: <b>TYK_GW_KV.CONSUL_DATACENTER</b><br />
+EV: <b>TYK_GW_KV_CONSUL_DATACENTER</b><br />
 Type: `string`<br />
 
 The datacenter to use. If not provided, the default agent datacenter is used.
 
 ### kv.consul.http_auth.username
-EV: <b>TYK_GW_KV.CONSUL_HTTPAUTH.USERNAME</b><br />
+EV: <b>TYK_GW_KV_CONSUL_HTTPAUTH_USERNAME</b><br />
 Type: `string`<br />
 
 Username to use for HTTP Basic Authentication
 
 ### kv.consul.http_auth.password
-EV: <b>TYK_GW_KV.CONSUL_HTTPAUTH.PASSWORD</b><br />
+EV: <b>TYK_GW_KV_CONSUL_HTTPAUTH_PASSWORD</b><br />
 Type: `string`<br />
 
 Password to use for HTTP Basic Authentication
 
 ### kv.consul.tls_config.address
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.ADDRESS</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_ADDRESS</b><br />
 Type: `string`<br />
 
 Address
 
 ### kv.consul.tls_config.ca_file
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.CAFILE</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_CAFILE</b><br />
 Type: `string`<br />
 
 CA file
 
 ### kv.consul.tls_config.ca_path
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.CAPATH</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_CAPATH</b><br />
 Type: `string`<br />
 
 CA Path
 
 ### kv.consul.tls_config.cert_file
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.CERTFILE</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_CERTFILE</b><br />
 Type: `string`<br />
 
 Cert file
 
 ### kv.consul.tls_config.key_file
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.KEYFILE</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_KEYFILE</b><br />
 Type: `string`<br />
 
 Key file
 
 ### kv.consul.tls_config.insecure_skip_verify
-EV: <b>TYK_GW_KV.CONSUL_TLSCONFIG.INSECURESKIPVERIFY</b><br />
+EV: <b>TYK_GW_KV_CONSUL_TLSCONFIG_INSECURESKIPVERIFY</b><br />
 Type: `bool`<br />
 
 Disable TLS validation
 
 ### kv.vault.token
-EV: <b>TYK_GW_KV.VAULT_TOKEN</b><br />
+EV: <b>TYK_GW_KV_VAULT_TOKEN</b><br />
 Type: `string`<br />
 
 Token is the vault root token
 
 ### kv.vault.kv_version
-EV: <b>TYK_GW_KV.VAULT_KVVERSION</b><br />
+EV: <b>TYK_GW_KV_VAULT_KVVERSION</b><br />
 Type: `int`<br />
 
 KVVersion is the version number of Vault. Usually defaults to 2
-
-### kv.KV
-EV: <b>TYK_GW_KV.KV</b><br />
-Type: `struct`<br />
-
-See more details https://tyk.io/docs/tyk-configuration-reference/kv-store/
 
 ### secrets
 EV: <b>TYK_GW_SECRETS</b><br />

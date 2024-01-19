@@ -27,20 +27,35 @@ Type: `bool`<br />
 Setting this to `false` will create a pump that pushes uptime data to Uptime Pump, so the
 Dashboard can read it. Disable by setting to `true`.
 
-### Mongo Uptime Pump
-In `uptime_pump_config` you can configure a mongo uptime pump. By default, the uptime pump
-is going to be `mongo` type, so it's not necessary to specify it here. The minimum required
-configurations for uptime pumps are:
+### SQL Uptime Pump
+*Supported in Tyk Pump v1.5.0+*
 
-* `collection_name` - That determines the uptime collection name in mongo. By default,
-`tyk_uptime_analytics`.
-* `mongo_url` - The uptime pump mongo connection url. It is usually something like
-"mongodb://username:password@{hostname:port},{hostname:port}/{db_name}".
+In `uptime_pump_config` you can configure a SQL uptime pump. To do that, you need to add the
+field `uptime_type` with `sql` value. You can also use different types of SQL Uptime pumps,
+like `postgres` or `sqlite` using the `type` field.
+
+An example of a SQL Postgres uptime pump would be:
+```{.json}
+"uptime_pump_config": {
+    "uptime_type": "sql",
+    "type": "postgres",
+    "connection_string": "host=sql_host port=sql_port user=sql_usr dbname=dbname password=sql_pw",
+    "table_sharding": false
+},
+```
+
+Take into account that you can also set `log_level` field into the `uptime_pump_config` to `debug`,
+`info` or `warning`. By default, the SQL logger verbosity is `silent`.
+
+### uptime_pump_config.EnvPrefix
+EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_ENVPREFIX</b><br />
+Type: `string`<br />
+
+
 
 ### uptime_pump_config.mongo_url
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_MONGOURL</b><br />
 Type: `string`<br />
-
 
 The full URL to your MongoDB instance, this can be a clustered instance if necessary and
 should include the database and username / password data.
@@ -146,30 +161,9 @@ Type: `bool`<br />
 
 Enable collection capping. It's used to set a maximum size of the collection.
 
-### SQL Uptime Pump
-*Supported in Tyk Pump v1.5.0+*
-
-In `uptime_pump_config` you can configure a SQL uptime pump. To do that, you need to add the
-field `uptime_type` with `sql` value. You can also use different types of SQL Uptime pumps,
-like `postgres` or `sqlite` using the `type` field.
-
-An example of a SQL Postgres uptime pump would be:
-```{.json}
-"uptime_pump_config": {
-    "uptime_type": "sql",
-    "type": "postgres",
-    "connection_string": "host=sql_host port=sql_port user=sql_usr dbname=dbname password=sql_pw",
-    "table_sharding": false
-},
-```
-
-Take into account that you can also set `log_level` field into the `uptime_pump_config` to `debug`,
-`info` or `warning`. By default, the SQL logger verbosity is `silent`.
-
 ### uptime_pump_config.type
 EV: <b>TYK_PMP_UPTIMEPUMPCONFIG_TYPE</b><br />
 Type: `string`<br />
-
 
 The supported and tested types are `sqlite` and `postgres`.
 
@@ -1257,18 +1251,6 @@ This can be used to avoid writing sensitive information to the Database, or data
 The field names must be the same as the JSON tags of the analytics record fields.
 For example: `["api_key", "api_version"]`.
 
-### pumps.hybrid.meta.ignore_tag_prefix_list
-EV: <b>TYK_PMP_PUMPS_HYBRID_META_IGNORETAGPREFIXLIST</b><br />
-Type: `[]string`<br />
-
-Specifies prefixes of tags that should be ignored if `aggregated` is set to `true`.
-
-### pumps.hybrid.meta.store_analytics_per_minute
-EV: <b>TYK_PMP_PUMPS_HYBRID_META_STOREANALYTICSPERMINUTE</b><br />
-Type: `bool`<br />
-
-Determines if the aggregations should be made per minute (true) or per hour (false) if `aggregated` is set to `true`.
-
 ### pumps.hybrid.meta.ConnectionString
 EV: <b>TYK_PMP_PUMPS_HYBRID_META_CONNECTIONSTRING</b><br />
 Type: `string`<br />
@@ -1287,6 +1269,12 @@ Type: `string`<br />
 
 This the API key of a user used to authenticate and authorise the Hybrid Pump access through MDCB.
 The user should be a standard Dashboard user with minimal privileges so as to reduce any risk if the user is compromised.
+
+### pumps.hybrid.meta.ignore_tag_prefix_list
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_IGNORETAGPREFIXLIST</b><br />
+Type: `[]string`<br />
+
+Specifies prefixes of tags that should be ignored if `aggregated` is set to `true`.
 
 ### pumps.hybrid.meta.CallTimeout
 EV: <b>TYK_PMP_PUMPS_HYBRID_META_CALLTIMEOUT</b><br />
@@ -1318,6 +1306,12 @@ Type: `bool`<br />
 
 Specifies if it should store aggregated data for all the endpoints if `aggregated` is set to `true`. By default, `false`
 which means that only store aggregated data for `tracked endpoints`.
+
+### pumps.hybrid.meta.store_analytics_per_minute
+EV: <b>TYK_PMP_PUMPS_HYBRID_META_STOREANALYTICSPERMINUTE</b><br />
+Type: `bool`<br />
+
+Determines if the aggregations should be made per minute (true) or per hour (false) if `aggregated` is set to `true`.
 
 ### pumps.hybrid.meta.UseSSL
 EV: <b>TYK_PMP_PUMPS_HYBRID_META_USESSL</b><br />
@@ -3309,6 +3303,12 @@ Type: `bool`<br />
 
 If this is set to `true`, pump is going to send the analytics records in batch to Splunk.
 Default value is `false`.
+
+### pumps.splunk.meta.max_retries
+EV: <b>TYK_PMP_PUMPS_SPLUNK_META_MAXRETRIES</b><br />
+Type: `uint64`<br />
+
+MaxRetries the maximum amount of retries if failed to send requests to splunk HEC. Default value is `0`
 
 ### pumps.sql.name
 EV: <b>TYK_PMP_PUMPS_SQL_NAME</b><br />
