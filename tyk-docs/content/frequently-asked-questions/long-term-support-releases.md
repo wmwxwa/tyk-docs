@@ -55,7 +55,7 @@ In case there's a need to operate on a version beyond the established LTS policy
 
 ## What About Non LTS Gateway Releases?
 
-While we maintain a regular release schedule, it's important to clarify that these releases do not fall under the Long-Term Support (LTS) category. They introduce new capabilities, appealing to teams seeking the latest features upon release. However, these specific features become part of the subsequent LTS release.
+While we maintain a regular release schedule, it's important to clarify that these releases do not fall under the Long Term Support (LTS) category. They introduce new capabilities, appealing to teams seeking the latest features upon release. However, these specific features become part of the subsequent LTS release.
 
 Although these releases receive support, it's essential to note their limited support duration, extending only until the arrival of the subsequent release that supersedes them. For users prioritizing stability and consistent patching, the LTS releases offer a more suitable choice.
 
