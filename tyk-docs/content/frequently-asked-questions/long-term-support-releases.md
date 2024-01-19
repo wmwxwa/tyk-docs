@@ -102,7 +102,7 @@ When we release a new Gateway version, it triggers us to be clear on version com
 
 As part of the release for the new Gateway LTS version we will commit to show everyone 2 compatibility dimensions:
 
-1. What component versions would you require to fully utilise the latest Tyk experience across the entire stack
+1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. What components and versions remain backwards compatible with the new Gateway version.
 
 The table below is an illustrative example, but shows the intent:
