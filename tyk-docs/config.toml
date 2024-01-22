@@ -34,3 +34,13 @@ CanonicalBaseUrl = "https://tyk.io/docs/"
     ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
+<<<<<<< HEAD
+=======
+[outputFormats.pagesurl]
+   mediaType = "application/json"
+   baseName = "pagesurl"
+   isPlainText = true
+   notAlternative = true
+[outputs]
+  home = ["HTML","pagesurl"]
+>>>>>>> 36b204bf... Create aliases in 4.1 (#3972)
