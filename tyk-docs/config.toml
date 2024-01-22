@@ -38,7 +38,6 @@ showEmptyPages = false
     ordered = true
 [frontmatter]
 lastmod = ["lastmod", ":git", "date", "publishDate"]
-
 [outputFormats.urlcheck]
    mediaType = "application/json"
    baseName = "urlcheck"
