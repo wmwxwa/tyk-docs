@@ -1,12 +1,9 @@
-name: Check maximum nesting level is not exceeded
+name: Check in which version a page is available
 on: [pull_request]
-env:
-  MAX_LEVELS: 7
-
 jobs:
-  Check-max-levels:
+  check-page-availability:
     runs-on: ubuntu-20.04
-    name: Check-menu-max-levels
+    name: Check version a page is available
     steps:
 
       # Checkout your code
@@ -16,7 +13,7 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: '1.20'
-      - name: "Check navigation level does not exceed the defined maximum"
+      - name: "Generate page availability and versions"
         run: |
-          cd scripts/navigation-levels
-          go run main.go --max=$MAX_LEVELS
+          cd scripts
+          python3 page_available_since.py
