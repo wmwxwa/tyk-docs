@@ -17,7 +17,7 @@ In the image below we can see two APIs were setup within the dashboard:
 - **track**: Analytics are tracked for an API, i.e. *track_enabled* is false.
 - **notrack**: Analytics are not tracked for an API, i.e. *track_enabled* is true.
 
-<!-- TODO: IMAGE TO ADD HERE -->
+{{< img src="img/faq/do-not-track-usage-scenario/dashboard_apis_measured.png" alt="apis measured in Tyk Dashboard" >}}
 
 100,000 requests were sent to each API and the total number of requests per second was measured. The results are illustrated below. 
 
