@@ -1,12 +1,32 @@
 ---
-title: "When To Use do_not_track"
+title: "When To Use do_not_track Analytics"
 date: 2024-01-22
-tags: ["do_not_track"]
-description: "Explains do_not_track and the circumstances under which it should be used"
+tags: ["do_not_track", Analytics]
+description: "Explains do_not_track Analytics and the circumstances under which it should be used"
 ---
 
 Tyk provides the *do_not_track* configuration parameter to disable tracking analytics at two levels:
-    - Global: Analytics are not tracked for all endpoints of an API. This feature is configurable in [Tyk OAS APIs]({{< ref "TO DO" >}}) and [Tyk Classic APIs]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}})
-    - Endpoint: Analytics can be disabled for a specific endpoint. This is configurable at the endpoint level for [Tyk OAS APIs](<< ref "" >>), [Tyk Classic APIs({{< ref "" >}})] and from within the Tyk Dashboard [endpoint designer]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
+
+- **Global**: Analytics are not tracked for all endpoints of an API. This feature is configurable in [Tyk OAS APIs]() and [Tyk Classic APIs]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}})
+- **Endpoint**: Analytics can be disabled for a specific endpoint. This is configurable at the endpoint level for [Tyk OAS APIs](), [Tyk Classic APIs]() and from within the Tyk Dashboard [endpoint designer]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
+
+## How Does This Impact Performance?
+
+In the image below we can see two APIs were setup within the dashboard:
+
+- **track**: Analytics are tracked for an API, i.e. *track_enabled* is false.
+- **notrack**: Analytics are not tracked for an API, i.e. *track_enabled* is true.
+
+<!-- TODO: IMAGE TO ADD HERE -->
+
+100,000 requests were sent to each API and the total number of requests per second was measured. The results are illustrated below. 
+
+{{< img src="img/faq/do-not-track-usage-scenario/do_not_track_performance_impact.png" alt="measuring do_not_track API performance impact" >}}
+
+The results for the *tracked* API are displayed in the left pane terminal window; with the right pane shown the results for the *untracked* API.
+
+We can see that 19253.75 requests per second was recorded for the *untracked* API; with 16743.6011 requests per seconds reported for the *tracked* API.
 
 ## When To Use Do Not Track?
+
+<!-- TODO -->
