@@ -75,6 +75,7 @@
                 {{ .Content }}
               {{ end }}
             </div>
+<<<<<<< HEAD
             {{- $pagePath := .RelPermalink}}
             {{- $pagePath := replace $pagePath "/docs" "" -}}
             {{- $pagePath := replace $pagePath "/nightly" "" -}}
@@ -105,6 +106,17 @@
               <img src="{{ "img/nav-center.png" | relURL }}"alt="Page forward and back image" /> 
               <a id="nextArticle"></a>
             </nav>
+=======
+            {{- partial "related_posts.html" . -}}
+            {{- if not .Params.landingPage -}}
+              {{- partial "contribute_data.html" . -}}
+              <nav class="docs-navigation clear" {{if .Params.hideSidebar}}style="display: none !important"{{end}}>
+                <a id="previousArticle"></a>
+                <img src="{{ "img/nav-center.png" | relURL }}" alt="Page forward and back image" />
+                <a id="nextArticle"></a>
+              </nav>
+            {{ end }}
+>>>>>>> 4732885b... [Dx 720] - Update Release Landing Page With Latest Component Versions (#3640)
           </div>
   
           <div class="documentation-table-of-contents-container page-content__sidebar">
