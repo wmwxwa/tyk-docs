@@ -1,5 +1,5 @@
 {
-  "home": "deployment-and-operations/tyk-self-managed/deployment-lifecycle/installations/kubernetes/tyk-helm-tyk-stack",
+  "home": "tyk-self-managed/tyk-helm-chart-single-dc",
   "licensed": false,
   "latest": "1.2.0",
   "releaseNotesPath": "https://github.com/TykTechnologies/tyk-charts/tags",
