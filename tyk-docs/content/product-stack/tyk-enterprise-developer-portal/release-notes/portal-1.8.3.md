@@ -11,11 +11,8 @@ weight: 7
 **Licensed Protected Product**
 
 ### Support Lifetime
-We strive to avoid any long-term support arrangements for our enterprise portal. We run a regular 6-week release cadence which delivers new capability, extension of existing capability, and bug fixes. Our policy is that we aim to avoid any breaking changes, so in effect, the entire enterprise portal is supported. Here we'd increment our version as a minor version - 1.3.0, 1.4.0, 1.5.0 etc.
 
-Occasionally, we may see a need to issue a critical fix if there is a system down or a critical security defect. Here we would release this as soon as is physically possible and the semantic versioning would reflect a patch (1.3.1, 1.4.1 etc).
-
-The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (i.e. releasing version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version only gets supported in terms of critical fixes, not new functionality. After six months, the previous major version falls out of support.
+For further details of the supported lifetime of a release please refer to the [supported lifetime policy](#support-lifetime-policy) section below.
 
 ##### Release Date 22 Jan 2024
 
@@ -32,7 +29,6 @@ There are no deprecations in this release.
 If you are on 1.8.1 or an older version we advise you to upgrade ASAP directly to this release.
 
 To upgrade the portal's theme please follow the [upgrade instructions]({{< ref "product-stack/tyk-enterprise-developer-portal/upgrading/theme-upgrades" >}}) for the portal's themes.
-
 
 ## Release Highlights
 The 1.8.3 release addresses ten high-priority bugs and introduces new admin APIs for managing tags and OAuth2.0 client types attached to API Products.
@@ -65,3 +61,11 @@ Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for furthe
 
 ### FAQ
 Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}}) page for further information relating to reporting bugs, upgrading Tyk, technical support and how to contribute.
+
+### Support Lifetime Policy
+
+We strive to avoid any long-term support arrangements for our enterprise portal. We run a regular 6-week release cadence which delivers new capability, extension of existing capability, and bug fixes. Our policy is that we aim to avoid any breaking changes, so in effect, the entire enterprise portal is supported. Here we'd increment our version as a minor version - 1.3.0, 1.4.0, 1.5.0 etc.
+
+Occasionally, we may see a need to issue a critical fix if there is a system down or a critical security defect. Here we would release this as soon as is physically possible and the semantic versioning would reflect a patch (1.3.1, 1.4.1 etc).
+
+The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (i.e. releasing version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version only gets supported in terms of critical fixes, not new functionality. After six months, the previous major version falls out of support.
