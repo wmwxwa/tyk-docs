@@ -7,10 +7,8 @@ description: "Explains do_not_track Analytics and the circumstances under which 
 
 Tyk provides the *do_not_track* configuration parameter to disable tracking analytics at two levels:
 
-- **Global**: Analytics are not tracked for all endpoints of an API. This feature is configurable in [Tyk OAS APIs]() and [Tyk Classic APIs]({{< ref "tyk-apis/tyk-gateway-api/api-definition-objects/other-root-objects" >}})
-- **Endpoint**: Analytics can be disabled for a specific endpoint. This is configurable at the endpoint level for [Tyk OAS APIs](), [Tyk Classic APIs]() and from within the Tyk Dashboard [endpoint designer]({{< ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint" >}}).
-
-## How Does This Impact Performance?
+- **Global**: Analytics are not tracked for all endpoints of an API.
+- **Endpoint**: Analytics can be disabled for selected endpoints.
 
 In the image below we can see two APIs were setup within Tyk Dashboard:
 
@@ -25,6 +23,6 @@ In the image below we can see two APIs were setup within Tyk Dashboard:
 
 We can see that 19253.75 requests per second was recorded for the *untracked* API; with 16743.6011 requests per second reported for the *tracked* API. The number of requests per seconds decreased by 13.0372% when analytics was enabled.
 
-## When To Use Do Not Track?
+Using the *do_not_track* feature will reduce the analytics traffic for all endpoints in an API or for selected endpoints. This can help reduce the analytics traffic for systems that have high load.
 
-<!-- TODO -->
+However, the endpoints to disable collating analytics are application specific. Decisions need to be made concerning which endpoints are non critical. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
