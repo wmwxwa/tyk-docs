@@ -10,7 +10,7 @@ Tyk provides the *do_not_track* configuration parameter to disable tracking anal
 - **Global**: Analytics are not tracked for all endpoints of an API.
 - **Endpoint**: Analytics can be disabled for selected endpoints.
 
-In the image below we can see two APIs were setup within Tyk Dashboard:
+In the image below we can see two APIs were setup within Tyk Dashboard for conducting a simple load test, to determine the total requests per second for each API:
 
 - **track**: Analytics are tracked for an API, i.e. *track_enabled* is false.
 - **notrack**: Analytics are not tracked for an API, i.e. *track_enabled* is true.
