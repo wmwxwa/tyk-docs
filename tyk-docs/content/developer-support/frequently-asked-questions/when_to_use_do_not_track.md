@@ -10,7 +10,7 @@ Tyk provides the *do_not_track* configuration parameter to disable tracking anal
 - **Global**: Analytics are not tracked for all endpoints of an API.
 - **Endpoint**: Analytics can be disabled for selected endpoints.
 
-This can help reduce the analytics traffic for systems that are under high load.
+This can help reduce analytics traffic for systems that are under high load, exhibiting high traffic. For example: social media platforms (Facebook, Instagram and Twitter), streaming services (YouTube, Netlix and Hulu) and Financial Services and Trading Platforms (E*TRADE and PayPal).
 
 The endpoints where analytics should be disabled require an application specific decisions to be made, concerning which endpoints are non critical. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 
