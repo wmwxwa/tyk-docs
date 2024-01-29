@@ -5,7 +5,7 @@ tags: ["do_not_track", Analytics]
 description: "This FAQ explains when not to use do_not_track Analytics"
 ---
 
-Tyk allows analytics to be recorded for API endpoints. This can increase the CPU load and reduce the RPS (requests per second).
+Tyk allows analytics to be recorded for API endpoints. This can increase the CPU load and reduce the RPS (requests per second). Subsequently, it is possible to configure Tyk to disable this behaviour.
 
 Tyk provides the [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint">}}) configuration parameter to disable analytics recording at two levels:
 
