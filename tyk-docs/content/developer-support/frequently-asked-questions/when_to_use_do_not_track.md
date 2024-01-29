@@ -5,7 +5,7 @@ tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high l
 description: "This FAQ explains when not to use do_not_track Analytics"
 ---
 
-Tyk allows analytics to be recorded for API endpoints. This can increase the CPU load and reduce the RPS (requests per second).
+Tyk allows analytics to be recorded and stored in backend storage for API endpoints, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}). Example details include: the originating host, API version, request method, request path etc. This can introduce the problem of increased CPU load and reduced RPS (requests per second).
 
 {{< img src="/img/faq/enable-multiple-analytics-keys/redis_single.png" alt="High CPU load" width="864px" >}}
 
@@ -29,4 +29,6 @@ In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrac
 
 {{< img src="img/faq/do-not-track-usage-scenario/do_not_track_performance_impact.png" alt="measuring do_not_track API performance impact" >}}
 
-We can see that **19,253.75** RPS was recorded for the *untracked* API; with **16,743.6011** RPS reported for the *tracked* API. The number of requests per second decreased by **13.0372%** when analytics was enabled. Subsequently, it is worthwhile monitoring traffic and system load and using this feature to improve performance. 
+We can see that **19,253.75** RPS was recorded for the *untracked* API; with **16,743.6011** RPS reported for the *tracked* API. The number of requests per second decreased by **13.0372%** when analytics was enabled.
+
+Subsequently, it is worthwhile monitoring traffic and system load and using this feature to improve performance. 
