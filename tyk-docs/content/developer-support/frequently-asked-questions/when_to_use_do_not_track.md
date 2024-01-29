@@ -1,7 +1,7 @@
 ---
 title: "When To Use Do Not Track Analytics"
 date: 2024-01-22
-tags: ["do_not_track", Analytics]
+tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
 description: "This FAQ explains when not to use do_not_track Analytics"
 ---
 
