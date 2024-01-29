@@ -1,8 +1,8 @@
 ---
-title: "When To Use do_not_track Analytics"
+title: "When To Use Do Not Track Analytics"
 date: 2024-01-22
 tags: ["do_not_track", Analytics]
-description: "Explains do_not_track Analytics and the circumstances under which it should be used"
+description: "This FAQ explains when not to use do_not_track Analytics"
 ---
 
 Tyk provides the [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer/#do-not-track-endpoint">}}) configuration parameter to disable analytics recording at two levels:
