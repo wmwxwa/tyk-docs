@@ -1069,3 +1069,27 @@ Type: `bool`<br />
 
 Allow the modification of Tyk OAS APIs via the Tyk Classic API endpoints. Note that this is not recommended but is provided for early adopters and will be deprecated later
 
+### oas 
+Configuration for various OAS-specific functionalities
+
+Example:
+```
+{
+  "oas": {
+    "validate_examples": false,
+    "validate_schema_defaults": false,
+  }
+}
+```
+
+### oas.validate_examples
+EV: <b>TYK_DB_VALIDATE_EXAMPLES</b><br />
+Type: `bool`<br />
+
+Enables validation of examples in the OAS spec. Defaults to false.
+
+### oas.validate_schema_defaults
+EV: <b>TYK_DB_VALIDATE_SCHEMA_DEFAULTS</b><br />
+Type: `bool`<br />
+
+Enables validation of defaults in the OAS spec. Defaults to false.
