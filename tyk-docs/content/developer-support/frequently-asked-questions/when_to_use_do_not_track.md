@@ -7,7 +7,7 @@ description: "This FAQ explains when not to use do_not_track Analytics"
 
 Tyk provides the [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer/#do-not-track-endpoint">}}) configuration parameter to disable analytics recording at two levels:
 
-- **Global**: Analytics are not tracked for all endpoints of an API.
+- **Per API**: Tyk Gateway will not record analytics for requests/responses of all the endpoints of this API.
 - **Endpoint**: Analytics can be disabled for selected endpoints.
 
 This can help reduce analytics traffic for systems that are under high load, exhibiting high traffic, e.g. social media platforms (Facebook, Instagram and Twitter), streaming services (YouTube, Netlix and Hulu) and Financial Services and Trading Platforms (PayPal and E*TRADE).
