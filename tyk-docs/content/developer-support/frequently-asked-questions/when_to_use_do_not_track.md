@@ -5,7 +5,7 @@ tags: ["do_not_track", Analytics]
 description: "Explains do_not_track Analytics and the circumstances under which it should be used"
 ---
 
-Tyk provides the *do_not_track* configuration parameter to disable tracking analytics at two levels:
+Tyk provides the [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer/#do-not-track-endpoint">}}) configuration parameter to disable analytics recording at two levels:
 
 - **Global**: Analytics are not tracked for all endpoints of an API.
 - **Endpoint**: Analytics can be disabled for selected endpoints.
