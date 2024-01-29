@@ -16,8 +16,8 @@ Application decisions need to made concerning which endpoints are non critical c
 
 In the screenshot below, of *Tyk Dashboard API screen* we can see two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
 
-- **track**: Analytics are tracked for an API, i.e. *track_enabled* is false.
-- **notrack**: Analytics are not tracked for an API, i.e. *track_enabled* is true.
+- **track**: Analytics are tracked for an API, i.e. *do_not_track* is false.
+- **notrack**: Analytics are not tracked for an API, i.e. *do_not_track* is true.
 
 {{< img src="img/faq/do-not-track-usage-scenario/dashboard_apis_measured.png" alt="apis measured in Tyk Dashboard" >}}
 
