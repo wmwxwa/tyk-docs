@@ -14,7 +14,7 @@ This can help reduce analytics traffic for systems that are under high load, exh
 
 Application decisions need to made concerning which endpoints are non critical can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 
-In the image below we can see two APIs were setup within Tyk Dashboard for conducting a simple load test, to determine the total requests per second for each API:
+In the screenshot below, of *Tyk Dashboard API screen* we can see two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
 
 - **track**: Analytics are tracked for an API, i.e. *track_enabled* is false.
 - **notrack**: Analytics are not tracked for an API, i.e. *track_enabled* is true.
