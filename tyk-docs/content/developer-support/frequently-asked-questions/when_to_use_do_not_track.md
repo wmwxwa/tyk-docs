@@ -10,11 +10,11 @@ Tyk provides the [do_not_track]({{<ref "advanced-configuration/transform-traffic
 - **Per API**: Tyk Gateway will not record analytics for requests/responses of all the endpoints of this API.
 - **Endpoint**: Tyk Gateway will not record analytics for requests to the selected endpoint. Other endpoints will be tracked as normal.
 
-Enabling [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint">}})can help reduce analytics traffic for systems that are under high load, exhibiting high traffic, e.g. social media platforms, streaming services and financial services and trading platforms.
+Enabling [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint">}}) can help reduce analytics traffic for systems that are under high load, exhibiting high traffic, e.g. social media platforms, streaming services and financial services and trading platforms.
 
-Application decisions need to made concerning which endpoints are non critical can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
+Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 
-In the screenshot below, of *Tyk Dashboard API screen* we can see two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
+In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
 
 - **track**: Analytics are tracked for an API, i.e. *do_not_track* is false.
 - **notrack**: Analytics are not tracked for an API, i.e. *do_not_track* is true.
