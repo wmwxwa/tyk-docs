@@ -1092,4 +1092,4 @@ Enables validation of examples in the OAS spec. Defaults to false.
 EV: <b>TYK_DB_OAS_VALIDATE_SCHEMA_DEFAULTS</b><br />
 Type: `bool`<br />
 
-Enables validation of defaults in the OAS spec. Defaults to false.
+Enables validation of schema defaults in the OAS spec. Defaults to false.
