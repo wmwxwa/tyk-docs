@@ -2,7 +2,7 @@
 title: Using the Ignore Authentication middleware with Tyk OAS APIs
 date: 2024-01-24
 description: "Using the Ignore Authentication middleware with Tyk OAS APIs"
-tags: ["ignore authentication", "ignore", "ignore auth", "authentication", "middleware", "per-endpoint", "Tyk OAS"]
+tags: ["ignore authentication", "ignore", "ignore auth", "authentication", "middleware", "per-endpoint", "Tyk OAS", "Tyk OAS APIs"]
 ---
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
@@ -72,7 +72,7 @@ For example:
 ```
 
 In this example the ignore authentication middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - the allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
+ - The allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
 
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the API-level response header transform.
 

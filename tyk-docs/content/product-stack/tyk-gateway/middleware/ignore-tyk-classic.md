@@ -2,12 +2,12 @@
 title: Using the Ignore Authentication middleware with Tyk Classic APIs
 date: 2024-01-24
 description: "Using the Ignore Authentication middleware with Tyk Classic APIs"
-tags: ["ignore authentication", "ignore", "ignore auth", "authentication", "middleware", "per-endpoint", "Tyk Classic"]
+tags: ["ignore authentication", "ignore", "ignore auth", "authentication", "middleware", "per-endpoint", "Tyk Classic", "Tyk Classic APIs"]
 ---
 
 The [Ignore Authentication]({{< ref "product-stack/tyk-gateway/middleware/ignore-middleware" >}}) middleware instructs Tyk Gateway to skip the authentication step for calls to an endpoint, even if authentication is enabled for the API.
 
-When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
+When working with Tyk Classic APIs the middleware is configured in the Tyk Classic API Definition, either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/ignore-tyk-oas" >}}) page.
 
@@ -49,7 +49,7 @@ For example:
 ```
 
 In this example the ignore authentication middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - the allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
+ - The allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
 
 ## Configuring the middleware in the API Designer
 You can use the API Designer in the Tyk Dashboard to configure the Ignore Authentication middleware for your Tyk Classic API by following these steps.
