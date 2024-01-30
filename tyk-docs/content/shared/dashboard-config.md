@@ -1089,7 +1089,7 @@ Type: `bool`<br />
 Enables validation of examples in the OAS spec. Defaults to false.
 
 ### oas.validate_schema_defaults
-EV: <b>TYK_DB_VALIDATE_SCHEMA_DEFAULTS</b><br />
+EV: <b>TYK_DB_OAS_VALIDATE_SCHEMA_DEFAULTS</b><br />
 Type: `bool`<br />
 
 Enables validation of defaults in the OAS spec. Defaults to false.
