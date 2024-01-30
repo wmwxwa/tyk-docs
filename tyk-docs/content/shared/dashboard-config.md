@@ -1083,7 +1083,7 @@ Example:
 ```
 
 ### oas.validate_examples
-EV: <b>TYK_DB_VALIDATE_EXAMPLES</b><br />
+EV: <b>TYK_DB_OAS_VALIDATE_EXAMPLES</b><br />
 Type: `bool`<br />
 
 Enables validation of examples in the OAS spec. Defaults to false.
