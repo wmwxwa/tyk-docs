@@ -1,8 +1,8 @@
 ---
-title: "When To Use Do Not Track Analytics"
+title: "What Is The Performance Impact Of Analytics?"
 date: 2024-01-22
 tags: ["do_not_track", "Analytics", "RPS", "Requests Per Second", "CPU", "high load", "high traffic"]
-description: "This FAQ explains when not to use do_not_track Analytics"
+description: "This FAQ explains how analytics impacts system performance and how to disable using do_not_track"
 ---
 
 Tyk allows analytics to be recorded and stored in backend storage for API endpoints, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}). Example details include: the originating host, API version, request method, request path etc. This can introduce the problem of increased CPU load and reduced RPS (requests per second).
