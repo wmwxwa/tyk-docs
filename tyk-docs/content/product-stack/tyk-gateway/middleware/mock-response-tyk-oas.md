@@ -389,7 +389,7 @@ The Mock Response middleware is enabled and configured in the Tyk OAS API defini
 To invoke a non-default response from a mocked endpoint, you must add one or more special headers to the request:
 - `Accept`: This standard HTTP header will override the response content type (e.g. `application/json`, `text/plain`)
 - `X-Tyk-Accept-Example-Code`: This will select the HTTP response code for which to return the example response (e.g. `400`)
-- `X-Tyk-Accept-Example-Name`: This identified which example to select from an `examples` list
+- `X-Tyk-Accept-Example-Name`: This identifies which example to select from an `examples` list
 
 If an example response can’t be found for the configured `code`, `contentType` or `exampleName`, an HTTP 404 error will be returned to inform the client that there is no declared example for that configuration.
 
