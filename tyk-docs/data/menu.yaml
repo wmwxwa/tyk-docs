@@ -3445,10 +3445,6 @@ menu:
         path: /frequently-asked-questions/how-to-backup-tyk
         category: Page
         show: True
-      - title: "Long Term Support Releases"
-        path: /frequently-asked-questions/long-term-support-releases
-        category: Page
-        show: True
       - title: "Support SLA Policies"
         path: /frequently-asked-questions/sla-policies
         category: Page
@@ -3465,6 +3461,10 @@ menu:
         path: /frequently-asked-questions/datadog-logs-showup-as-errors
         category: Page
         show: True
+    - title: "Long Term Support Releases"
+      path: /developer-support/long-term-support-releases 
+      category: Page
+      show: True
     - title: "Plug-in Hub"
       category: Page
       show: False
