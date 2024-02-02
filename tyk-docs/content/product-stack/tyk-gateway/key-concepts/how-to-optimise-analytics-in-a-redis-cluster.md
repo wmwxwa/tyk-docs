@@ -2,7 +2,7 @@
 title: "How To Optimise Analytics In A Redis Cluster"
 date: 2024-02-02
 tags: ["Analytics", "Distributed Analytics", "Redis", "Redis Shards", "analytics_config.enable_multiple_analytics_keys" ]
-description: "Explains how to reduce CPU usage in a Redis Cluster by configuring Tyk to use a Redis Cluster to distribute analytics keys to multiple Redis Shards"
+description: "Explains how to reduce CPU usage in a Redis Cluster by configuring Tyk to distribute analytics keys to multiple Redis Shards"
 ---
 
 The illustration below highlights the scenario where a single Redis node is exhibiting high CPU usage of 1.20% within a Redis Cluster. One possible reason for this could be that analytics are enabled and the keys are being stored within a single Redis server.
