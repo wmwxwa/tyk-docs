@@ -9,7 +9,7 @@ The [Mock Response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-
 
 When working with Tyk Classic APIs, this middleware is executed at the start of the request processing chain. Thus an endpoint with the mock response middleware will not be authenticated, will not process other middleware configured for the API (neither API nor endpoint level) and will have no analytics created.  It will simply return the configured response for any request made to that endpoint.
 
-The middleware is configured in the Tyk Classic API Definition, either manually within the `.json` file or from the API Designer in the Tyk Dashboard.
+The middleware is configured in the Tyk Classic API Definition. You can do this via the Tyk Dashboard API or in the API Designer.
 
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas" >}}) page.
 
