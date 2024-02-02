@@ -1155,7 +1155,11 @@ menu:
         - title: "How to secure your APIs in Tyk"
           path: /basic-config-and-security/security
           category: Page
-          show: True      
+          show: True
+        - title: "How to optimise analytics in a Redis Cluster"
+          path: /product-stack/tyk-gateway/key-concepts/how-to-optimise-analytics-in-a-redis-cluster
+          category: Page
+          show: True
         - title: "GraphQL"
           category: Directory
           show: True
