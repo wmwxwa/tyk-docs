@@ -1078,7 +1078,7 @@ menu:
             - title: "Request Validation"
               path: /getting-started/key-concepts/request-validation
               category: Page
-              show: True
+              show: False
             - title: "Paths"
               path: /getting-started/key-concepts/paths
               category: Page
