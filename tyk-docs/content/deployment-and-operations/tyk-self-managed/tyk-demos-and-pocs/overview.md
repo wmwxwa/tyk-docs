@@ -5,8 +5,7 @@ description: "Explore essential guides for a successful Tyk Proof of Concept (Po
 tags: ["Tyk PoC", "Tyk Demo", "Tyk Demo Docker", "Tyk Demo Kubernetes"]
 ---
 
-If you've successfully completed the [Quick Start]({{<ref "getting-started/quick-start">}}), congratulations! This page is the **next step** in your Tyk journey and designed for users who are ready to play with Tyk, learn more about Tyk's capabilities, services, and integration options.
-
+If you have successfully completed the Quick Start for [Gateway]({{< ref "deployment-and-operations/tyk-open-source-api-gateway/quick-start" >}}), [Self Managed]({{< ref "getting-started/quick-start" >}}) or [Tyk Cloud]({{< ref "deployment-and-operations/tyk-cloud-platform/quick-start" >}}), congratulations! This page is the **next step** in your Tyk journey and designed for users who are ready to play with Tyk, learn more about Tyk's capabilities, services and integration options.
 
 We have two feature-rich and comprehensive demo repositories which provides an example installation of Tyk.
 
