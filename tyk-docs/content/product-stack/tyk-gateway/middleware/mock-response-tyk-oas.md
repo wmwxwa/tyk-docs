@@ -11,7 +11,9 @@ When working with Tyk OAS APIs, this middleware is executed at the end of the re
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
-Tyk can automatically populate the Mock Response middleware with [example values](#example-responses-in-openapi-specification) taken from the OpenAPI Document, or you can configure the response [manually](#manually-configuring-the-middleware-in-the-tyk-oas-api-definition). 
+The Mock Response middleware has two modes of operation:
+ - in the [basic mode](#manually-configuring-the-middleware-in-the-tyk-oas-api-definition), you can directly configure a response within the middleware in the Tyk extension (`x-tyk-api-gateway`) within the API definition. Tyk will give this response to all valid requests to the endpoint
+ - in the [advanced mode](#automatically-configuring-the-middleware-from-the-openapi-document), Tyk will parse the [examples and schema](#example-responses-in-openapi-specification) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint)
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}) page.
 
@@ -88,7 +90,7 @@ If there is no `example` or `examples` defined for an endpoint, Tyk will try to 
 
 Response headers do not have standalone `example` or `examples` attributes, however they can have a `schema` - the Mock Response middleware will include these in the mock response if provided in the OpenAPI description.
 
-The schema properties may have an `example` field, in which case they will be used to build a mock response, however if there is no `example` value in the schema then default values are used to build a response as follows:
+The schema properties may have an `example` field, in which case they will be used to build a mock response. If there is no `example` value in the schema then default values are used to build a response as follows:
 - `string` > `string`
 - `integer` > `0`
 - `boolean` > `true`
@@ -163,8 +165,8 @@ X-Status: Foobar
 Content-Type: application/json
  
 {
-  "name": "Foo",
   "lastName": "Bar",
+    "name": "Foo",
   "id": 0
 }
 ```
@@ -174,7 +176,7 @@ The design of the Tyk OAS API Definition takes advantage of the `operationID` de
 
 The mock response middleware (`mockResponse`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
-The `mockResponse` object has the following configuration:
+For basic operation, the `mockResponse` object has the following configuration:
  - `enabled`: enable the middleware for the endpoint
  - `code`: the HTTP status code to be provided with the response (this defaults to `200` if not set)
  - `body`: the payload to be returned as the body of the response
@@ -253,7 +255,7 @@ This is the mock response body
 The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the mock response middleware.
 
 ## Automatically configuring the middleware from the OpenAPI Document
-You can direct Tyk to configure the Mock Response middleware automatically from the examples and schema [defined](#example-responses-in-openapi-specification) in the OpenAPI description by enabling the middleware for an endpoint and configuring the `fromOASExamples` object wiithin that.
+You can direct Tyk to configure the Mock Response middleware automatically from the examples and schema [defined](#example-responses-in-openapi-specification) in the OpenAPI description. This is can be done by enabling the middleware for an endpoint and configuring the `fromOASExamples` object within that.
 
 The middleware (`mockResponse`) can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 

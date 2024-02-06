@@ -83,7 +83,7 @@ Now select the **Mock response** plugin.
 < TODO: add image >
 
 #### Step 3: Configure the middleware
-Once you have selected the Mock response middleware for the endpoint, you can configure the HTTP status code, headers and body to be included in the response. Remember to click **ADD** to add each header to the response.
+Once you have selected the Mock response middleware for the endpoint, you can configure the HTTP status code, headers and body to be included in the response. Remember to click **ADD**, to add each header to the response.
 
 < TODO: add image >
 
