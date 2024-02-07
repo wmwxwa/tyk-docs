@@ -55,11 +55,11 @@ Note that the request body transform middleware can iterate through list indices
 A very common transformation that is applied in the API Gateway is to convert between XML and JSON formatted body content.
 
 The Request Body Transform supports two helper functions that you can use in your Go templates to facilitate this:
- - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example](product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal))
- - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example](product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal))
+ - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
+ - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
 
 ### Go templating resources
-We have provided more detail, links to reference material and some examples of the use of Go templating [here](product-stack/tyk-gateway/references/go-templates).
+We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
 
 <hr>
 
