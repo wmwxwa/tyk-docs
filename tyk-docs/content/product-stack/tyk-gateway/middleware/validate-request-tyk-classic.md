@@ -3,6 +3,8 @@ title: Using the Request Validation middleware with Tyk Classic APIs
 date: 2024-02-02
 description: "Using the Request Validation middleware with Tyk Classic APIs"
 tags: ["request validation", "validate JSON", "middleware", "per-endpoint", "Tyk Classic", "Tyk Classic API"]
+aliases:
+  - /advanced-configuration/transform-traffic/validate-json
 ---
 
 The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness, and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.

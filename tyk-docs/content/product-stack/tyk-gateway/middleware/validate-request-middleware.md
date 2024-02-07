@@ -5,6 +5,7 @@ description: "Detail of the Request Validation middleware"
 tags: ["request validation", "validate request", "security", "middleware", "per-endpoint"]
 aliases:
   - /transform-traffic/validate-json/
+  - /getting-started/key-concepts/request-validation/
 ---
 
 Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness, and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
