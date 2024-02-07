@@ -3552,6 +3552,14 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
+    - title: "How to upgrade Tyk"
+      category: Directory
+      show: True
+      menu:
+        - title: Go Plugins
+          category: Directory
+          show: True
+          menu:
     - title: "Upgrading Tyk"
       path: /upgrading-tyk
       category: Page
