@@ -3560,18 +3560,34 @@ menu:
     - title: "Plug-in Hub"
       category: Page
       show: False
-    - title: "How to upgrade Tyk"
+    - title: "Upgrading Tyk Components"
       category: Directory
       show: True
       menu:
+        - title: "Upgrading Tyk"
+          path: /upgrading-tyk
+          category: Page
+          show: True
         - title: Go Plugins
           category: Directory
           show: True
           menu:
-    - title: "Upgrading Tyk"
-      path: /upgrading-tyk
-      category: Page
-      show: True
+          - title: "Self Managed - DEB"
+            path: /developer-support/upgrading-tyk/go-plugins/self-managed-deb
+            category: Page
+            show: True
+          - title: "Self Managed - RPM"
+            path: /developer-support/upgrading-tyk/go-plugins/self-managed-rpm
+            category: Page
+            show: True
+          - title: "Self Managed - Hybrid"
+            path: /developer-support/upgrading-tyk/go-plugins/self-managed-hybrid
+            category: Page
+            show: True
+          - title: "Cloud - SaaS"
+            path: /developer-support/upgrading-tyk/go-plugins/cloud-saas
+            category: Page
+            show: True
     - title: "Latest Tyk Releases"
       path: /developer-support/tyk-release-summary/overview
       category: Page
