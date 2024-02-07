@@ -1563,10 +1563,6 @@ menu:
               path: /product-stack/tyk-gateway/middleware/validate-request-tyk-classic
               category: Page
               show: True
-          - title: "Validate JSON"
-            path: /advanced-configuration/transform-traffic/validate-json
-            category: Page
-            show: False
           - title: "URL Rewriting"
             path: /transform-traffic/url-rewriting
             category: Page
@@ -3584,6 +3580,10 @@ menu:
       category: Directory
       show: False
       menu:
+      - title: "Validate JSON"
+        path: /advanced-configuration/transform-traffic/validate-json
+        category: Page
+        show: False
       - title: "Dashboard"
         path: /basic-config-and-security/security/dashboard
         category: Page
