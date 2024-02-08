@@ -1,23 +1,23 @@
 ---
 title: Request Body Transformation
 date: 2017-03-23T17:57:36Z
-description: "How to transform the body for an API Request"
+description: "How to transform the body for an API request"
 tags: ["request transform", "body transform", "transform", "middleware", "per-endpoint"]
 aliases:
   - /advanced-configuration/transform-traffic/request-body/
 ---
 
-Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. 
+Tyk enables you to modify the payload of API requests before they are proxied to the upstream. This makes it easy to transform between payload data formats or to expose legacy APIs using newer schema models without having to change any client implementations. This middleware is only applicable to HTTP methods that can support a request body (i.e. PUT, POST or PATCH).
 
 With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) to apply more complex transformation to responses.
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) to apply more complex transformation to requests.
 
 There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream prior to it being returned to the client.
 
 ## When to use the Request Body Transformation middleware
 #### Maintaining compatibility with legacy clients
-Sometimes you might have a legacy API and need to migrate the requests to a new upstream service but do not want to upgrade all the existing clients to the newer upstream API. Using request body transformation, you can convert the incoming legacy XML or JSON request structure into a newer, cleaner JSON format that your upstream services expect.
+Sometimes you might have a legacy API and need to migrate the transactions to a new upstream service but do not want to upgrade all the existing clients to the newer upstream API. Using request body transformation, you can convert the incoming legacy XML or JSON request structure into a newer, cleaner JSON format that your upstream services expect.
 
 #### Shaping requests received from different devices
 You can detect device types via headers or context variables and transform the request payload to optimise it for that particular device. For example, you might send extra metadata to the upstream for mobile apps.
@@ -30,14 +30,16 @@ Tyk's body transform middleware uses the [Go template language](https://golang.o
 
 The Go template can be defined within the API Definition or can be read from a file that is accessible to Tyk, for example alongside your [error templates]({{< ref "advanced-configuration/error-templates" >}}).
 
+We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
+
 {{< note success >}}
 **Note**  
 
-Tyk evaluates templates on startup so if you make changes to a template you must remember to restart the gateway. 
+Tyk evaluates templates stored in files on startup, so if you make changes to a template you must remember to restart the gateway. 
 {{< /note >}}
 
 ### Supported request body formats
-The body transformation middleware supports request payloads in the following formats:
+The body transformation middleware can modify request payloads in the following formats:
  - JSON
  - XML
 
@@ -57,9 +59,6 @@ A very common transformation that is applied in the API Gateway is to convert be
 The Request Body Transform supports two helper functions that you can use in your Go templates to facilitate this:
  - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
  - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
-
-### Go templating resources
-We have provided more detail, links to reference material and some examples of the use of Go templating [here]({{< ref "product-stack/tyk-gateway/references/go-templates" >}}).
 
 <hr>
 

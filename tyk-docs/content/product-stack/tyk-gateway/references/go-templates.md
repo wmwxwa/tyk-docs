@@ -5,14 +5,14 @@ description: "Introduction to Go Templates"
 tags: ["go templates", "golang", "body transform", "transform"]
 ---
 
-Tyk's [request](transform-traffic/request-body) and [response](advanced-configuration/transform-traffic/response-body) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
+Tyk's [request]({{< ref "transform-traffic/request-body" >}}) and [response]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) body transform middleware use the [Go template language](https://golang.org/pkg/text/template/) to parse and modify the provided input.
 
 In this section of the documentation, we provide some guidance and a few examples on the use of Go templating within these middleware.
 
 ### Data format conversion using helper functions
 Tyk provides two helper functions to assist with data format translation between JSON and XML:
- - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example](#xml-to-json-conversion-using-jsonmarshal))
- - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example](#json-to-xml-conversion-using-xmlmarshal))
+ - `jsonMarshal` performs JSON style character escaping on an XML field and, for complex objects, serialises them to a JSON string ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}))
+ - `xmlMarshal` performs the equivalent conversion from JSON to XML ([example]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}))
 
 When creating these functions within your Go templates, please note:
  - the use of `.` in the template refers to the entire input, whereas something like `.myField` refers to just the `myField` field of the input
@@ -21,19 +21,21 @@ When creating these functions within your Go templates, please note:
 ### Using functions within Go templates
 You can define and use functions in the Go templates that are used for body transforms in Tyk. Functions allow you to abstract common template logic for cleaner code and to aid reusability. Breaking the template into functions improves readability of more complex tenplates.
 
-Here is an example:
+Here is an example where we define a function called `myFunction` that accepts one parameter:
 ``` .go
 {{- define "myFunction" }}
-  {{/* This defines a function called "myFunction" */}}
   Hello {{.}}!
 {{- end}}
+```
 
+We can call that function and pass "world" as the parameter:
+``` .go
 {
   "message": {{ call . "myFunction" "world"}}
 }
 ```
 
-This defines a function called `myFunction`` that accepts one parameter. If we then call that function and pass "world" as the parameter, the output would be:
+The output would be:
 ``` .json
 {
   "message": "Hello world!" 
@@ -42,11 +44,11 @@ This defines a function called `myFunction`` that accepts one parameter. If we t
 
 We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) which provides over 70 pre-written functions for transformations to assist the creation of powerful Go templates to transform your API requests. 
 
-### Additional Go templating resources
+### Additional resources
 Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
 
 ## Go templating examples
-Here we provide worked examples working with both [JSON](#example-json-transformation-template) and [XML](#example-xml-transformation-template) formatted inputs plus examples using the [jsonMarshal](#xml-to-json-conversion-using-jsonmarshal) and [xmlMarshal](#json-to-xml-conversion-using-xmlmarshal) helper functions.
+Here we provide worked examples working with both [JSON]({{< ref "product-stack/tyk-gateway/references/go-templates#example-json-transformation-template" >}}) and [XML]({{< ref "product-stack/tyk-gateway/references/go-templates#example-xml-transformation-template" >}}) formatted inputs plus examples using the [jsonMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
 
 ### Example JSON transformation template
 Imagine you have a published API that accepts the following request body, but your upstream service requires a few alterations, namely:
@@ -75,8 +77,8 @@ Imagine you have a published API that accepts the following request body, but yo
 **Template**
 ``` .go
 {
-  "value1": "{{index . "value2"}}",
-  "value2": "{{index . "value1"}}",
+  "value1": "{{.value2}}",
+  "value2": "{{.value1}}",
   "transformed_list": [
     {{range $index, $element := index . "value_list"}}
     {{if $index}}, {{end}}
@@ -84,17 +86,17 @@ Imagine you have a published API that accepts the following request body, but yo
     {{end}}
   ],
   "user-id": "{{._tyk_meta.uid}}",
-  "user-ip": "{{._tyk_context.remote_addr}}"
+  "user-ip": "{{._tyk_context.remote_addr}}",
   "req-type": "{{ ._tyk_context.request_data.param.type }}" 
 }
 ```
-
 In this template:
-- `{{index . "value1"}}` accesses the "value1" field of the input JSON
+- `.value1` accesses the "value1" field of the input JSON
 - we swap value1 and value2
 - we use the range function to loop through the "value_list" array
 - `._tyk_meta.uid` injects the "uid" session metadata value
 - `._tyk_context.remote_addr` injects the client IP address from the context
+- `._tyk_context.request_data.param.type` injects query parameter "type"
 
 **Output**
 ``` .json
@@ -139,15 +141,11 @@ XML cannot be as easily decoded into strict structures as JSON, so the syntax is
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
   <body>
-    <value1>{{index .body "value2"}}</value1>
-    <value2>{{index .body "value1"}}</value2>
+    <value1>{{ .data.body.value2 }}</value1>
+    <value2>{{ .data.body.value1 }}</value2>
     <transformedList>
-      {{range $index, $element := index .body "valueList"}}
-      {{if $index}}
+      {{range $index, $element := .data.body.valueList.item }}
       <item>{{$element}}</item>
-      {{else}}
-      <item>{{$element}}</item>
-      {{end}}
       {{end}}
     </transformedList>
     <userId>{{ ._tyk_meta.uid }}</userId>
@@ -157,11 +155,12 @@ XML cannot be as easily decoded into strict structures as JSON, so the syntax is
 </data>
 ```
 In this template:
-- `{{index .body "value1"}}` accesses the "value1" field of the input XML
+- `.data.body.value1` accesses the "value1" field of the input XML
 - we swap value1 and value2
 - we use the range function to loop through the "value_list" array
 - `._tyk_meta.uid` injects the "uid" session metadata value
 - `._tyk_context.remote_addr` injects the client IP address from the context
+- `._tyk_context.request_data.param.type` injects query parameter "type"
 
 **Output**
 ``` .xml
