@@ -33,17 +33,17 @@ There are no deprecations in this release.
 ### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-### Release Highlights
+#### Release Highlights
 This release implements a bug fix.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.5">}}) below.
 
-### Downloads
+#### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
-### Changelog {#Changelog-v5.2.5}
+#### Changelog {#Changelog-v5.2.5}
 
-#### Fixed
+##### Fixed
 <ul>
  <li>
  <details>
