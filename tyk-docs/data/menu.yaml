@@ -3576,10 +3576,6 @@ menu:
       category: Directory
       show: False
       menu:
-      - title: "Validate JSON"
-        path: /advanced-configuration/transform-traffic/validate-json
-        category: Page
-        show: False
       - title: "Dashboard"
         path: /basic-config-and-security/security/dashboard
         category: Page
