@@ -13,6 +13,7 @@ Requests to your upstream services should meet the contract that you have define
 Request validation enables cleaner backend APIs, better standardisation across consumers, easier API evolution, and reduced failure risk leading to higher end-to-end reliability.
 
 ## When to use the Request Validation middleware
+
 #### Improving security of upstream services
 Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API gateway provides an early line of defence as potentially bad requests are not proxied to your upstream services.
 
