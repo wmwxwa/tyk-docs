@@ -14,23 +14,23 @@ Minor releases are supported until our next minor or major release comes out. Th
 
 ---
 
-### 5.2.5 Release Notes 
+## 5.2.5 Release Notes 
 
-#### Release Date 19 Dec 2023
+### Release Date 19 Dec 2023
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 #### Release Highlights
