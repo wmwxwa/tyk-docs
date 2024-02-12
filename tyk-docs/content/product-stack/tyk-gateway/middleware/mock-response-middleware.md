@@ -3,6 +3,8 @@ title: "Mock Response middleware"
 date: 2024-01-31
 description: "Explains the Mock Response middleware"
 tags: ["mock response", "mock", "middleware", "per-endpoint"]
+aliases:
+  - /getting-started/using-oas-definitions/mock-response/
 ---
 
 A mock response is a simulated API response that can be returned by the API gateway without actually sending the request to the backend API. Mock responses are an integral feature for API development, enabling developers to emulate API behaviour without the need for upstream execution. 
