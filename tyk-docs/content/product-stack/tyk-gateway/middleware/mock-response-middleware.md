@@ -12,6 +12,7 @@ A mock response is a simulated API response that can be returned by the API gate
 Tyk's mock response middleware offers this functionality by allowing the configuration of custom responses for designated endpoints. This capability is crucial for facilitating front-end development, conducting thorough testing, and managing unexpected scenarios or failures.
 
 ## When to use the Mock Response middleware
+
 #### Rapid API Prototyping
 Developers can create mock responses during early API prototyping phases to simulate responses while the actual API is still under construction. This allows front-end developers, product managers, and others to validate concepts without blocking on full API implementations upfront.
 
