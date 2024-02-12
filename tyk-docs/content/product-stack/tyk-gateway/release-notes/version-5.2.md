@@ -9,7 +9,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 
 **This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 Minor releases are supported until our next minor or major release comes out. There is no 5.3 scheduled in 2023. Subsequently, 5.2 is currently expected to remain in support until our next minor version comes out in Q1 2024.
 
 ---
