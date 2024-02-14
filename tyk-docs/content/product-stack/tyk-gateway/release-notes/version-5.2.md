@@ -350,33 +350,33 @@ Fixed an issue where a duplicate error message was reported when a custom Go plu
 
 ## 5.2.1 Release Notes 
 
-##### Release Date 10 Oct 2023
+### Release Date 10 Oct 2023
 
-#### Breaking Changes
+### Breaking Changes
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
-#### Changelog {#Changelog-v5.2.1}
+### Changelog {#Changelog-v5.2.1}
 
-##### Changed
+#### Changed
 
 <ul>
 <li>
@@ -406,7 +406,7 @@ For OpenTelemetry users, we've included much-needed attributes, `http.response.b
 </li>
 </ul>
 
-##### Fixed
+#### Fixed
 
 <ul>
 <li>
@@ -469,7 +469,7 @@ Fixed a bug where, if you created a key which provided access to an inactive or 
 </ul>
 
 
-##### Dependencies
+#### Dependencies
 - Updated TykTechnologies/gorm to v1.21 in Tyk Gateway 
 
 ---
