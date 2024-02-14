@@ -77,7 +77,7 @@ var buildTableOfContents = function () {
 
         if ($(this).is('h5')) {
             var h5 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item sub-accordion-title ${h5}">${title}</a>`);
+            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item sub-accordion-title">${title}</a>`);
             var subSubAccordionContent = $('<div class="sub-sub-accordion-content"></div>').append(subSubLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').append(subSubAccordionContent);
