@@ -1627,6 +1627,7 @@ menu:
             path: /advanced-configuration/distributed-tracing/newrelic
             category: Page
             show: True
+<<<<<<< HEAD
           - title: "Zipkin"
             path: /advanced-configuration/distributed-tracing/zipkin
             category: Page
@@ -1634,6 +1635,43 @@ menu:
           - title: "Distributed Tracing"
             path: /advanced-configuration/opentracing
             category: Page
+=======
+            menu:
+            - title: "Overview"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview
+              category: Page
+              show: true
+            - title: "Datadog"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_datadog
+              category: Page
+              show: true
+            - title: "Dynatrace"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_dynatrace
+              category: Page
+              show: true
+            - title: "Elasticsearch"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_elastic
+              category: Page
+              show: true
+            - title: "Jaeger"
+              category: Directory
+              show: True
+              menu:
+              - title: "Docker"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger
+                category: Page
+                show: true
+              - title: "Kubernetes"
+                path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_jaeger_k8s
+                category: Page
+                show: true
+            - title: "New Relic"
+              path: /product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/otel_new_relic
+              category: Page
+              show: true
+          - title: "OpenTracing"
+            category: Directory
+>>>>>>> f9d59e05... [DX-1073] ADD guide to configure OTel with Elasticsearch (#4150)
             show: True
         - title: "Plugins"
           category: Directory
