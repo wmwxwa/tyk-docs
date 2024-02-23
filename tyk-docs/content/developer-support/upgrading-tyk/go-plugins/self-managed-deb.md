@@ -6,6 +6,7 @@ description: "Explains how to upgrade Go Plugins on Self Managed (DEB)"
 ---
 
 Intro paragraph goes here
+A second paragraph goes here
 
 ## H2 section headings go here 
 with accompanying text
