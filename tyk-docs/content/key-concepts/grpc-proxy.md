@@ -1,5 +1,6 @@
+
 ---
-title: "gRPC Proxy"
+title: "gRPC Proxy Update"
 date: 2019-09-23T10:28:52+03:00
 weight: 12
 menu:
