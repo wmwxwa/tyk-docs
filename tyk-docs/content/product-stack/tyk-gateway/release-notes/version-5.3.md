@@ -137,9 +137,16 @@ The actual changelog item text should go here. It should be no more than three o
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Support Redis v7.0.x</summary>
+
+Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9 underneath which added support to Redis v7.0.x.
+</details>
+</li>
 </ul>
 
-  
 ##### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
@@ -164,6 +171,26 @@ The actual changelog item text should go here. It should be no more than three o
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
+
+<li>
+<details>
+<summary>Set default MongoDB driver to mongo-go</summary>
+
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "/planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
+</details>
+
+<li>
+<details>
+<summary>Prefetch session expiry information from MDCB to reduce API call duration in case gateway is temporarily disconnected from MDCB</summary>
+
+Previously, when operating in a slave configuration, the Tyk Gateway fetched session expiry information from the master layer the first time an API was accessed for a given organization. This approach led to a significant issue: if the MDCB connection was lost, the next API consumption attempt would incur a long response time. This delay, typically around 30 seconds, was caused by the gateway waiting for the session fetching operation to time out, as it tried to communicate with the now-inaccessible master layer.
+
+<br>To mitigate this issue, the PR introduces a proactive fetching strategy. Now, the gateway fetches the session expiry information beforehand, while there is an active connection to MDCB. By doing so, it ensures that this data is already available locally in the event of an MDCB disconnection.
+
+<br>This change significantly improves the API response time under MDCB disconnection scenarios. It eliminates the need for the gateway to wait for a timeout when attempting to fetch session information from the master layer, thus avoiding the previous 30-second delay. This optimization enhances the resilience and efficiency of the Tyk Gateway in distributed environments.
+</details>
+</li>
+
 </ul>
  
 ##### Fixed
