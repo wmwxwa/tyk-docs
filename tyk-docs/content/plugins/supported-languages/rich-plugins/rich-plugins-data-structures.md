@@ -273,7 +273,7 @@ As of v2.1, an Alias offers a way to identify a token in a more human-readable m
 The date/time the session was last updated.
 
 `id_extractor_deadline`
-See [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) for additional information.
+UNIX timestamp that signifies when the cache key or ID will expire. See [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) and [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for additional information.
 
 `session_lifetime`
 Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.
