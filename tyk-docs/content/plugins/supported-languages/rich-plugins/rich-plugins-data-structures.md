@@ -276,7 +276,7 @@ The date/time the session was last updated.
 UNIX timestamp that signifies when the cache key or ID will expire. See [Auth Plugins]({{< ref "plugins/plugin-types/auth-plugins/auth-plugins" >}}) and [ID Extractor]({{< ref "plugins/plugin-types/auth-plugins/id-extractor" >}}) for additional information.
 
 `session_lifetime`
-Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.
+Overrides the global session lifetime. This is a UNIX timestamp that denotes when the key will automatically expire. Any·subsequent API request made using the key will be rejected. Overrides the global session lifetime. See [Physical Token Expiry]({{< ref "basic-config-and-security/security/authentication-authorization/physical-key-expiry" >}}) for additional information.
 
 `apply_policies`
 List of identifiers for the policies to apply to the token.
