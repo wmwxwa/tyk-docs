@@ -876,7 +876,7 @@ paths:
                 status: error
   /api/apis/oas/{apiID}/categories:
     parameters:
-      - description: The categories serve as identifiers for the API definitions, subsequently enabling the filtering of API listings based on these categories on the API list page.
+      - description: API definitions can be assigned to user defined categories, thus allowing APIs to be filtered on the API list page.
         name: apiID
         in: path
         required: true
