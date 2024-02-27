@@ -176,7 +176,7 @@ The actual changelog item text should go here. It should be no more than three o
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
-Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x, 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "/planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
+Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 
 <li>
@@ -187,7 +187,7 @@ Previously, when operating in a slave configuration, the Tyk Gateway fetched ses
 
 <br>To mitigate this issue, the PR introduces a proactive fetching strategy. Now, the gateway fetches the session expiry information beforehand, while there is an active connection to MDCB. By doing so, it ensures that this data is already available locally in the event of an MDCB disconnection.
 
-<br>This change significantly improves the API response time under MDCB disconnection scenarios. It eliminates the need for the gateway to wait for a timeout when attempting to fetch session information from the master layer, thus avoiding the previous 30-second delay. This optimization enhances the resilience and efficiency of the Tyk Gateway in distributed environments.
+<br>This change significantly improves the API response time under MDCB disconnection scenarios. It eliminates the need for the gateway to wait for a timeout when attempting to fetch session information from the master layer, thus avoiding the previous 30-second delay. This optimisation enhances the resilience and efficiency of the Tyk Gateway in distributed environments.
 </details>
 </li>
 
