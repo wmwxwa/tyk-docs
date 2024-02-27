@@ -589,7 +589,7 @@ paths:
                 org_options_meta: {}
     put:
       summary: Update organisation details
-      description: Update Organisation details. This operation will replace the existing Organisation details with those provided in the request payload. It is important to provide the entire object - for example linked APIs - to avoid overwriting existing data with empty values.
+      description: Update Organisation details. This operation will replace the existing Organisation details with those provided in the request payload. It is important to provide the entire OrganisationDocument object - for example include linked APIs - to avoid overwriting existing data with empty values.
       operationId: updateOrg
       tags:
         - Organisations
