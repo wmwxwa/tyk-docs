@@ -38,6 +38,8 @@ servers:
 tags:
   - name: APIs
     description: API Definitions
+  - name: OAS APIs
+    description: OAS API Definitions
   - name: Keys
     description: API Key Management
   - name: Policies
@@ -56,6 +58,8 @@ tags:
     description: User Management
   - name: Organisations
     description: Organisations Management
+  - name: System
+    description: System API
 paths:
   /api/portal/policies/:
     get:
@@ -98,7 +102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: created
                 status: ok
@@ -198,7 +202,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: updated
                 status: ok
@@ -239,7 +243,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApiModifyKeySuccess'
+                $ref: '#/components/schemas/apiModifyKeySuccess'
               example:
                 action: deleted
                 status: ok
@@ -325,7 +329,7 @@ paths:
     post:
       summary: Create API Definition
       description: Create an API Definition in Tyk Classic API format.
-        Note that the response includes the newly created Tyk Classic API Definition containing the unique identifier for the API ( `api_id`). You can provide a value for the `api_id` in the request body, otherwise Tyk will automatically generate a value.
+        Note that the response includes the newly created Tyk Classic API Definition containing the unique identifier for the API (`api_id`). You can provide a value for the `api_id` in the request body, otherwise Tyk will automatically generate a value.
         The `id` field within the Tyk Classic API Definition is a proprietary field used by Tyk to identify the API within the database and cannot be chosen or modified by the user.
       operationId: postApis
       tags:
@@ -438,7 +442,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "created"
@@ -598,7 +602,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "updated"
@@ -648,7 +652,7 @@ paths:
     post:
       description: |-
         Create an API Definition in Tyk OAS API format.
-        Note that the response includes the newly created Tyk OAS API Definition containing the unique identifier for the API ( `id`). You can provide a value for `id` in the request body, otherwise Tyk will automatically generate a value.
+        Note that the response includes the newly created Tyk OAS API Definition containing the unique identifier for the API (`id`). You can provide a value for `id` in the request body, otherwise Tyk will automatically generate a value.
       tags:
         - OAS APIs
       parameters:
@@ -694,7 +698,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "created"
@@ -761,7 +765,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "updated"
@@ -813,7 +817,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "modified"
@@ -1062,9 +1066,9 @@ paths:
                 Meta: null
     put:
         description: |-
-            Update API access rights (users and userGroups)
+          Update API access rights (users and userGroups)
         tags:
-            - APIs
+          - APIs
         operationId: updateApiAccessRights
         requestBody:
           content:
@@ -1138,7 +1142,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiModifyKeySuccess"
+                $ref: "#/components/schemas/apiModifyKeySuccess"
               example:
                 status: "ok"
                 action: "added"
@@ -2550,9 +2554,9 @@ paths:
 
   /api/system/stats:
     get:
-      tags:
-        - system
       summary: 'Get system usage info with license entitlements for a specified date range. Return history for current and previous year if no date query parameters are provided.'
+      tags:
+        - System
       operationId: getSystemStats
       parameters:
         - name: start_day
@@ -4519,8 +4523,8 @@ components:
           x-go-name: AllCategoriesResponse
       type: object
       x-go-package: github.com/TykTechnologies/tyk-analytics/dashboard
-    ApiModifyKeySuccess:
-      description: ApiModifyKeySuccess represents when a Key modification was successful
+    apiModifyKeySuccess:
+      description: apiModifyKeySuccess represents when a Key modification was successful
       properties:
         action:
           type: string
