@@ -21,6 +21,8 @@ When considering upgrading your current configuration to a newer version of Tyk,
 
 Once this checklist has been considered, we recommend you follow our guides for upgrading your components.
 
+<!-- TO DO add links to RMP, SaaS and DEB 
 <link to RMP>
 <link to SaaS>
 <link to DEB>
+-->
