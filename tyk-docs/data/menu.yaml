@@ -3564,6 +3564,10 @@ menu:
           category: Directory
           show: True
           menu:
+          - title: "Upgrade Pre-requisites"
+            path: /developer-support/upgrading-tyk/go-plugins/self-managed-rpm
+            category: Page
+            show: True
           - title: "Self Managed - DEB"
             path: /developer-support/upgrading-tyk/go-plugins/self-managed-deb
             category: Page
