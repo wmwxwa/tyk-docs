@@ -82,7 +82,7 @@ Server contains the configuration that sets Tyk up to receive requests from the 
 **Field: `listenPath` ([ListenPath](#listenpath))**
 ListenPath is the base path on Tyk to which requests for this API should
 be sent. Tyk listens for any requests coming into the host at this
-path, on the port that Tyk is configured to run on, and processes these
+path, on the port that Tyk is configured to run on and processes these
 accordingly.
 
 **Field: `authentication` ([Authentication](#authentication))**
