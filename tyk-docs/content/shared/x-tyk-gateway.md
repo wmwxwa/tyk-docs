@@ -296,7 +296,7 @@ Tyk classic API definition: `proxy.service_discovery`.
 
 ### **MutualTLS**
 
-MutualTLS contains the configuration for establishment of mutual TLS between Tyk and the upstream server.
+MutualTLS contains the configuration for establishing a mutual TLS connection between Tyk and the upstream server.
 
 **Field: `enabled` (`boolean`)**
 Enabled enables/disables upstream mutual TLS for the API.
