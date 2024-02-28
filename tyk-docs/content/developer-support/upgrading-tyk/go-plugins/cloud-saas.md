@@ -6,7 +6,6 @@ description: "Explains how to upgrade Go Plugins on Cloud SaaS"
 ---
 
 ## Upgrading your Cloud configuration
-
 After reviewing your upgrade pre-requesites, follow the instructions below to upgrade your Tyk components and plugins. 
 
 ## Upgrading the Control Planes
@@ -18,7 +17,6 @@ After reviewing your upgrade pre-requesites, follow the instructions below to up
  6. A “Deployed” button indicates a successful upgrade. 
 
 ## Upgrading Cloud Data Planes
-
  1.  Go to the Cloud Data Plane settings using the Edit Cloud Data Planes instructions and scroll down to the Version setting.
  2. Select a Bundle Channel.
  3. Next, select a Bundle Version. 
@@ -26,9 +24,7 @@ After reviewing your upgrade pre-requesites, follow the instructions below to up
  5. A “Deployed” button indicates a successful upgrade. 
 
 
-
 ## Upgrading Custom Go Plugins
-
  | Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
  | 1    | < 4.1.0         | < 4.1.0        |
