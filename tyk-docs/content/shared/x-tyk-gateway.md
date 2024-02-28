@@ -121,7 +121,7 @@ Operations contains configuration for middleware that can be applied to individu
 
 ### **State**
 
-State holds configuration for the status of the API within Tyk - whether it is currently active and whether it is exposed externally.
+State holds configuration for the status of the API within Tyk - whether it is currently active and exposed externally.
 
 **Field: `active` (`boolean`)**
 Active enables the API so that Tyk will listen for and process requests made to the listenPath.
