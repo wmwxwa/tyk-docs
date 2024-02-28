@@ -67,7 +67,7 @@ Tyk classic API definition: `proxy.service_discovery`.
 Test contains the configuration related to uptime tests.
 
 **Field: `mutualTLS` ([MutualTLS](#mutualtls))**
-MutualTLS contains the configuration for establishment of mutual TLS between Tyk and the upstream server.
+MutualTLS contains the configuration for establishing a mutual TLS connection between Tyk and the upstream server.
 
 **Field: `certificatePinning` ([CertificatePinning](#certificatepinning))**
 CertificatePinning contains the configuration related to certificate pinning.
