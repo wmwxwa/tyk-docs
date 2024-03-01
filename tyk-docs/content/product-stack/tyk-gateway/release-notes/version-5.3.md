@@ -19,7 +19,7 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ---
 
-## X.Y.Z Release Notes
+## 5.3.0 Release Notes
 
 ##### Release Date DD Mon YYYY <<update>>
 
@@ -75,7 +75,7 @@ Given the time difference between your upgrade and the release of this version, 
 
 #### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-There are no deprecations in this release.
+In 5.3.0, we have simplified the configuration of response transform middleware. We encourage users to embrace the ‘global_headers’ mechanism as the ‘response_processors.header_injector’ is now an optional setting and will be removed in a future release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
@@ -95,8 +95,11 @@ Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructi
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-##### Topic in The Release Highlights
-Topic in The Release Highlights
+We’re thrilled to announce the release of 5.3.0, an update packed with exciting features and significant fixes to elevate your experience with Tyk Gateway. Please see below the highlights of this release;
+
+
+##### Tyk OAS Feature Maturity:
+Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features and it’s ready for adoption in the gateway. Please refer to the list of features down below. 
 
 ##### Another Topic in The Release Highlights
 Topic in The Release Highlights
@@ -132,7 +135,7 @@ The actual changelog item text should go here. It should be no more than three o
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Tyk now supports API level rate limit in Tyk OAS API definition</summary>
 
 The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
