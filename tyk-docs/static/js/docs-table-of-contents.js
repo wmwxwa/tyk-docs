@@ -41,7 +41,7 @@ var buildTableOfContents = function () {
         }
 
         if ($(this).is('h3')) {
-            var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item ${h2}">${title}</a>`);
+            var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item">${title}</a>`);
             var h3 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
             var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
             var accordionContent = $('<div class="accordion-content"></div>').append(link);
@@ -62,7 +62,7 @@ var buildTableOfContents = function () {
 
         if ($(this).is('h4')) {
             var h4 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item sub-accordion-title ">${title}</a>`);
+            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item sub-accordion-title">${title}</a>`);
             var subAccordionContent = $('<div class="sub-accordion-content"></div>').append(subLink);
             if (accordionGroup.find('.accordion-item:last .accordion-content:last').length) {
                 accordionGroup.find('.accordion-item:last .accordion-content:last').append(subAccordionContent);
