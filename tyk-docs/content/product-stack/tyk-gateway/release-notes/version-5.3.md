@@ -137,7 +137,7 @@ The actual changelog item text should go here. It should be no more than three o
 <details>
 <summary>Tyk now supports API level rate limit in Tyk OAS API definition</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Abcd  The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
 </details>
 </li>
 
