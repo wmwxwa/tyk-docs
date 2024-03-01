@@ -42,12 +42,58 @@ var buildTableOfContents = function () {
 
         if ($(this).is('h3')) {
             var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item ${h2}">${title}</a>`);
+<<<<<<< Updated upstream
+=======
+            var h3 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            var link = $(`<a href="#${$(this).attr("id")}" class="sub_toc__item sub-accordion-title">${title}</a>`);
+>>>>>>> Stashed changes
             var accordionContent = $('<div class="accordion-content"></div>').append(link);
             if (accordionGroup.find('.accordion-item:last').length) {
                 accordionGroup.find('.accordion-item:last').append(accordionContent);
             } else {
                 ToContent.append(accordionContent);
             }
+<<<<<<< Updated upstream
+=======
+
+            accordionContent.click(function () {
+                $(this).toggleClass('accordion-up');
+
+                // Toggle visibility of H4 elements under this H3
+                accordionContent.siblings('.sub-accordion-content').toggle();
+            });
+
+        }
+
+        if ($(this).is('h4')) {
+            var h4 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            var subLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-toc-item sub-accordion-title ">${title}</a>`);
+            var subAccordionContent = $('<div class="sub-accordion-content"></div>').append(subLink);
+            if (accordionGroup.find('.accordion-item:last .accordion-content:last').length) {
+                accordionGroup.find('.accordion-item:last .accordion-content:last').append(subAccordionContent);
+            }
+            subAccordionContent.click(function () {
+                $(this).parent().toggleClass('accordion-up');
+                // Toggle visibility of H5 elements under this H4
+                $(this).toggleClass('sub-accordion');
+
+                //subAccordionContent.find('.sub-sub-accordion-content').toggleClass('sub-accordion');
+            });
+        }
+
+        if ($(this).is('h5')) {
+            var h5 = $(this).text().replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            var subSubLink = $(`<a href="#${$(this).attr("id")}" class="sub-sub-sub-toc-item sub-accordion-title">${title}</a>`);
+            var subSubAccordionContent = $('<div class="sub-sub-accordion-content"></div>').append(subSubLink);
+            if (accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').length) {
+                accordionGroup.find('.accordion-item:last .accordion-content:last .sub-accordion-content:last').append(subSubAccordionContent);
+            }
+            subSubAccordionContent.click(function () {
+                $(this).parent().toggleClass('sub-accordion');
+                subSubAccordionContent.find('.sub-sub-accordion-content').toggleClass('accordion-up');
+                // You can add further logic if needed for H5 content
+            });
+>>>>>>> Stashed changes
         }
     });
 
@@ -64,7 +110,38 @@ var buildTableOfContents = function () {
             // Do something if there is accordion content
         } else {
             $(this).find('a.toc__item').addClass('accordionHolder');
+<<<<<<< Updated upstream
         }
+=======
+        }        
+    });
+
+    $('.accordion-content').each(function () {
+        var accordionContent = $(this).find('.sub-accordion-content');
+        if (accordionContent.length) {
+            // Do something if there is accordion content
+            $(this).find('a.sub_toc__item').addClass('sub-accordionHolder');
+        } else {
+
+        }
+    });   
+
+    $('.sub-accordion-content').each(function () {
+        var accordionContent = $(this).find('.sub-sub-accordion-content');
+        if (accordionContent.length) {
+            // Do something if there is accordion content
+            $(this).find('a.sub-sub-toc-item').addClass('sub-accordionHolder');
+        } else {
+
+        }
+    }); 
+
+    var currentUrl = window.location.href;
+    var idArray = [];
+
+    $('.accordion-item:last').find('a[href^="#"]').each(function() {
+      idArray.push($(this).attr('href'));
+>>>>>>> Stashed changes
     });
 };
 
