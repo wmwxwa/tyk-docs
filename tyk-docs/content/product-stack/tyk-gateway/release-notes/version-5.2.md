@@ -9,39 +9,39 @@ tags: ["Tyk Gateway", "Release notes", "v5.2", "5.2.0", "5.2", "changelog", "5.2
 
 **This page contains all release notes for version 5.2.X displayed in reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 Minor releases are supported until our next minor or major release comes out. There is no 5.3 scheduled in 2023. Subsequently, 5.2 is currently expected to remain in support until our next minor version comes out in Q1 2024.
 
 ---
 
 ## 5.2.5 Release Notes 
 
-##### Release Date 19 Dec 2023
+### Release Date 19 Dec 2023
 
-#### Breaking Changes
+### Breaking Changes
 
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release implements a bug fix.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.5">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.5/images/sha256-c09cb03dd491e18bb84a0d9d4e71177eb1396cd5debef694f1c86962dbee10c6?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.5)
 
-#### Changelog {#Changelog-v5.2.5}
+### Changelog {#Changelog-v5.2.5}
 
 #### Fixed
 <ul>
@@ -58,31 +58,31 @@ Fixed an issue where custom keys over 24 characters in length were deleted from 
 
 ## 5.2.4 Release Notes 
 
-##### Release Date 7 Dec 2023
+### Release Date 7 Dec 2023
 
-#### Breaking Changes
+### Breaking Changes
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release enhances security, stability, and performance.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.4">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.4/images/sha256-c0d9e91e4397bd09c85adf4df6bc401b530ed90c8774714bdafc55db395c9aa5?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.2.4)
 
-#### Changelog {#Changelog-v5.2.4}
+### Changelog {#Changelog-v5.2.4}
 
 #### Fixed
 <ul>
@@ -120,20 +120,20 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 
 ## 5.2.3 Release Notes 
 
-##### Release Date 21 Nov 2023
+### Release Date 21 Nov 2023
 
-#### Breaking Changes
+### Breaking Changes
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 #### Release Highlights
@@ -223,20 +223,20 @@ Fixed a minor issue with Go Plugin virtual endpoints where a runtime log error w
 
 ## 5.2.2 Release Notes 
 
-##### Release Date 31 Oct 2023
+### Release Date 31 Oct 2023
 
-#### Breaking Changes
+### Breaking Changes
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are using a 5.2.x version, we advise you to upgrade ASAP to this latest release. If you are on an older version, you should skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
 #### Release Highlights
@@ -350,33 +350,33 @@ Fixed an issue where a duplicate error message was reported when a custom Go plu
 
 ## 5.2.1 Release Notes 
 
-##### Release Date 10 Oct 2023
+### Release Date 10 Oct 2023
 
-#### Breaking Changes
+### Breaking Changes
 **Attention**: Please read carefully this section. We have two topics to report:
 
-##### Early Access Features:
+### Early Access Features:
 Please note that the `Tyk OAS APIs` feature, currently marked as *Early Access*, is subject to breaking changes in subsequent releases. Please refer to our [Early Access guide]({{<ref "frequently-asked-questions/using-early-access-features">}}) for specific details. Upgrading to a new version may introduce changes that are not backwards-compatible. Downgrading or reverting an upgrade may not be possible resulting in a broken installation.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
-#### Deprecations
+### Deprecations
 There are no deprecations in this release.
 
-#### Upgrade Instructions
+### Upgrade Instructions
 If you are on a 5.2.0 we advise you to upgrade ASAP and if you are on an older version skip 5.2.0 and upgrade directly to this release. Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade instructions.
 
-#### Release Highlights
+### Release Highlights
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-v5.2.0">}}) below.
 
-#### Downloads
+### Downloads
 - [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-gateway/v5.2.1/images/sha256-47cfffda64ba492f79e8cad013a476f198011f5a97cef32464f1f47e1a9be9a2?context=explore)
 - [source code](https://github.com/TykTechnologies/tyk/releases/tag/v5.1.2)
 
-#### Changelog {#Changelog-v5.2.1}
+### Changelog {#Changelog-v5.2.1}
 
-##### Changed
+#### Changed
 
 <ul>
 <li>
@@ -406,7 +406,7 @@ For OpenTelemetry users, we've included much-needed attributes, `http.response.b
 </li>
 </ul>
 
-##### Fixed
+#### Fixed
 
 <ul>
 <li>
@@ -469,7 +469,7 @@ Fixed a bug where, if you created a key which provided access to an inactive or 
 </ul>
 
 
-##### Dependencies
+#### Dependencies
 - Updated TykTechnologies/gorm to v1.21 in Tyk Gateway 
 
 ---
