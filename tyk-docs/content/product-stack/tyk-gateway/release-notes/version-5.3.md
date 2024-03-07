@@ -101,8 +101,37 @@ We’re thrilled to announce the release of 5.3.0, an update packed with excitin
 ##### Tyk OAS Feature Maturity:
 Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features and it’s ready for adoption in the gateway. Please refer to the list of features down below. 
 
-##### Another Topic in The Release Highlights
-Topic in The Release Highlights
+Feature enabled for Tyk OAS:
+
+In Tyk 5.3.0 we support all of these features when using Tyk OAS APIs with Tyk Gateway:
+
+API Versioning
+All Tyk-supported client-gateway authentication methods
+Automatic configuration of authentication from the OpenAPI description
+Gateway-upstream mTLS
+CORS
+Custom Plugins
+Open Telemetry tracing
+Response caching
+Detailed log recording
+Do-not-track endpoints
+API-level rate limits
+Request Validation - headers and body
+Request Transformation - method, headers and body
+Response Transformation - headers and body
+Allow and block listing of endpoints
+Circuit breakers
+Enforced timeouts
+URL rewrite and internal endpoints
+Mock Responses (automatically configurable from the OpenAPI description)
+
+
+##### Implemented KV Store for API Definition Fields:
+In this release,we have implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
+
+
+##### Gateway and Component Upgrades:
+We've raised the bar with significant upgrades to our gateway and components. Leveraging the power of  Go 1.21, upgrading Sarama to version 1.41.0, and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 #### Downloads
 - <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
