@@ -41,13 +41,13 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
  ```
 
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 4.0.9).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Build your plugin]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) with this version 
+4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler 
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
 {{< img src="img/developer-support/bundle_files_example.png" 
     alt="Bundle ZIP example" width="800">}}
 6. Your manifest.json will look something like this:
 
-```
+```json
 {
   "file_list": [
 	"CustomGoPlugin.so"
@@ -102,7 +102,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
-4. [Build your plugin]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) with this version  
+4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
 {{< img src="img/developer-support/bundle_files_example.png" 
     alt="Bundle ZIP example" width="800">}}
@@ -131,7 +131,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
   "signature": ""
 }
 ```
-In this example, the CustomGoPlugin.so in the file list would be the filename of your current version’s plugin.  You will already have this on hand as this is what has been running in your environment.  The *CustomGoPlugin_v4.3.3_linux_amd64.so* file represents the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler.
+In this example, the CustomGoPlugin.so in the file list would be the filename of your current version’s plugin.  You will already have this on hand as this is what has been running in your environment.  The *CustomGoPlugin_v4.3.3_linux_amd64.so* file represents the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler. If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler.
 
 7. Your bundle zip file should include both the current version and target versions of the plugin.
 8. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
@@ -157,7 +157,7 @@ In this example, the CustomGoPlugin.so in the file list would be the filename of
     go mod tidy
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 4.3.3).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags) for available versions. 
-4. [Build your plugin]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) with this version 
+4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) with the newly compiled version
 6. Your manifest.json will look something like this:
 ```json
