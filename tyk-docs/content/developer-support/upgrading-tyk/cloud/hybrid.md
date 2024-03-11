@@ -33,7 +33,7 @@ Upgrade the Data Plane components in the following order:
 2. Hybrid Gateway(s)
 
 ---
-## Upgrade Control Plane Components
+## 1. Upgrade your Control Plane
 
 ### MDCB
 Follow the instructions for your deployment type:
@@ -133,7 +133,7 @@ Follow the instructions for component deployment type:
         sudo apt-get install tyk-gateway-5.2.5 
         ```
 ---
-## Upgrade Custom Go Plugins
+## 2. Upgrade your Go Plugins
 
  | Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
@@ -299,7 +299,7 @@ In this example, the CustomGoPlugin_v4.3.3_linux_amd64.so is the plugin compiled
 11. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
 ---
-## Upgrade the Data Plane Hybrid Gateway(s)
+## 3. Upgrade your Data Plane Hybrid Gateway(s)
 Follow the instructions for component deployment type:
 - **Docker**
     1. Backup your Gateway config file `tyk.conf`
