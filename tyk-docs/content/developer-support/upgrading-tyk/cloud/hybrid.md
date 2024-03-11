@@ -91,7 +91,7 @@ Follow the instructions for component deployment type:
     2. Update the image version in the docker command or script to the target version
     3. Restart the Tyk Dashboard
 - **Helm**
-    1. Backup your Dashboard config file `tyk_analtyics.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
+    1. Backup your Dashboard config file `tyk_analytics.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
 - **Other (Linux)**
