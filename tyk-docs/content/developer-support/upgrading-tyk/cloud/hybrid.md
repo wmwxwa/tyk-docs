@@ -1,11 +1,24 @@
 ---
-title: "Upgrading Go Plugins On Self Managed - Hybrid"
+title: "Upgrading Tyk On Hybrid"
 date: 2024-02-6
 tags: ["Upgrade Go Plugins", "Tyk plugins", "Hybrid", "Self Managed"]
 description: "Explains how to upgrade Go Plugins on Self Managed (Hybrid)"
 ---
 
-In a Self-Managed Hybrid deployment, the client hosts both the Control Plane and the Data Plane.  The Control Plane includes the following components: Tyk Dashboard, MongoDB, Redis (Master Instance), Management Gateway, and MDCB.  The Data Plane consists of at least one Hybrid Gateway, a Redis instance, and Tyk Pump (optional).
+In a Hybrid deployment, the client hosts both the Control Plane and the Data Plane.
+
+The Control Plane includes the following components:
+- Tyk Dashboard
+- MongoDB
+- Redis (Master Instance)
+- Management Gateway
+- MDCB
+
+The Data Plane consists of at least one Hybrid Gateway, a Redis instance and Tyk Pump (optional).
+
+## Strategy
+
+#### Control Plane
 
 Upgrade the Control Plane components in the following order:
 1. MDCB
@@ -13,97 +26,114 @@ Upgrade the Control Plane components in the following order:
 3. Tyk Dashboard
 4. Management Gateway.
 
-Upgrade the Data Plane componens in the following order:
+#### Data Plane
+
+Upgrade the Data Plane components in the following order:
 1. Go Plugins (if applicable)
 2. Hybrid Gateway(s)
 
-## Upgrade MDCB
+---
+## Upgrade Control Plane Components
+
+### MDCB
 Follow the instructions for your deployment type:
-- Docker
+- **Docker**
     1. Backup your MDCB config file `tyk_sink.conf`
     2. Update the image version in the docker command or script to the target version
     3. Restart MDCB
-- Helm
+- **Helm**
     1. Backup your MDCB config file `tyk_sink.conf`.  Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
-- Other (Linux)
-    1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-mdcb-stable 
+- **Other (Linux)**
+    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-mdcb-stable](https://packagecloud.io/tyk/tyk-mdcb-stable) repository.
     2. Follow the upgrade instructions for your distro
-        - RHEL/Centos Upgrade
-        ```
+        - RHEL/CentOS Upgrade
+        
+        ```bash
         sudo yum upgrade tyk-mdcb-stable-5.0.0
         ```
+        
         - Debian/Ubuntu
-        ```
+        ```bash
         sudo apt-get install tyk-mdcb-stable-5.0.0
         ``` 
 
-## Upgrade Tyk Pump
+### Tyk Pump
 Follow the instructions for component deployment type:
-- Docker
+- **Docker**
     1. Back up your Pump config file `pump.conf`
     2. Update the image version in the docker command or script to the target version
     3. Restart the Tyk Pump
-- Helm
+- **Helm**
     1. Backup your Pump config file `pump.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
-- Other (Linux)
-    1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-pump
+- **Other (Linux)**
+    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-pump](https://packagecloud.io/tyk/tyk-pump) repository.
     2. Follow the upgrade instructions for your distro
-        - RHEL/Centos Upgrade
-        ```
+        - RHEL/CentOS Upgrade
+
+        ```bash
         sudo yum upgrade tyk-pump-1.8.1
         ```
+
         - Debian/Ubuntu
-        ```
+        ```bash
         sudo apt-get install tyk-pump-1.8.1
         ```
-## Upgrade Tyk Dashboard
-Follow the instructions for component deployment type: 
-- Docker
+
+### Tyk Dashboard
+Follow the instructions for component deployment type:
+
+- **Docker**
     1. Backup your Dashboard config file `tyk_analytics.conf`
     2. Update the image version in the docker command or script to the target version
     3. Restart the Tyk Dashboard
-- Helm
+- **Helm**
     1. Backup your Dashboard config file `tyk_analtyics.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
-- Other (Linux)
-    1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-dashboard
+- **Other (Linux)**
+    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-dashboard](https://packagecloud.io/tyk/tyk-dashboard) repository.
     2. Follow the upgrade instructions for your distro
-        - RHEL/Centos Upgrade
-        ```
+        - RHEL/CentOS Upgrade
+        
+        ```bash
         sudo yum upgrade tyk-pump-5.2.5
         ```
+
         - Debian/Ubuntu
-        ```
+        
+        ```bash
         sudo apt-get install tyk-pump-5.2.5 
         ```
-## Upgrade Management Gateway
+### Management Gateway
 Follow the instructions for component deployment type:
-- Docker
+- **Docker**
     1. Backup your Gateway config file `tyk.conf`
     2. Update the image version in the docker command or script to the target version
     3. Restart the Gateway
-- Helm
+- **Helm**
     1. Backup your Gateway config file `tyk.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
-- Other (Linux)
-    1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-gateway
+- **Other (Linux)**
+    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-gateway)
     2. Follow the upgrade instructions for your distro
-        - RHEL/Centos Upgrade
-        ```
+        - RHEL/CentOS Upgrade
+        
+        ```bash
         sudo yum upgrade tyk-gateway-5.2.5
         ```
+
         - Debian/Ubuntu
-        ```
+
+        ```bash
         sudo apt-get install tyk-gateway-5.2.5 
         ```
 ---
-## Upgrading Custom Go Plugins
+## Upgrade Custom Go Plugins
 
  | Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
@@ -114,11 +144,11 @@ Follow the instructions for component deployment type:
 ### Path 1 - Upgrading Go Plugins (Before Upgrading Tyk Gateway)
  1. Open a terminal/command prompt in the directory of your plugin source file(s)  
  2. Run the following commands to initialize your plugin:
- ```
+ ```bash
  go get
  github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
 
- //Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools
+ # Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools
  go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
 
  go mod tidy
@@ -129,7 +159,7 @@ Follow the instructions for component deployment type:
 5. Create a plugin bundle that includes the newly compiled version
 6. Your manifest.json will look something like this:
 
-```
+```json
 {
   "file_list": [
 	"CustomGoPlugin.so"
@@ -161,7 +191,7 @@ Follow the instructions for component deployment type:
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
     - Target Version <= v4.2.0  
-    ```
+    ```bash
     go get github.com/TykTechnologies/tyk@6c76e802a29838d058588ff924358706a078d0c5
     # Tyk Gateway versions < 4.2 have a dependency on graphql-go-tools
     go mod edit -replace github.com/jensneuse/graphql-go-tools=github.com/TykTechnologies/graphql-go-tools@v1.6.2-0.20220426094453-0cc35471c1ca
@@ -169,14 +199,14 @@ Follow the instructions for component deployment type:
     go mod vendor
     ```
     - Target Version > v4.20 and < v5.1.
-    ```
+    ```bash
     go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
     # For Gateway versions earlier than 5.1 using the go mod vendor tool is required
     go mod tidy
     go mod vendor
     ```
     - Target Version >= v5.1.0
-    ```
+    ```bash
     go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
     # In Gateway version 5.1, the Gateway and plugins transitioned to using # Go modules builds and don't use Go mod vendor anymore
     go mod tidy
@@ -268,24 +298,25 @@ In this example, the CustomGoPlugin_v4.3.3_linux_amd64.so is the plugin compiled
 10. Validate that your plugin is working per your expectations.  
 11. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
+---
 ## Upgrade the Data Plane Hybrid Gateway(s)
 Follow the instructions for component deployment type:
-- Docker
+- **Docker**
     1. Backup your Gateway config file `tyk.conf`
     2. Update the image version in the docker command or script to the target version
     3. Restart the Gateway
-- Helm
+- **Helm**
     1. Backup your Gateway config file `tyk.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
     2. Update the image version in your `values.yaml` to the target version
     3. Run helm upgrade with the updated `values.yaml` file
-- Other (Linux)
+- **Other (Linux)**
     1. Find the target version you want to upgrade in the Packagecloud repository: https://packagecloud.io/tyk/tyk-gateway
     2. Follow the upgrade instructions for your distro
-        - RHEL/Centos Upgrade
-        ```
+        - RHEL/CentOS Upgrade
+        ```bash
         sudo yum upgrade tyk-gateway-5.2.5
         ```
         - Debian/Ubuntu
-        ```
+        ```bash
         sudo apt-get install tyk-gateway-5.2.5 
         ```
