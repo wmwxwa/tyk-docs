@@ -73,8 +73,8 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
 
 7. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.
 8. Proceed with [Upgrading your Tyk Data Plane (Gateway)]({{< ref "developer-support/upgrading-tyk/cloud/cloud-saas#3-upgrading-cloud-data-planes" >}})
-9. [Update]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) the `custom_middleware_bundle` in the relevant API Definitions to use the new bundle id you received in the previous step. 
-10. Validate that your plugin is working per your expectations.  
+9. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
+10. Validate that your plugin is working per your expectations.
 
 ### Path 2 - Current Version < 4.1.0 and Target Version >= 4.1.0 {#path-2}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -135,7 +135,7 @@ In this example, the CustomGoPlugin.so in the file list would be the filename of
 
 7. Your bundle zip file should include both the current version and target versions of the plugin.
 8. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
-9. [Update]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) the `custom_middleware_bundle` in the relevant API Definitions to use the new bundle id you received in the previous step.
+9. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
 10. Validate that your plugin is working per your expectations.  
 11. Proceed with [Upgrading your Tyk Data Plane (Gateway)]({{< ref "developer-support/upgrading-tyk/cloud/cloud-saas#3-upgrading-cloud-data-planes" >}}). Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
@@ -186,9 +186,9 @@ In this example, the CustomGoPlugin.so in the file list would be the filename of
 In this example, the *CustomGoPlugin_v4.3.3_linux_amd64.so* file is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
 
 7. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
-8. Proceed with [Upgrading your Tyk Data Plane (Gateway)]({{< ref "developer-support/upgrading-tyk/cloud/cloud-saas#3-upgrading-cloud-data-planes" >}}) 
-9. [Update]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) the `custom_middleware_bundle` in the relevant API Definitions to use the new bundle id you received in the previous step.
-10. Validate that your plugin is working per your expectations.  
+8. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
+9. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
+10. Validate that your plugin is working per your expectations.
 
-## 3. Upgrade your Cloud Data Plane
+## 3. Upgrade your Cloud Data Plane {#upgrading-cloud-data-planes}
 See Tyk Guide for [Upgrading Cloud Data Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-gateways#upgrade-cloud-data-planes" >}})
