@@ -135,13 +135,13 @@ Follow the instructions for component deployment type:
 ---
 ## 2. Upgrade your Go Plugins
 
- | Path | Current Version | Target Version |
+ | Upgrade Path | Current Version | Target Version |
  | ---- | --------------- | -------------- |
- | 1    | < 4.1.0         | < 4.1.0        |
- | 2    | < 4.1.0         | \>= 4.1.0      |
- | 3    | \>= 4.1.0       | \>=5.1.0       |
+ | [1](#path-1)    | < 4.1.0         | < 4.1.0        |
+ | [2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
+ | [3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
 
-### Path 1 - Upgrading Go Plugins (Before Upgrading Tyk Gateway)
+### Path 1 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-1}
  1. Open a terminal/command prompt in the directory of your plugin source file(s)  
  2. Run the following commands to initialize your plugin:
  ```bash
@@ -190,7 +190,7 @@ Follow the instructions for component deployment type:
 9. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
 10. Validate that your plugin is working per your expectations. 
 
-### Path 2 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) 
+### Path 2 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-2} 
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
     - **Target Version <= v4.2.0**  
@@ -208,7 +208,7 @@ Follow the instructions for component deployment type:
     go mod tidy
     go mod vendor
     ```
-    **Target Version >= v5.1.0**
+    - **Target Version >= v5.1.0**
     ```bash
     go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
     # In Gateway version 5.1, the Gateway and plugins transitioned to using # Go modules builds and don't use Go mod vendor anymore
@@ -252,7 +252,7 @@ In this example,  the CustomGoPlugin.so in the file list would be the filename o
 10. Validate that your plugin is working per your expectations.  
 11. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
-### Path 3 - Upgrading Go Plugins (Before Upgrading Tyk Gateway)
+### Path 3 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
     - **Target Version > v4.20 and < v5.1.0**
