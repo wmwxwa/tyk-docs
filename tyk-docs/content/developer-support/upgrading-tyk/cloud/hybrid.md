@@ -16,6 +16,9 @@ The Control Plane includes the following components:
 
 The Data Plane consists of at least one Hybrid Gateway, a Redis instance and Tyk Pump (optional).
 
+After reviewing your [upgrade pre-requisites]({{ < ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), follow the instructions below to upgrade your Tyk components and plugins.
+
+
 ## Strategy
 
 #### Control Plane
