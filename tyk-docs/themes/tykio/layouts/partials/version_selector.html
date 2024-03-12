@@ -9,7 +9,7 @@
     {{- range $.Site.Data.page_available_since.versions -}}
     {{ $versionUrl := "" }}
     {{- if  $values -}}
-        {{- if and (isset $values "similar") (eq $values.similar true) -}}
+        {{- if and (isset $values "all_versions_are_similar_to_path") (eq $values.all_versions_are_similar_to_path true) -}}
             {{ $versionUrl = $pagePath }}
         {{ else }}
             {{ $versionUrl = index $values .path }}
