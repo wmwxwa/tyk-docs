@@ -141,7 +141,7 @@ Follow the instructions for component deployment type:
  | [2](#path-2)    | < 4.1.0         | \>= 4.1.0      |
  | [3](#path-3)    | \>= 4.1.0       | \>=5.1.0       |
 
-### Path 1 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-1}
+### Path 1 - Current Version < 4.1.0 and Target Version < 4.1.0 {#path-1}
  1. Open a terminal/command prompt in the directory of your plugin source file(s)  
  2. Run the following commands to initialize your plugin:
  ```bash
@@ -191,7 +191,7 @@ Follow the instructions for component deployment type:
 7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
 8. Validate that your plugin is working per your expectations. 
 
-### Path 2 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-2} 
+### Path 2 - Current Version < 4.1.0 and Target Version >= 4.1.0 {#path-2}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
     - **Target Version <= v4.2.0**  
@@ -258,7 +258,7 @@ Follow the instructions for component deployment type:
 8. Validate that your plugin is working per your expectations.  
 9. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
-### Path 3 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-3}
+### Path 3 - Current Version >= 4.1.0 and Target Version >= 5.1.0 {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
     - **Target Version > v4.20 and < v5.1.0**
