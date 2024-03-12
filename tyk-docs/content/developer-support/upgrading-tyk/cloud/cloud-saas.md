@@ -193,7 +193,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
     }
     ```
 
-  In this example, the *CustomGoPlugin_v4.3.3_linux_amd64.so* file is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
+    In this example, the *CustomGoPlugin_v4.3.3_linux_amd64.so* file is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured S3 bucket.  
 7. Proceed with [Upgrading your Tyk Data Plane (Gateway)](#upgrading-cloud-data-planes)
