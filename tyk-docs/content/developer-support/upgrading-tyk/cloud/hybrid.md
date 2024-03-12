@@ -9,7 +9,7 @@ In a Hybrid deployment, the client hosts both the Control Plane and the Data Pla
 
 The Control Plane includes the following components:
 - Tyk Dashboard
-- MongoDB
+- MongoDB or PostgreSQL
 - Redis (Master Instance)
 - Management Gateway
 - MDCB
@@ -256,7 +256,7 @@ Follow the instructions for component deployment type:
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured bundle server.  
 7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
 8. Validate that your plugin is working per your expectations.  
-9. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
+9. Proceed with upgrading your [Tyk Data Plane (Hybrid Gateway(s))](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
 ### Path 3 - Upgrading Go Plugins (Before Upgrading Tyk Gateway) {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -307,13 +307,13 @@ Follow the instructions for component deployment type:
     In this example, the CustomGoPlugin_v4.3.3_linux_amd64.so is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured bundle server.  
-7. Proceed with upgrading your Tyk Data Plane (Gateway). 
+7. Proceed with upgrading your [Tyk Data Plane (Gateway)](#upgrading-data-plane-hybrid-gateways). 
 8. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
 9. Validate that your plugin is working per your expectations.  
-10. Proceed with upgrading your Tyk Data Plane (Hybrid Gateway(s)).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
+10. Proceed with upgrading your [Tyk Data Plane (Hybrid Gateway(s))](#upgrading-data-plane-hybrid-gateways).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
 
 ---
-## 3. Upgrade your Data Plane Hybrid Gateway(s)
+## 3. Upgrade your Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
 Follow the instructions for component deployment type:
 - **Docker**
     1. Backup your Gateway config file `tyk.conf`
