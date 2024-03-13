@@ -13,7 +13,6 @@ Tyk Gateway, as of v3.0, supports storing secrets in Key-Value (KV) systems such
 
 - Easily manage and update secrets across multiple environments (e.g., development, staging, production) without modifying the configuration files.
 - Securely store sensitive information like API keys, passwords, and certificates in a centralized location.
-- Seamlessly switch between different environments by updating the secrets in the KV store.
 - Choose the most suitable configuration method for your deployment, whether it's using configuration files (`tyk.conf`) or environment variables (e.g., in Kubernetes).
 
 ## Supported KV Store Systems
