@@ -54,10 +54,13 @@ Please take a backup of below configuration files of each Tyk component. This wi
 - Pump Configuration File: /opt/tyk-pump/pump.conf
 
 #### Databases
-
-Redis and MongoDB are not Tyk products and what we provide here are basic backup and restor instructions. It is advisable to consult the official documentation for Redis and MongoDB on backups.
+{{< note >}}
+**Note** 
+Redis and MongoDB are not Tyk products and what we provide here are basic backup and restore instructions. It is advisable to consult the official documentation for Redis and MongoDB on backups.
+{{< /note >}}
 
 ### Redis
+For more detailed instructions on managing Redis backups, please refer to the official Redis documentation:
 https://redis.io/docs/management/persistence/
 
 The Redis SAVE command is used to create a backup of the current redis database. The SAVE command performs a synchronous save of the dataset producing a point in time snapshot of all the data inside the Redis instance, in the form of an RDB file.
@@ -83,6 +86,7 @@ Example:
     alt="Redis CONFIG example" width="600" height="auto">}}
 
 ### MongoDB
+For detailed instructions on performing backups in MongoDB, please refer to the official MongoDB documentation:
 https://www.mongodb.com/docs/manual/core/backups/
 
 To capture a snapshot of a MongoDB database from a remote machine and store it locally, utilise the mongodump command on the primary node. Specify the host and port number (default is 27017) of the remote server, along with additional parameters such as the database name, user credentials and password. Lastly, designate the directory where the snapshot should be created.
@@ -100,9 +104,6 @@ To restore a database using a previously saved snapshot, simply employ the mongo
 ```bash
 mongorestore --host <hostname> --port <port> --username <username> --password <password> /path/to/dump/directory
 ```
-Example:
-{{< img src="/img/upgrade-guides/mongo_restore.png" 
-    alt="Mongo DUMP example" height="600">}}
 
 ## Upgrade Tyk Packages
 
@@ -168,7 +169,7 @@ systemctl status tyk-gateway
 systemctl status tyk-pump
 ```
 
-#### 5. Health check upgraded Tyk components
+#### 5. Health check on upgraded Tyk components
 
 Perform a health check on all 3 Tyk Components. The host and port number varies on your setup.
 
