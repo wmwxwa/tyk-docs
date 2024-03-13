@@ -11,9 +11,10 @@ aliases:
 ---
 Tyk Gateway, as of v3.0, supports storing secrets in Key-Value (KV) systems such as [Vault](https://vaultproject.io), [Consul](https://consul.io), local storage, and environment variables. By referencing these values from the KV store in your `tyk.conf`, API definitions, middleware, and environment variables, you can:
 
-- Easily update secrets across multiple machines without manual intervention.
-- Properly separate concerns, allowing developers to access only the necessary secrets.
-- Inject per-Gateway variables, such as machine ID, as part of headers or body using the local "secrets" section in `tyk.conf`.
+- Easily manage and update secrets across multiple environments (e.g., development, staging, production) without modifying the configuration files.
+- Securely store sensitive information like API keys, passwords, and certificates in a centralized location.
+- Seamlessly switch between different environments by updating the secrets in the KV store.
+- Choose the most suitable configuration method for your deployment, whether it's using configuration files (`tyk.conf`) or environment variables (e.g., in Kubernetes).
 
 ## Supported KV Store Systems
 
@@ -23,9 +24,9 @@ Tyk Gateway supports the following KV store systems:
 
 - **Vault**: Vault is a tool for securely accessing secrets. It provides a unified interface to any secret while providing tight access control and recording a detailed audit log. Tyk Gateway can use Vault to manage and retrieve sensitive secrets such as API keys, passwords, and certificates.
 
-- **Local secrets section inside `tyk.conf`**: The local secrets section in the `tyk.conf` file allows you to store secrets specific to a single Tyk Gateway instance. This is useful for storing instance-specific secrets like machine IDs or local configurations.
+- **Local secrets section inside `tyk.conf`**: The local secrets section in the `tyk.conf` file allows you to store secrets specific to a single Tyk Gateway instance. This is useful for storing instance-specific secrets or if you prefer using configuration files.
 
-- **Environment variables**: Environment variables can be used to store secrets and can be accessed by Tyk Gateway. This is a simple and straightforward way to manage secrets, especially in containerized environments like Docker.
+- **Environment variables**: Environment variables can be used to store secrets and can be accessed by Tyk Gateway. This is a simple and straightforward way to manage secrets, especially in containerized environments like Docker or Kubernetes.
 
 ## Referencing KV Store Values
 
@@ -33,7 +34,7 @@ You can reference values from KV stores in the following places:
 
 1. Configuration file (`tyk.conf`)
 2. API definitions
-3. Middleware (body transforms and URL rewrites)
+3. Middleware (request body transform, response body transform, URL rewrite, request header injection, response header injection)
 
 ### 1. Configuration File (`tyk.conf`)
 
@@ -83,7 +84,15 @@ Example API definition:
 
 ### 3. Middleware
 
-In body transforms and URL rewrites, you can reference values from KV stores using the following prefixes:
+In the following middleware, you can reference values from KV stores using the prefixes below:
+
+- Request Body Transform
+- Response Body Transform
+- URL Rewrite
+- Request Header Injection
+- Response Header Injection
+
+Prefixes for referencing KV store values in middleware:
 
 - Consul: `$secret_consul.`
 - Vault: `$secret_vault.`
@@ -92,7 +101,7 @@ In body transforms and URL rewrites, you can reference values from KV stores usi
 
 Secrets in middleware are evaluated dynamically on each request.
 
-Example body transform:
+Example request body transform:
 
 ```json
 {
@@ -112,7 +121,7 @@ Example URL rewrite:
 
 To connect Tyk Gateway to KV stores, configure the respective settings in the `tyk.conf` file or using environment variables.
 
-### Connecting Tyk Gateway to KV Stores
+### Configuring KV Stores in `tyk.conf`
 
 Here's an example of how to configure multiple KV stores in `tyk.conf`:
 
@@ -154,6 +163,8 @@ Here's an example of how to configure multiple KV stores in `tyk.conf`:
 }
 ```
 
+### Configuring KV Stores using Environment Variables
+
 Alternatively, you can configure KV stores using environment variables. For example, to configure Vault, use the following environment variables:
 
 ```env
@@ -164,16 +175,14 @@ TYK_GW_KV_VAULT_TOKEN=VAULT_TOKEN
 TYK_GW_KV_VAULT_KVVERSION=2
 ```
 
-For detailed information on configuring each KV store, refer to the [Configuration Reference]({{< ref "tyk-oss-gateway/configuration#a-namekva-key-value-store" >}}).
-
-### Using Environment Variables
-
-You can define environment variables with the prefix `TYK_SECRET_` followed by a custom name (e.g., `TYK_SECRET_FOO`, `TYK_SECRET_BAR`). These environment variables can be referenced in the API definition using the format `env://foo` or `env://bar` for fields like `listen_path` or `target_url`.
+You can also define environment variables with the prefix `TYK_SECRET_` followed by a custom name (e.g., `TYK_SECRET_FOO`, `TYK_SECRET_BAR`). These environment variables can be referenced in the API definition using the format `env://foo` or `env://bar` for fields like `listen_path` or `target_url`.
 
 If you want to set the local "secrets" section as an environment variable, use the following notation:
 `TYK_GW_SECRETS=key:value,key2:value2`
 
-### Retrieving Secrets from Vault
+For detailed information on configuring each KV store, refer to the [Configuration Reference]({{< ref "tyk-oss-gateway/configuration#a-namekva-key-value-store" >}}).
+
+#### Retrieving Secrets from Vault
 
 When retrieving secrets from Vault, you can use the dot notation to access specific values within a secret. For example, if you have a secret named `tyk` with a key `gw` and value `123` stored in Vault, you can retrieve the value using `vault://secret/tyk.gw`.
 
