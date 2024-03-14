@@ -198,6 +198,7 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Remove `slug` from the Tyk OAS API Definition</summary>
 
 Removed the unnecessary ‘slug’ field from OAS API Definition and from OAS API Designer
+<details>
 <li>
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
