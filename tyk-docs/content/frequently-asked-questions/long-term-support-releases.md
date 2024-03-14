@@ -32,8 +32,6 @@ Our current Long Term Support release is version 5.0 LTS, which is in full suppo
 
 We provide full support for the first 12 months, including regular maintenance intervals every seven weeks. Following this period, we transition to maintenance support for an additional 12 months, focusing on critical fixes and essential security patching as needed.
 
-We offer a 24 month long term support offering for our Gateway LTS version. For the first 12 months we offer **full support** which means that we will issue patches and updates on a 7-week schedule. After this 12 month period is up, we will revert to **maintenance support** for a further 12 months offering critical fixes and critical security patching only, with the cadence being on an 'as needed' basis.
-
 We release a new Gateway LTS version every 12 months which includes the [latest stable Golang version](https://go.dev/dl/).
 
 The advantages of a 12-month Long-Term Support (LTS) window include:
@@ -48,7 +46,7 @@ In case there's a need to operate on a version beyond the established LTS policy
 | ---- | ---- | ---- | ---- |
 | 4.0 LTS | April 2022 - April 2023 | May 2023 - April 2024 | May 2024 |
 | 5.0 LTS | April 2023 - April 2024 | May 2024 - April 2025 | May 2025 |
-| LTS+1 (version TBC) | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
+| 5.3 LTS | April 2024 - April 2025 | May 2025 - April 2026 | May 2026 |
 | LTS+2 (version TBC) | April 2025 - April 2026 | May 2026 - April 2027 | May 2027 |
 
 ---
@@ -105,20 +103,20 @@ As part of the release for the new Gateway LTS version we will commit to show ev
 1. **Recommended releases** - To ensure you get the most out of the latest Tyk experience, we'll provide information on which versions of different components across the entire stack you need.
 2. **Backwards Compatibility** - We'll provide information on what components and versions remain backwards compatible with the new Tyk Dashboard and Tyk Gateway versions.
 
-The table below is an illustrative example, but shows the intent:
+Our next LTS version is 5.3. The table below shows recommended compatibility:
 
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
 | 5.3 LTS | Helm (tyk-stacked, tyk-dashboard) v1.1.0 | Helm all versions |
 |         | Helm (tyk-oss, tyk-gateway) v1.3.0 | Helm all versions |
 |         | MDCB v2.5     | MDCB v2.4.2 |
-|         | Operator v1.8 | Operator v0.16 |
-|         | Sync v2.4.1   | Sync vX - vY |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
 | | EDP v1.8.3 | EDP all versions |
 | | Pump v1.9.0 | Pump all versions |
-| | TIB (if using standalone) v1.5 | TIB all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
 
-The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions 5.3 and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis*, and more.
+The compatibility matrix table shown above will be part of upcoming [Gateway release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for versions 5.3 and beyond. Additionally, these release notes will list tested third-party dependencies like *PostgreSQL, MongoDB, Redis* and more.
 
 --- 
 
@@ -130,32 +128,22 @@ And don't forget, our brilliant Customer Success Teams and Account Managers are 
 
 ---
 
-## Keep Me Informed!
+## Support Arrangements for Other Tyk Components
 
-To receive updates on our upcoming Long-Term Support (LTS) release schedule and its contents, feel free to subscribe to our [mailing list]()
+We have established a detailed LTS structure for Tyk Gateway and Tyk Dashboard due to their foundational role in our customers’ infrastructure. However, our support strategy for Tyk Pump, Tyk Identity Broker (TIB), MDCB, and Tyk Operator is tailored to reflect their distinct operational aspects and risk profiles, and is deeply integrated with our LTS model.
 
----
+These components are often more standalone in nature and are subject to infrequent and minor changes compared to the core products. Therefore, aligning them with the same LTS versioning isn’t necessary or practical. Instead, we employ a continuous delivery model that ensures these components are always updated with the latest improvements and security patches. Our commitment extends beyond version numbers, as we ensure each of these components is thoroughly tested for quality assurance with all active LTS releases of the Gateway and Dashboard.
 
-## LTS Support Policy For Components Other Than Tyk Gateway and Tyk Dashboard
+Ultimately, our diversified support approach aims to balance agility with assurance, offering the most appropriate level of support for each component while minimising risk and maximising value for our customers.
+To provide the most secure and efficient environment, we advise the following with the release of a new LTS version:
 
-The Tyk product is comprised of various components, such as Tyk Sync, Tyk Pump and Tyk Operator. Some of these components are more standalone than others, which allows us to operate different release cadences. Consequently, we strive to avoid long term support policies for any component, except Tyk Gateway and Tyk Dashboard.
+### Developer Portal
+Continually evolves with frequent updates. We recommend adopting the latest release for optimal performance and feature set, ensuring consistent user experience and accessibility to the newest enhancements.
 
-Tyk Gateway and Tyk Dashboard represent the core product and contain the majority of our workflows. Subsequently, these have a long term support policy.
+### MDCB and Helm
+Receive updates synchronized with the core Gateway and Dashboard to support new features and capabilities. These components are mature and updates typically consist of minor iterations.
 
-#### Enterprise Portal
+### Pump, TIB, Sync and Operator
+We recommend staying up to date with these components because they are rigorously tested to operate smoothly with the active LTS versions of Tyk Gateway and Tyk Dashboard.
 
-We strive to avoid any long term support arrangements for our Enterprise Portal. We run a regular 6 week release cadence which delivers new capability, extension of existing capability and bug fixes. Our policy is that we aim to avoid any breaking changes, so in effect the entire Enterprise Portal is supported. Here we'd increment out version as a minor version - 1.3.0, 1.4.0, 1.5.0 etc.
-
-We support our release cadence with a critical fix process. This is invoked when a severity one incident is declared, usually defined as systems down time, no workaround or a critical security issue.
-
-Our critical fix process commits to release as soon as possible and we issue a standalone fix outside of our normal cadence.
-
-The only exception to this policy is if we ever need to release a breaking change. This would mean that we have to release a new major version (e.g. version 2.0). In this exceptional circumstance we would support both the old major version and the new one concurrently for six months - please note that the old version would only be supported in terms of critical fixes, not new functionality. After six months, the previous major version would fall out of support.
-
-If you are using Enterprise Portal on Tyk Cloud, we keep you safe, secure and up to date with the latest features by auto upgrading you to the latest version. When a new release is launched, older versions are immediately deprecated. If a customer wants to use a previous version, this is possible via rollback. However, if an issue arises on an older version our advice would be to upgrade to the latest version.
-
-#### Tyk Pump, Tyk Identity Broker, MDCB and Tyk Operator
-
-Minor updates to Tyk Pump, Tyk Identity Broker (TIB), MDCB and Tyk Operator are deployable swiftly with minimal risk and no breaking changes. Tyk will provide support for the latest *major.minor* version (e.g. Tyk Pump v1.7) until the subsequent *major.minor* version (e.g. Tyk Pump v1.8) is released, at which point support for the newer version will commence.
-
-To ensure backward compatibility, we confirm that each Pump release and other components are compatible with the Long Term Support (LTS) versions of the Gateway and Dashboard. For instance, *Tyk Pump* v1.8 underwent validation to ensure compatibility with release v5 of *Tyk Gateway* and *Tyk Dashboard*. This alignment persists under the LTS model. Following the semantic versioning convention, if there's a need for a fix in the *Tyk Pump* version, it would be labelled as a patch version (e.g. v1.8.1).
+With new releases of Tyk Gateway and Tyk Dashboard LTS versions, our customers should follow the above guidelines to ensure the most secure, stable and efficient environment.
