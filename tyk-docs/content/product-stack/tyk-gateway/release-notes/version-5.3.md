@@ -27,6 +27,8 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 As Tyk OAS transitions out of Early Access, we cannot guarantee backward compatibility for versions pre 5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs, however, post migrations, there’s a risk that downgrading to pre 5.3.0 versions may render the API definitions non-functional. We recommend retaining copies of existing TYK OAS API definitions before upgrading. 
 
+Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
+
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
 <!-- #### Changed error log messages
@@ -89,6 +91,8 @@ For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the l
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
+If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here:  #Upgrading Tyk
+
 
 #### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
@@ -105,25 +109,25 @@ Feature enabled for Tyk OAS:
 
 In Tyk 5.3.0 we support all of these features when using Tyk OAS APIs with Tyk Gateway:
 
-API Versioning
-All Tyk-supported client-gateway authentication methods
-Automatic configuration of authentication from the OpenAPI description
-Gateway-upstream mTLS
-CORS
-Custom Plugins
-Open Telemetry tracing
-Response caching
-Detailed log recording
-Do-not-track endpoints
-API-level rate limits
-Request Validation - headers and body
-Request Transformation - method, headers and body
-Response Transformation - headers and body
-Allow and block listing of endpoints
-Circuit breakers
-Enforced timeouts
-URL rewrite and internal endpoints
-Mock Responses (automatically configurable from the OpenAPI description)
+- API Versioning
+- All Tyk-supported client-gateway authentication methods
+- Automatic configuration of authentication from the OpenAPI description
+- Gateway-upstream mTLS
+- CORS
+- Custom Plugins
+- Open Telemetry tracing
+- Response caching
+- Detailed log recording
+- Do-not-track endpoints
+- API-level rate limits
+- Request Validation - headers and body
+- Request Transformation - method, headers and body
+- Response Transformation - headers and body
+- Allow and block listing of endpoints
+- Circuit breakers
+- Enforced timeouts
+- URL rewrite and internal endpoints
+- Mock Responses (automatically configurable from the OpenAPI description)
 
 
 ##### Implemented KV Store for API Definition Fields:
@@ -194,14 +198,12 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Remove `slug` from the Tyk OAS API Definition</summary>
 
 Removed the unnecessary ‘slug’ field from OAS API Definition and from OAS API Designer
-
 <li>
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
 Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
-
 <li>
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case gateway is temporarily disconnected from MDCB</summary>
@@ -244,7 +246,7 @@ Tyk Gateway now validates date, date-time with RFC3339 format with Tyk OAS Valid
 <details>
 <summary>Inaccurate Distributed Rate Limiting (DRL) Behavior on Gateway Startup</summary>
 
-We have fixed the Distributed Rate Limited (DRL), now the rate of requests will be limited at 100% of the configured rate limit until the DRL notification is received, after which the limit will be reduced to an even share of the total per the rate limit algorithm design.
+Fixed an issue when using the Distributed Rate Limiter (DRL) where the Gateway did not apply any rate limit until a DRL notification was received. Now the rate of requests will be limited at 100% of the configured rate limit until the DRL notification is received, after which the limit will be reduced to an even share of the total (i.e. 100% divided by the number of Gateways) per the rate limit algorithm design.
 </details>
 </li>
 <li>
@@ -263,9 +265,16 @@ Fixed a problem where the Gateway attempted to execute a query with GQL engine v
 </li>
 <li>
 <details>
+<summary>Handling Arrays of Objects in Endpoint Responses by OAS/UDG Converter</summary>
+
+The OAS/UDG converter now effectively handles array of objects within POST paths. Previously, there were instances where the converter failed to accurately interpret and represent these structures in the generated UDG configuration.
+</details>
+</li>
+<li>
+<details>
 <summary>Playground issues in Cloud/k8s deployments</summary>
 
-Fixed the playground issues in Cloud/k8s deployments by adding brotli encoder to the GQL engine.
+An issue was identified where the encoding from the GQL upstream cache was causing readability problems in the response body. Specifically, the upstream GQL cache was utilizing brotli compression and not respecting the Accept-Encoding header. Consequently, larger response bodies became increasingly unreadable for the GQL engine due to compression, leading to usability issues for users accessing affected content. The issue has now been fixed by adding the brotli encoder to the GQL engine.
 </details>
 </li>
 <li>
@@ -273,6 +282,34 @@ Fixed the playground issues in Cloud/k8s deployments by adding brotli encoder to
 <summary>OAS Converter Issue with "Json" Return Type</summary>
 
 OAS-to-UDG converter was unable to correctly process OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in OAS, it will get correctly transformed into a custom scalar in GQL schema.
+</details>
+</li>
+<li>
+<details>
+<summary>OAS Panic During API Edit with Virtual Endpoint</summary>
+
+Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateway Panics During API Reload with JavaScript Middleware Bundle</summary>
+
+Fixed an issue where reloading a bundle containing JS plugins could cause the Gateway to panic.
+</details>
+</li>
+<li>
+<details>
+<summary>GraphQL Introspection Issue with Allow List</summary>
+
+"Disable introspection" setting was not working correctly in cases where field-based permissions were set (allow or block list). It was not possible to introspect the GQL schema while introspection was technically allowed but field-based permissions were enabled. Currently Allow/Block list settings are ignored only for introspection queries and introspection is only controlled by "Disable introspection" setting.
+</details>
+</li>
+<li>
+<details>
+<summary>Handling of Objects Without Properties in OAS-to-UDG Converter</summary>
+
+The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI Specification (OAS) had no properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process
 <li>
 <details>
 
