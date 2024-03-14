@@ -25,7 +25,7 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 #### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
-This release has no breaking changes.
+As Tyk OAS transitions out of Early Access, we cannot guarantee backward compatibility for versions pre 5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs, however, post migrations, there’s a risk that downgrading to pre 5.3.0 versions may render the API definitions non-functional. We recommend retaining copies of existing TYK OAS API definitions before upgrading. 
 
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
@@ -191,9 +191,10 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Remove `slug` from the Tyk OAS API Definition</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Removed the unnecessary ‘slug’ field from OAS API Definition and from OAS API Designer
+
 </details>
 </li>
 <li>
@@ -237,19 +238,35 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
-
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+<summary>Enhanced Redis Token Management and Gateway Efficiency</summary>
+In this release, we fixed automated token trimming in Redis, ensuring efficient management of OAuth tokens by implementing a new hourly job within the Gateway and providing a manual trigger endpoint. 
 </details>
 </li>
 <li>
 <details>
-<summary>Another changelog item summary</summary>
+<summary>Tyk Gateway Validates RFC3339 Date-Time Formats</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to the content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Tyk Gateway now validates date, date-time with RFC3339 format with Tyk OAS Validate Request middleware.
 </details>
 </li>
+<li>
+<details>
+<summary>Inaccurate Distributed Rate Limiting (DRL) Behavior on Gateway Startup</summary>
+
+We have fixed the Distributed Rate Limited (DRL), now the rate of requests will be limited at 100% of the configured rate limit until the DRL notification is received, after which the limit will be reduced to an even share of the total per the rate limit algorithm design.
+</details>
+</li>
+<li>
+<details>
+<summary>Duplicate Fields Added by OAS-to-GQL Translator</summary>
+
+Fixed an issue where the OAS-to-UDG converter was sometimes adding the 5.same field to an object type many times. This caused issues with the resulting GQL schema and made it non-compliant with GQL specification.
+
+<li>
+<details>
+
 </ul>
+
 
 #### Security Fixes
 <!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
