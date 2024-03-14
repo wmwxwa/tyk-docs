@@ -93,3 +93,10 @@ Here’s an example of how you could set up catalogues for the users above:
 ### Admin users
 
 The internal users of the admin app.
+<<<<<<< HEAD:tyk-docs/content/tyk-stack/tyk-developer-portal/enterprise-developer-portal/enterprise-portal-concepts.md
+=======
+
+### Next step
+
+Visit the [connect to the Tyk Dashboard]({{< ref "/product-stack/tyk-enterprise-developer-portal/getting-started/with-tyk-self-managed-as-provider" >}}) guide to learn how to connect the portal with Tyk Dashboard.
+>>>>>>> 5dac5b74... [DX-1192] Update enterprise-portal-concepts.md (#4244):tyk-docs/content/product-stack/tyk-enterprise-developer-portal/getting-started/enterprise-portal-concepts.md
