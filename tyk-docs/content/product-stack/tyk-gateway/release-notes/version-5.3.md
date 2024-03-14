@@ -195,16 +195,6 @@ Each change log item should be expandable. The first line summarises the changel
 
 Removed the unnecessary ‘slug’ field from OAS API Definition and from OAS API Designer
 
-</details>
-</li>
-<li>
-<details>
-<summary>Another changelog item summary</summary>
-
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
-</details>
-</li>
-
 <li>
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
@@ -239,6 +229,7 @@ Each change log item should be expandable. The first line summarises the changel
 <li>
 <details>
 <summary>Enhanced Redis Token Management and Gateway Efficiency</summary>
+
 In this release, we fixed automated token trimming in Redis, ensuring efficient management of OAuth tokens by implementing a new hourly job within the Gateway and providing a manual trigger endpoint. 
 </details>
 </li>
@@ -261,7 +252,27 @@ We have fixed the Distributed Rate Limited (DRL), now the rate of requests will 
 <summary>Duplicate Fields Added by OAS-to-GQL Translator</summary>
 
 Fixed an issue where the OAS-to-UDG converter was sometimes adding the 5.same field to an object type many times. This caused issues with the resulting GQL schema and made it non-compliant with GQL specification.
+</details>
+</li>
+<li>
+<details>
+<summary>Gateway Issue Processing Queries with GQL Engine</summary>
 
+Fixed a problem where the Gateway attempted to execute a query with GQL engine version 1 (which lacks OTel support) while simultaneously trying to validate the same query with the OpenTelemetry (OTel)-supported engine. It caused the API to fail with and error message "Error socket hang up". Right now with OTel enabled the gateway will enforce GQL engine to default to version 2, so that this problem doesn't occur anymore.
+</details>
+</li>
+<li>
+<details>
+<summary>Playground issues in Cloud/k8s deployments</summary>
+
+Fixed the playground issues in Cloud/k8s deployments by adding brotli encoder to the GQL engine.
+</details>
+</li>
+<li>
+<details>
+<summary>OAS Converter Issue with "Json" Return Type</summary>
+
+OAS-to-UDG converter was unable to correctly process OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in OAS, it will get correctly transformed into a custom scalar in GQL schema.
 <li>
 <details>
 
