@@ -91,7 +91,7 @@ For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the l
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
-If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here:  #Upgrading Tyk
+If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here: [Upgrading Tyk](#upgrading-tyk)
 
 
 #### Release Highlights
@@ -161,18 +161,52 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Changelog item summary</summary>
+<summary>Per-API Rate Limit Support in Tyk OAS API Definition</summary>
 
-The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Tyk now supports API level rate limit in Tyk OAS API definition
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk now supports API level rate limit in Tyk OAS API definition</summary>
+<summary>Custom Domain Certificates Support in Tyk OAS API Definitions</summary>
 
-Abcd  The actual changelog item text should go here. It should be no more than three or four sentences. It should link to a content page for further explanation where applicable. There should be a blank line between the summary tags and this paragraph, otherwise, links will not be rendered.
+Tyk now supports custom domain certificates in Tyk OAS API definitions.
 </details>
 </li>
+<li>
+<details>
+<summary>Request Method Transform Middleware Support in OAS UI</summary>
+
+Added support for the Request Method Transform middleware.
+</details>
+</li>
+<li>
+<details>
+<summary>URL Rewrite Middleware Support</summary>
+
+Added support for URL Rewrite middleware with Tyk OAS APIs.
+</details>
+</li>
+<li>
+<details>
+<summary>Request Size Limit Support</summary>
+
+Added request size limit support for Tyk OAS APIs
+</details>
+</li>
+<li>
+<details>
+<summary>Per-Endpoint Response Header Transform Middleware Support</summary>
+
+Added support for per-endpoint Modify for Response and Request Header middleware.
+</details>
+</li>
+<li>
+<details>
+<summary>Circuit Breaker Middleware in OAS</summary>
+
+Implemented circuit breaker middleware 
+
 
 <li>
 <details>
@@ -198,13 +232,19 @@ Each change log item should be expandable. The first line summarises the changel
 <summary>Remove `slug` from the Tyk OAS API Definition</summary>
 
 Removed the unnecessary ‘slug’ field from OAS API Definition and from OAS API Designer
-<details>
+</details>
+</li>
+
+
 <li>
 <details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
 Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
+</li>
+
+
 <li>
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case gateway is temporarily disconnected from MDCB</summary>
@@ -231,35 +271,35 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Redis Token Management and Gateway Efficiency</summary>
+<summary>Enhanced Redis token management and Gateway efficiency</summary>
 
 In this release, we fixed automated token trimming in Redis, ensuring efficient management of OAuth tokens by implementing a new hourly job within the Gateway and providing a manual trigger endpoint. 
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk Gateway Validates RFC3339 Date-Time Formats</summary>
+<summary>Tyk Gateway validates RFC3339 Date-Time Formats</summary>
 
 Tyk Gateway now validates date, date-time with RFC3339 format with Tyk OAS Validate Request middleware.
 </details>
 </li>
 <li>
 <details>
-<summary>Inaccurate Distributed Rate Limiting (DRL) Behavior on Gateway Startup</summary>
+<summary>Inaccurate Distributed Rate Limiting (DRL) behavior on Gateway startup</summary>
 
 Fixed an issue when using the Distributed Rate Limiter (DRL) where the Gateway did not apply any rate limit until a DRL notification was received. Now the rate of requests will be limited at 100% of the configured rate limit until the DRL notification is received, after which the limit will be reduced to an even share of the total (i.e. 100% divided by the number of Gateways) per the rate limit algorithm design.
 </details>
 </li>
 <li>
 <details>
-<summary>Duplicate Fields Added by OAS-to-GQL Translator</summary>
+<summary>Duplicate Fields added by OAS-to-GQL translator</summary>
 
 Fixed an issue where the OAS-to-UDG converter was sometimes adding the 5.same field to an object type many times. This caused issues with the resulting GQL schema and made it non-compliant with GQL specification.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway Issue Processing Queries with GQL Engine</summary>
+<summary>Gateway Issue processing queries with GQL Engine</summary>
 
 Fixed a problem where the Gateway attempted to execute a query with GQL engine version 1 (which lacks OTel support) while simultaneously trying to validate the same query with the OpenTelemetry (OTel)-supported engine. It caused the API to fail with and error message "Error socket hang up". Right now with OTel enabled the gateway will enforce GQL engine to default to version 2, so that this problem doesn't occur anymore.
 </details>
@@ -280,21 +320,21 @@ An issue was identified where the encoding from the GQL upstream cache was causi
 </li>
 <li>
 <details>
-<summary>OAS Converter Issue with "Json" Return Type</summary>
+<summary>OAS Converter issue with "Json" Return Type</summary>
 
 OAS-to-UDG converter was unable to correctly process OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in OAS, it will get correctly transformed into a custom scalar in GQL schema.
 </details>
 </li>
 <li>
 <details>
-<summary>OAS Panic During API Edit with Virtual Endpoint</summary>
+<summary>OAS Panic during API Edit with Virtual Endpoint</summary>
 
 Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
 </details>
 </li>
 <li>
 <details>
-<summary>Gateway Panics During API Reload with JavaScript Middleware Bundle</summary>
+<summary>Gateway Panics during API Reload with JavaScript Middleware Bundle</summary>
 
 Fixed an issue where reloading a bundle containing JS plugins could cause the Gateway to panic.
 </details>
@@ -366,7 +406,7 @@ Please refer to the [upgrading Tyk]({{< ref "upgrading-tyk" >}}) page for furthe
 
 If there were changes in any of Tyk’s API docs:
 
-- Have API endpoints been documented in the release note summary and changelog?				
+- Have API endpoints been documented in the release note summary and changelog?             
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
@@ -379,3 +419,4 @@ Please visit our [Developer Support]({{< ref "frequently-asked-questions/faq" >}
 ### Miscellaneous (Optional)
 <!-- For each specific release if there is additional miscellaneous information or announcements that will be helpful to the customer then squads
 should add additional sections to their release notes. -->
+
