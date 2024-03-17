@@ -246,6 +246,69 @@ GraphQL APIs can now use the `detailed_tracing` setting in API definition. With 
 </li>
 <li>
 <details>
+<summary>Enhanced Trace Generation for UDG with Mixed Data Sources</summary>
+
+This release introduces an enhanced trace generation system for Universal Data Gateway (UDG). It consolidates all spans from both Tyk-managed and external data source executions into a single trace when used together, as well as when UDG solely utilises Tyk-managed data sources, simplifying trace management and improving operational visibility.
+</details>
+</li>
+<li>
+<details>
+<summary>Disabled "normalise" and "validate" in GraphQL Engine</summary>
+
+For GraphQL requests normalisation and validation has been disabled in the GraphQL engine. Both of those actions were performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and makes detailed OTel traces more concise and easier to read.
+</details>
+</li>
+<li>
+<details>
+<summary>Added "introspection_config" to API Definition</summary>
+
+Added a new set of settings in the API definition called "introspection_config" that will enable users to have more control over introspection on a single GQL API level.
+</details>
+</li>
+<li>
+<details>
+<summary>Enhanced Handling of Arrays of Objects in OpenAPI Documents</summary>
+
+Tyk Dashboard API endpoint /api/data-graphs/data-sources/import now handles OAS schemas with arrays of objects. This addition means users can now import more complex OAS documents and transform them into UDG configurations.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved Handling of Unnamed Object Definitions in OpenAPI Documents</summary>
+
+OAS converter can now create GraphQL types even if an object definition doesn’t have an explicit name.
+</details>
+</li>
+<li>
+<details>
+<summary>Refined Handling of Arrays of Objects in Endpoint Responses by OAS-to-UDG Converter</summary>
+
+The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI Specification (OAS) had no properties defined. This limitation resulted in unexpected behaviour and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
+</details>
+</li>
+<li>
+<details>
+<summary>OAS converter does not handle enums</summary>
+
+Previously OAS-to-UDG Converter had limitations in handling enums from OAS documents, leading to discrepancies and incomplete conversions. With the inclusion of enum support, the OAS Converter now seamlessly processes enums defined in your OpenAPI Specifications, ensuring accurate and complete conversion to GraphQL schemas.
+</details>
+</li>
+<li>
+<details>
+<summary>Implement KV store for API Definition fields</summary>
+
+Implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
+</details>
+</li>
+<li>
+<details>
+<summary>Expanded Handling of HTTP Status Code Ranges by OAS-to-GQL Converter</summary>
+
+OAS-to-UDG converted now can handle HTTP status code ranges that are defined by the OAS specification. This means that code ranges defined as 1XX, 2XX, etc will be correctly converted by the tool.
+</details>
+</li>
+<li>
+<details>
 <summary>Support Redis v7.0.x</summary>
 
 Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9 underneath which added support to Redis v7.0.x.
