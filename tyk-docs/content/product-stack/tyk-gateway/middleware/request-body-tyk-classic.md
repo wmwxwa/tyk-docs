@@ -69,7 +69,7 @@ Ensure that you have selected the `REQUEST` tab, then select your input type, an
 < placeholder for image >
 
 ### Step 3: Test the Transform
-If you have sample input data, you can use the Input box to add it, and then test it using the **Test** button. You will see the effect of the template on the sample input in the Output box.
+If sample input data is available, you can use the Input box to add it, and then test it using the **Test** button. You will see the effect of the template on the sample input displayed in the Output box.
 
 {{< img src="/img/dashboard/system-management/define_transform_2.5.png" alt="Body transform" >}}
 
