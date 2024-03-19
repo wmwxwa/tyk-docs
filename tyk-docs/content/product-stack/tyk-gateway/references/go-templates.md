@@ -185,7 +185,7 @@ In this template:
 The `jsonMarshal` function converts XML formatted input into JSON, for example:
 
 **Input**
-``` .xml
+```xml
 <hello>world</hello>
 ```
 
