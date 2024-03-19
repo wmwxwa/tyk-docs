@@ -13,7 +13,7 @@ With the body transform middleware you can modify XML or JSON formatted payloads
 
 This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware to apply more complex transformation to requests.
 
-There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream prior to it being returned to the client.
+There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream, prior to it being returned to the client.
 
 ## When to use the Request Body Transformation middleware
 #### Maintaining compatibility with legacy clients
