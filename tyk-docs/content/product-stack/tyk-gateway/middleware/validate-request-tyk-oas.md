@@ -5,7 +5,7 @@ description: "Using the Request Validation middleware with Tyk OAS APIs"
 tags: ["request validation", "validate request", "middleware", "per-endpoint", "Tyk OAS", "Tyk OAS API"]
 ---
 
-The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness, and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+The [request validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
