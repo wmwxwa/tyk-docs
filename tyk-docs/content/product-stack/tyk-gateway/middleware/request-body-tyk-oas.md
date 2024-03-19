@@ -101,7 +101,7 @@ So if you make a request to `PUT /anything?param=foo`, configuring a header `X-H
 ```
 
 You will receive a response from the upstream with this payload: 
-``` .json
+```json
 {
     "req-header": "bar",
     "req-param": "[foo]",
