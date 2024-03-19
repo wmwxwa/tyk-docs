@@ -22,10 +22,10 @@ To configure the URL rewriter you must add a new `url_rewrites` object to the `e
 {
     "url_rewrites": [
         {
-        "path": "books/author",
-        "method": "GET",
-        "match_pattern": "(\w+)/(\w+)",
-        "rewrite_to": "library/service?value1=$1&value2=$2"
+            "path": "books/author",
+            "method": "GET",
+            "match_pattern": "(\w+)/(\w+)",
+            "rewrite_to": "library/service?value1=$1&value2=$2"
         }
     ]
 }
@@ -77,29 +77,29 @@ For example:
                         "query_val_matches": {
                             "genre": {
                                 "match_rx": "fiction",
-                                "reverse": "false",
+                                "reverse": false
                             }
                         }
                     },
-                    "rewrite_to": "library/service/author?genre=$tyk_context.trigger-0-genre-0",
+                    "rewrite_to": "library/service/author?genre=$tyk_context.trigger-0-genre-0"
                 },
                 {
                     "on": "all",
                     "options": {
-                        "header_val_matches": {
+                        "header_matches": {
                             "X-Enable-Beta": {
                                 "match_rx": "true",
-                                "reverse": "false",
+                                "reverse": false
                             }
                         },
                         "session_meta_matches": {
                             "beta_enabled": {
                                 "match_rx": "true",
-                                "reverse": "false",
+                                "reverse": false
                             }
                         }
                     },
-                    "rewrite_to": "https://beta.library.com/books/author",
+                    "rewrite_to": "https://beta.library.com/books/author"
                 }
             ]
         }

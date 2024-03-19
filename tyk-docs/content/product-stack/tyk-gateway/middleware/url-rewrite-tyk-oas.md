@@ -18,40 +18,126 @@ If you're using the legacy Tyk Classic APIs, then check out [this]({{< ref "/pro
 
 The URl rewrite middleware can be added to the `operations` section of the Tyk OAS Extension (`x-tyk-api-gateway`) in your Tyk OAS API Definition for the appropriate `operationId` (as configured in the `paths` section of your OpenAPI Document).
 
-For the basic trigger, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
+### Using the basic trigger
+For the **basic trigger**, you only need to enable the middleware (set `enabled:true`) and then configure the `pattern` and the `rewriteTo` (target) URL. The design of the Tyk OAS API Definition takes advantage of the `operationID` defined in the OpenAPI Document that declares both the path and method required by the basic trigger.
 
-```{.json}
+```.json {hl_lines=["39-43"],linenos=true, linenostart=1}
 {
-    "openapi": ...,
-    "paths": {
-        "/books/author": {
-            "get": {
-                "operationId": "books/authorget",
-                ...
-            }
-        }
+  "info": {
+    "title": "example-url-rewrite",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.3",
+  "servers": [
+    {
+      "url": "http://localhost:8181/example-url-rewrite/"
     }
-}
-...
-"x-tyk-api-gateway": {
-    ...
+  ],
+  "security": [],
+  "paths": {
+    "/json": {
+      "get": {
+        "operationId": "jsonget",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {}
+  },
+  "x-tyk-api-gateway": {
+    "info": {
+      "name": "example-url-rewrite",
+      "state": {
+        "active": true,
+        "internal": false
+      }
+    },
     "middleware": {
-        "operations": {
-            "books/authorget": {
-                "urlRewrite": {
-                    "enabled": true,
-                    "pattern": "(\w+)/(\w+)",
-                    "rewriteTo": "library/service?value1=$1&value2=$2",
-                }
-            }
+      "operations": {
+        "jsonget": {
+          "urlRewrite": {
+            "enabled": true,
+            "pattern": "/(\\w+)/(\\w+)",
+            "rewriteTo": "anything?value1=$1&value2=$2"
+          }
         }
+      }
+    },
+    "server": {
+      "listenPath": {
+        "strip": true,
+        "value": "/example-url-rewrite/"
+      }
+    },
+    "upstream": {
+      "url": "http://httpbin.org/"
     }
+  }
 }
 ```
 
-In this example the basic trigger has been configured to match the path for an HTTP `GET` request to the `/books/author` endpoint against the pure regex `(\w+)/(\w+)`. This is looking for two word groups in the path which, if found, will store the first string (`books`) in context variable `$1` and the second (`author`) in `$2`. The request (target) URL will then be rewritten to `library/service?value1=books&value2=author` ready for processing by the next middleware in the chain.
+In this example the basic trigger has been configured to match the path for an HTTP `GET` request to the `/json` endpoint against the regex `/(\w+)/(\w+)`. This is looking for two word groups in the path (after the API listen path) which, if found, will store the first string in context variable `$1` and the second in `$2`. The request (target) URL will then be rewritten to `anything?value1=$1&value2=$2`.
 
-You can add advanced triggers to your URL rewriter configuration by adding the `triggers` element within the `urlRewrite` middleware configuration for the operation.
+If you send a request to `GET http://localhost:8181/example-url-rewrite/json/hello`
+
+``` bash  {hl_lines=["1"],linenos=true, linenostart=1}
+GET /example-url-rewrite/json/hello HTTP/1.1
+User-Agent: PostmanRuntime/7.36.3
+Accept: */*
+Postman-Token: 1a84a792-f0c4-4c40-932a-795485cdd252
+Host: localhost:8181
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+```
+
+The URL rewrite middleware will match the pattern:
+`/json/hello` -> `/(\w+)/(\w+)` -> `$1` will take the value `json` and `$2` will take the value `hello`
+
+It will then rewrite the target URL to `/anything?value1=json&value2=hello` and `httpbin.org` will respond with:
+
+``` bash  {hl_lines=["13-16", "31"],linenos=true, linenostart=1}
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+Content-Length: 536
+Content-Type: application/json
+Date: Mon, 18 Mar 2024 17:37:40 GMT
+Server: gunicorn/19.9.0
+X-Ratelimit-Limit: 0
+X-Ratelimit-Remaining: 0
+X-Ratelimit-Reset: 0
+ 
+{
+"args": {
+"value1": "json",
+"value2": "hello"
+},
+"data": "",
+"files": {},
+"form": {},
+"headers": {
+"Accept": "*/*",
+"Accept-Encoding": "gzip, deflate, br",
+"Host": "httpbin.org",
+"Postman-Token": "1a84a792-f0c4-4c40-932a-795485cdd252",
+"User-Agent": "PostmanRuntime/7.36.3",
+"X-Amzn-Trace-Id": "Root=1-65f87be4-18c50d554886f46f6b73d42b"
+},
+"json": null,
+"method": "GET",
+"origin": "::1, 85.9.213.196",
+"url": "http://httpbin.org/anything?value1=json&value2=hello"
+}
+```
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the URL rewrite middleware.
+
+### Using advanced triggers
+You can add **advanced triggers** to your URL rewriter configuration by adding the `triggers` element within the `urlRewrite` middleware configuration for the operation.
 
 The `triggers` element is an array, with one entry per advanced trigger. For each of those triggers you configure:
  - `condition` to set the logical condition to be applied to the rules (`any` or `all`)
@@ -78,87 +164,107 @@ Key locations are encoded as follows:
 
 For example:
 
-```{.json}
+``` json {hl_lines=["31-67"],linenos=true, linenostart=1}
 {
-    "openapi": ...,
+    "info": {
+        "title": "example-url-rewrite2",
+        "version": "1.0.0"
+    },
+    "openapi": "3.0.3",
     "paths": {
-        "/books/author": {
+        "/json": {
             "get": {
-                "operationId": "books/authorget",
-                ...
-            }
-        }
-    }
-}
-...
-"x-tyk-api-gateway": {
-    ...
-    "middleware": {
-        "operations": {
-            "books/authorget": {
-                "urlRewrite": {
-                    "enabled": true,
-                    "pattern": "(\w+)/(\w+)",
-                    "rewriteTo": "library/service?value1=$1&value2=$2",
-                    "triggers": [
-                        {
-                            "condition": any,
-                            "rules": [
-                                {
-                                    "in": "query",
-                                    "name": "genre",
-                                    "pattern": "fiction",
-                                    "negate": "false",
-                                }
-                            ]
-                            "rewriteTo": "library/service/author?genre=$tyk_context.trigger-0-genre-0", 
-                        }
-                        {
-                            "condition": all,
-                            "rules": [
-                                {
-                                    "in": "header",
-                                    "name": "X-Enable-Beta",
-                                    "pattern": "true",
-                                    "negate": "false",
-                                }
-                                {
-                                    "in": "sessionData",
-                                    "name": "beta_enabled",
-                                    "pattern": "true",
-                                    "negate": "false",
-                                }
-                            ]
-                            "rewriteTo": "https://beta.library.com/books/author",    
-                        }
-                    ]
+                "operationId": "jsonget",
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
                 }
             }
         }
+    },
+    "components": {},   
+    "x-tyk-api-gateway": {
+        "info": {
+            "name": "example-url-rewrite2",
+            "state": {
+                "active": true,
+                "internal": false
+            }
+        },
+        "middleware": {
+            "operations": {
+                "jsonget": {
+                    "urlRewrite": {
+                        "enabled": true,
+                        "pattern": "/(\\w+)/(\\w+)",
+                        "rewriteTo": "anything?value1=$1&value2=$2",
+                        "triggers": [
+                            {
+                                "condition": "all",
+                                "rewriteTo": "anything?value1=$1&query=$tyk_context.trigger-0-numBytes-0",
+                                "rules": [
+                                    {
+                                        "in": "query",
+                                        "pattern": ".*",
+                                        "negate": false,
+                                        "name": "numBytes"
+                                    },
+                                    {
+                                        "in": "header",
+                                        "pattern": "true",
+                                        "negate": true,
+                                        "name": "x-bytes"
+                                    }
+                                ]
+                            },
+                            {
+                                "condition": "any",
+                                "rewriteTo": "bytes/$tyk_context.trigger-1-numBytes-0",
+                                "rules": [
+                                    {
+                                        "in": "query",
+                                        "pattern": ".*",
+                                        "negate": false,
+                                        "name": "numBytes"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "server": {
+            "listenPath": {
+                "strip": true,
+                "value": "/example-url-rewrite2/"
+            }
+        },
+        "upstream": {
+            "url": "http://httpbin.org/"
+        } 
     }
 }
 ```
 In this example, the basic trigger is configured as before, but two advanced triggers have been added.
 
-The first advanced trigger has this configuration:
- - key location is query parameter
- - key name is genre
- - pattern is fiction
+The first advanced trigger will fire if the request has this configuration:
+ - query parameter `numBytes` is provided, AND
+ - header parameter `x-bytes` is *not* set to `true` (note that `negate` is set to `true` in this rule)
 
-So if a `GET` request is made to `/books/author?genre=fiction` the advanced trigger will fire and the URL will be rewritten to `library/service/author?genre=fiction`.
+Such a request will be redirected to `/anything` passing two query parameters
+ - `value1` with the first string matched in the basic trigger (i.e. `json`)
+ - `query` with the value provided in the `numBytes` query parameter
 
-The second advanced trigger has this configuration:
- - rule condition: ALL
- - rule 1
-    - key location is header parameter
-    - key name is `X-Enable-Beta`
-    - pattern is `true``
- - rule 2
-    - key location is session metadata
-    - key name is `beta_enabled`
-    - pattern is `true`
+The second advanced trigger will fire if the first doesn't and if this condition is met:
+ - query parameter `numBytes` is provided
 
-So if a `GET` request is made to `/books/author` with a header `"X-Enable-Beta":"true"` and, within the session metadata, `"beta_enabled":"true"` the second advanced trigger will fire and the URL will be written to `https://beta.library.com/books/author` taking the request to a different upstream host entirely.
+Such a request will be redirected to `/bytes/{numBytes}`, which will return `numBytes` random bytes from `httpbin.org`.
+
+If neither advanced trigger fires, then the basic trigger will redirect the request to `/anything?value1=json&value2=hello` as before.
+
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the URL rewrite middleware.
 
 ## Configuring the URL rewriter in the API Designer
 

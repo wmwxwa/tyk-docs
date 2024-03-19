@@ -6,7 +6,7 @@ tags: ["URL rewrite", "middleware", "per-endpoint", "rewrite trigger", "rewrite 
 ---
 
 ## Overview
-Tyk's [URL rewrite]({{< ref "/transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk through [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}})).
+Tyk's [URL rewrite]({{< ref "/transform-traffic/url-rewriting" >}}) middleware uses the concepts of [triggers](#url-rewrite-triggers) and [rules](#url-rewrite-rules) to determine if the request (target) URL should be modified. These can be combined in flexible ways to create sophisticated logic to direct requests made to a single endpoint to various upstream services (or other APIs internally exposed within Tyk Gateway through [looping]({{< ref "/advanced-configuration/transform-traffic/looping" >}})).
 
 ## URL rewrite rules
 The URL rewrite middleware compares a [key](#key) with a [pattern](#pattern) to determine if there is a match; the rules define the location of the key and the structure of the pattern.
@@ -22,7 +22,11 @@ Keys can be located in the following elements of the request:
  - session metadata
  - request context (for example to match by IP address or JWT scope)
 
+{{< note success >}}
+**Note**  
+
 Note that there is no key name when using the request body location, as the entire body (payload) of the request is used as the key value.
+{{< /note >}}
 
 When using the request header location, the key name is the normalised form of the header name: with capitalisation and use of `-` as separator. For example, the header name`customer_identifier` would be identified in a rule via the key name `Customer-Identifier`.
 
@@ -78,7 +82,7 @@ The `rewriteTo` values can be simple URLs or they can be dynamically created usi
 {{< note success >}}
 **Note** 
 
-You can redirect to a new hostname, but to do so you *must* specify the transport, e.g.
+You can redirect to a new hostname but to do so you must provide the full URL, for example:
 ```
 https://my-new-target-host.com/library/service?value1=books&value2=author
 ```

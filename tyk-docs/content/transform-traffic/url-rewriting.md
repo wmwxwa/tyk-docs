@@ -8,7 +8,7 @@ tags: ["URL rewrite", "middleware", "per-endpoint"]
 ## Overview of URL Rewriting
 URL rewriting in Tyk is a powerful feature that enables the modification of incoming API request paths to match the expected endpoint format of your backend services. This process is accomplished by using regular expressions (regexes) to identify and capture specific segments of the request URL, which can then be rearranged or augmented to construct the desired endpoint URL.
 
-The flexibility of Tyk's URL rewriting mechanism allows for conditional rewrites based on the presence of certain headers or query parameters within the request, ensuring that the rewrite logic is applied only when appropriate. This allows for granular redirection of requests, for example to direct certain users to a beta service while others are sent to the production version.
+The flexibility of Tyk's URL rewriting mechanism allows for conditional rewrites based on the presence of certain parameters within the request, ensuring that the rewrite logic is applied only when appropriate. This allows for granular redirection of requests, for example to direct certain users to a beta service while others are sent to the production version.
 
 By employing URL rewriting, Tyk facilitates seamless communication between client applications and backend services, ensuring that API requests are efficiently routed and processed. This feature is instrumental in maintaining a clean and organized API architecture, while also providing the adaptability required to handle evolving backend systems.
 
