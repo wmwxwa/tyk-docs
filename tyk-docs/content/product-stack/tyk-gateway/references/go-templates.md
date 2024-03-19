@@ -36,7 +36,7 @@ We can call that function and pass "world" as the parameter:
 ```
 
 The output would be:
-``` .json
+```json
 {
   "message": "Hello world!" 
 }
