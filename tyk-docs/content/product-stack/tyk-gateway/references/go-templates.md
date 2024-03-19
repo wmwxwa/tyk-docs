@@ -22,7 +22,7 @@ When creating these functions within your Go templates, please note:
 You can define and use functions in the Go templates that are used for body transforms in Tyk. Functions allow you to abstract common template logic for cleaner code and to aid reusability. Breaking the template into functions improves readability of more complex tenplates.
 
 Here is an example where we define a function called `myFunction` that accepts one parameter:
-``` .go
+```go
 {{- define "myFunction" }}
   Hello {{.}}!
 {{- end}}
