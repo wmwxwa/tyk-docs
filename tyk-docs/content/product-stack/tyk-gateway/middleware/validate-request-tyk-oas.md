@@ -23,7 +23,7 @@ As explained in the OpenAPI Initiative [documentation](https://learn.openapis.or
  - request body (payload)
 
 ### Request parameters
-The `parameters` field in the OpenAPI description is an array of `parameter objects` that each describe one parameter shared by all operations on that path (where an operation is a combination of HTTP method + path or, as Tyk calls it, an endpoint). Each `parameter` has two mandatory fields:
+The `parameters` field in the OpenAPI description is an array of `parameter objects` that each describe one parameter shared by all operations on that path. Here, an operation is defined as a combination of HTTP method and path, or, as Tyk calls it, an endpoint. Each `parameter` has two mandatory fields:
  - `in`: the location of the parameter (`path`, `query`, `header`)
  - `name`: a unique identifier within that location (i.e. no duplicate header names for a given operation/endpoint)
 
