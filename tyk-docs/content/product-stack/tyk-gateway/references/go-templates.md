@@ -121,7 +121,7 @@ XML cannot be as easily decoded into strict structures as JSON, so the syntax is
  - Session metadata `uid` = `user123`
  - IP address of calling client = `192.0.0.1`
  - Query parameter `type` = `strict`
-``` .xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
   <body>
