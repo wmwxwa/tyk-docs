@@ -190,7 +190,7 @@ The `jsonMarshal` function converts XML formatted input into JSON, for example:
 ```
 
 **Template**
-``` .go
+```go
 {{ . | jsonMarshal }}
 ```
 
