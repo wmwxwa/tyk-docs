@@ -60,7 +60,7 @@ Tyk will load and evaluate the template file when the Gateway starts up. If you 
 **Note**  
 Prior to Tyk 5.3, there was an additional step to enable response body transformation. You would need to add the following to the Tyk Classic API definition:
 
-``` .json
+```json
 {
     "response_processors":[
         {"name": "response_body_transform"}
