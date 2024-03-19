@@ -75,7 +75,7 @@ Imagine you have a published API that accepts the request listed below, but your
 ```
 
 **Template**
-``` .go
+```go
 {
   "value1": "{{.value2}}",
   "value2": "{{.value1}}",
