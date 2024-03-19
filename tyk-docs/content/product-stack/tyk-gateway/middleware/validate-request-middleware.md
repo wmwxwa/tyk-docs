@@ -8,7 +8,7 @@ aliases:
   - /getting-started/key-concepts/request-validation/
 ---
 
-Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness, and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
+Requests to your upstream services should meet the contract that you have defined for those APIs. Checking the content and format of incoming requests before they are passed to the upstream APIs can avoid unexpected errors and provide additional security to those services. Tyk's request validation middleware provides a way to validate the presence, correctness and conformity of HTTP requests to make sure they meet the expected format required by the upstream API endpoints.
 
 Request validation enables cleaner backend APIs, better standardisation across consumers, easier API evolution, and reduced failure risk leading to higher end-to-end reliability.
 
