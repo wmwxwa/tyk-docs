@@ -32,7 +32,7 @@ There are also optional `description` and `required` fields.
 For each parameter, a schema can be declared that defines the `type` of data that can be stored (e.g. `boolean`, `string`) and any `example` or `default` values.
 
 ### Request body
-The `requestBody` field in the OpenAPI description is a [Request Body Object](https://swagger.io/docs/specification/describing-request-body/). This has two optional fields (`description` and `required`) plus the `content` section which allows you to define schema for the expected payload. Different schemas can be declared for different media types that are identified by content-type (e.g. `application/json`, `application/xml`, `text/plain`).
+The `requestBody` field in the OpenAPI description is a [Request Body Object](https://swagger.io/docs/specification/describing-request-body/). This has two optional fields (`description` and `required`) plus the `content` section which allows you to define a schema for the expected payload. Different schemas can be declared for different media types that are identified by content-type (e.g. `application/json`, `application/xml` and `text/plain`).
 
 ## Automatically configure the middleware from the OpenAPI Document
 When [importing]({{< ref "getting-started/using-oas-definitions/import-an-oas-api#tutorial-5-create-an-api-that-validates-the-request-payload" >}}) an OpenAPI Document to create a Tyk OAS API, you can automatically enable the request validation middleware for all endpoints in the Document that have defined schemas. If using the Tyk Dashboard API or Tyk Gateway API you can do this by setting the `validateRequest=true` query parameter, if using the API Designer, select the option on the import screen.
