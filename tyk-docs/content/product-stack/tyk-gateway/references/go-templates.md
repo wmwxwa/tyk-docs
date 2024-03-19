@@ -212,6 +212,6 @@ The `xmlMarshal` function converts JSON formatted input into XML, for example:
 ```
 
 **Output**
-``` .xml
+```xml
 <hello>world</hello>
 ```
