@@ -93,7 +93,7 @@ Decoded, this template is:
 ```
 
 So if you make a request to `PUT /anything?param=foo`, configuring a header `X-Header`:`bar` and providing this request body:
-``` .json
+```json
 {
     "value1": "world",
     "value2": "hello"
