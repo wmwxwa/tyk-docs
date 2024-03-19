@@ -11,7 +11,7 @@ Tyk enables you to modify the payload of API requests before they are proxied to
 
 With the body transform middleware you can modify XML or JSON formatted payloads to ensure that the response contains the information required by your upstream service. You can enrich the request by adding contextual data that is held by Tyk but not included in the original request from the client.
 
-This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) to apply more complex transformation to requests.
+This middleware changes only the payload and not the headers. You can, however, combine this with the [Request Header Transform]({{< ref "transform-traffic/request-headers" >}}) middleware to apply more complex transformation to requests.
 
 There is a closely related [Response Body Transform]({{< ref "advanced-configuration/transform-traffic/response-body" >}}) middleware that provides the same functionality on the response from the upstream prior to it being returned to the client.
 
