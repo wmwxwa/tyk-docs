@@ -48,7 +48,7 @@ We have bundled the [Sprig Library (v3)](http://masterminds.github.io/sprig/) wh
 Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-templates/) and [YouTube tutorial](https://www.youtube.com/watch?v=k5wJv4XO7a0) that can help you to learn about using Go templates. 
 
 ## Go templating examples
-Here we provide worked examples working with both [JSON]({{< ref "product-stack/tyk-gateway/references/go-templates#example-json-transformation-template" >}}) and [XML]({{< ref "product-stack/tyk-gateway/references/go-templates#example-xml-transformation-template" >}}) formatted inputs plus examples using the [jsonMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
+Here we provide worked examples for both [JSON]({{< ref "product-stack/tyk-gateway/references/go-templates#example-json-transformation-template" >}}) and [XML]({{< ref "product-stack/tyk-gateway/references/go-templates#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
 
 ### Example JSON transformation template
 Imagine you have a published API that accepts the following request body, but your upstream service requires a few alterations, namely:
