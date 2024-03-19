@@ -14,7 +14,7 @@ If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{
 ## Request schema in OpenAPI Specification
 The OpenAPI Specification supports the definition of a [schema](https://learn.openapis.org/specification/content.html#the-schema-object) to describe and limit the content of any field in an API request or response.
 
-Tyk's request validation middleware automatically parses the schema for the request in the OpenAPI description part of the Tyk OAS API Definition and use this to compare against the incoming request.
+Tyk's request validation middleware automatically parses the schema for the request in the OpenAPI description part of the Tyk OAS API Definition and uses this to compare against the incoming request.
 
 The clever part is that in this schema you can reference another schema defined elsewhere in the API Definition; this lets you write complex validations very efficiently since you don’t need to re-define the validation for a particular object every time you wish to refer to it. At this time Tyk only supports local references to schema within the same API Definition.
 
