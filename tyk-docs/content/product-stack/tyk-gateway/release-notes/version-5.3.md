@@ -100,15 +100,13 @@ If you are upgrading to 5.3.0, please follow the detailed upgrade instructions h
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
 -->
-We’re thrilled to announce the release of 5.3.0, an update packed with exciting features and significant fixes to elevate your experience with Tyk Gateway. Please see below the highlights of this release;
+We’re thrilled to announce the release of 5.3.0, an update packed with exciting features and significant fixes to elevate your experience with Tyk Gateway. The highlights of this releaseare summarised below.
 
 
-##### Tyk OAS Feature Maturity:
-Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features and it’s ready for adoption in the gateway. Please refer to the list of features down below. 
+##### Tyk OAS Feature Maturity
+Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features, which are ready for adoption in Tyk Gateway.
 
-Feature enabled for Tyk OAS:
-
-In Tyk 5.3.0 we support all of these features when using Tyk OAS APIs with Tyk Gateway:
+In Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
 
 - API Versioning
 - All Tyk-supported client-gateway authentication methods
@@ -131,19 +129,19 @@ In Tyk 5.3.0 we support all of these features when using Tyk OAS APIs with Tyk G
 - Mock Responses (automatically configurable from the OpenAPI description)
 
 
-##### Implemented KV Store for API Definition Fields:
-In this release,we have implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
+##### Implemented KV Store for API Definition Fields
+In this release, we have implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
 
 
-##### Gateway and Component Upgrades:
-We've raised the bar with significant upgrades to our gateway and components. Leveraging the power of  Go 1.21, upgrading Sarama to version 1.41.0, and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
+##### Gateway and Component Upgrades
+We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 #### Downloads
-- <<[docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)>>
+- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
 - <<Helm charts links>>
-- <<source code tarball for oss projects>>
+- [source code tarball for oss projects]()
 
-#### Changelog {#Changelog-vX.Y.Z}
+#### Changelog {#Changelog-v5.3..0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
@@ -162,65 +160,65 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Per-API Rate Limit Support in Tyk OAS API Definition</summary>
+<summary>Per-API Rate Limit support in Tyk OAS API Definitions</summary>
 
-Tyk now supports API level rate limit in Tyk OAS API definition
+Tyk now supports API level rate limit in Tyk OAS API definition.
 </details>
 </li>
 <li>
 <details>
-<summary>Custom Domain Certificates Support in Tyk OAS API Definitions</summary>
+<summary>Custom domain certificates support in Tyk OAS API Definitions</summary>
 
 Tyk now supports custom domain certificates in Tyk OAS API definitions.
 </details>
 </li>
 <li>
 <details>
-<summary>Request Method Transform Middleware Support in OAS UI</summary>
+<summary>Request method transform middleware support in OAS UI</summary>
 
-Added support for the Request Method Transform middleware.
+Added support for the Request method transform middleware with Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>URL Rewrite Middleware Support</summary>
+<summary>URL rewrite middleware support</summary>
 
 Added support for URL Rewrite middleware with Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Request Size Limit Support</summary>
+<summary>Request size limit support</summary>
 
-Added request size limit support for Tyk OAS APIs
+Added request size limit support for Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>Per-Endpoint Response Header Transform Middleware Support</summary>
+<summary>Per-endpoint response header transform middleware support</summary>
 
-Added support for per-endpoint Modify for Response and Request Header middleware.
+Added support for modifying the response and request header middleware per-endpoint.
 </details>
 </li>
 <li>
 <details>
-<summary>Circuit Breaker Middleware in OAS</summary>
+<summary>Circuit Breaker Middleware support in OAS</summary>
 
-Implemented circuit breaker middleware 
+Implemented circuit breaker middleware for Tyk OAS APIs.
 </details>
 </li>
 <li>
 <details>
-<summary>OAS Converter Support for allOf/anyOf/oneOf Keywords</summary>
+<summary>OAS converter support for *allOf*/*anyOf*/*oneOf* keywords</summary>
 
-The OAS-to-UDG converter now seamlessly handles OAS documents that utilize the allOf, anyOf, and oneOf keywords, ensuring accurate and comprehensive conversion to Tyk API definition. The feature expands the scope of OAS documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
+The OAS-to-UDG converter now seamlessly handles OAS documents that utilize the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OAS documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
 </details>
 </li>
 <li>
 <details>
-<summary>Clearer Error Messages for Invalid Variables (JSON Schema)</summary>
+<summary>Clearer error messages for invalid variables (JSON Schema)</summary>
 
-Some of the error messages generated by the GQL engine were not much help for the users, especially when it came to variable validation. The errors have been changed and are now much more clear and helpful in cases where engine processing fails.
+Some of the error messages generated by the GQL engine were unclear for users, especially relating to variable validation. The errors have been changed and are now much more clearer and helpful in cases where engine processing fails.
 </details>
 </li>
 <li>
