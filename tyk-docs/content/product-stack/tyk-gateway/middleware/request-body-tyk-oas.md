@@ -83,7 +83,7 @@ For example:
 In this example the request body transform middleware has been configured for HTTP `PUT` requests to the `/anything` endpoint. The `body` contains a base64 encoded Go template (which you can check by pasting the value into a service such as [base64decode.org](https://www.base64decode.org)).
 
 Decoded, this template is:
-``` .go
+```go
 {
   "value1": "{{.value2}}",
   "value2": "{{.value1}}",
