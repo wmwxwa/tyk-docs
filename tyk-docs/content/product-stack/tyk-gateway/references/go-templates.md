@@ -62,7 +62,7 @@ Imagine you have a published API that accepts the following request body, but yo
  - Session metadata `uid` = `user123`
  - IP address of calling client = `192.0.0.1`
  - Query parameter `type` = `strict`
-```.json
+```json
 {
   "value1": "value-1",
   "value2": "value-2",
