@@ -29,7 +29,7 @@ Here is an example where we define a function called `myFunction` that accepts o
 ```
 
 We can call that function and pass "world" as the parameter:
-``` .go
+```go
 {
   "message": {{ call . "myFunction" "world"}}
 }
