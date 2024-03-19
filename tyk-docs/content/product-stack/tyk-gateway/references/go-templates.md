@@ -51,7 +51,7 @@ Here's a useful [blogpost](https://blog.gopheracademy.com/advent-2017/using-go-t
 Here we provide worked examples for both [JSON]({{< ref "product-stack/tyk-gateway/references/go-templates#example-json-transformation-template" >}}) and [XML]({{< ref "product-stack/tyk-gateway/references/go-templates#example-xml-transformation-template" >}}) formatted inputs. We also explain examples using the [jsonMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#xml-to-json-conversion-using-jsonmarshal" >}}) and [xmlMarshal]({{< ref "product-stack/tyk-gateway/references/go-templates#json-to-xml-conversion-using-xmlmarshal" >}}) helper functions.
 
 ### Example JSON transformation template
-Imagine you have a published API that accepts the following request body, but your upstream service requires a few alterations, namely:
+Imagine you have a published API that accepts the request listed below, but your upstream service requires a few alterations, namely:
  - swapping the values of parameters `value1` and `value2`
  - renaming the `value_list` to `transformed_list`
  - adding a `user-id` extracted from the session metadata
