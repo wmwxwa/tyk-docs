@@ -1,141 +1,40 @@
 ---
-title: "Upgrading Tyk On Hybrid"
+title: "Upgrading Tyk On Hybrid SaaS"
 date: 2024-02-6
 tags: ["Upgrade Go Plugins", "Tyk plugins", "Hybrid", "Self Managed"]
 description: "Explains how to upgrade Go Plugins on Self Managed (Hybrid)"
 ---
 
-In a Hybrid deployment, the client hosts both the Control Plane and the Data Plane.
+A Hybrid SaaS deployment is a shared responsibility model where Tyk is responsible for hosting the Control Plane while the client is responsible hosting their Data Plane, be it hosted on a public cloud provider or on their own infrastructure.
 
 The Control Plane includes the following components:
 - Tyk Dashboard
-- MongoDB or PostgreSQL
+- MongoDB 
 - Redis (Master Instance)
 - Management Gateway
 - MDCB
 
-The Data Plane consists of at least one Hybrid Gateway, a Redis instance and Tyk Pump (optional).
+The Data Plane includes the following components: 
+- Hybrid Gateway(s) 
+- Redis instance 
+- Tyk Pump (optional)
 
-After reviewing your [upgrade pre-requisites]({{ < ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), follow the instructions below to upgrade your Tyk components and plugins.
+After reviewing your [upgrade pre-requisites]({{< ref "developer-support/upgrading-tyk/upgrade-prerequisites" >}}), 
+follow the instructions below to upgrade your Tyk components and plugins.
 
 
 ## Strategy
 
-#### Control Plane
-
-Upgrade the Control Plane components in the following order:
-1. MDCB
-2. Tyk Pump (if deployed)
-3. Tyk Dashboard
-4. Management Gateway.
-
-#### Data Plane
-
-Upgrade the Data Plane components in the following order:
+Upgrade the Control Plane followed by your Data Plane.  When upgrading your Data Plane, upgrade your components in the following order:
 1. Go Plugins (if applicable)
-2. Hybrid Gateway(s)
+2. Hybrid Pump (if applicable)
+3. Hybrid Gateway(s)
+
 
 ---
 ## 1. Upgrade your Control Plane
+See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}})
 
-### MDCB
-Follow the instructions for your deployment type:
-- **Docker**
-    1. Backup your MDCB config file `tyk_sink.conf`
-    2. Update the image version in the docker command or script to the target version
-    3. Restart MDCB
-- **Helm**
-    1. Backup your MDCB config file `tyk_sink.conf`.  Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
-    2. Update the image version in your `values.yaml` to the target version
-    3. Run helm upgrade with the updated `values.yaml` file
-- **Other (Linux)**
-    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-mdcb-stable](https://packagecloud.io/tyk/tyk-mdcb-stable) repository.
-    2. Follow the upgrade instructions for your distro
-        - RHEL/CentOS Upgrade
-        
-        ```bash
-        sudo yum upgrade tyk-mdcb-stable-5.0.0
-        ```
-        
-        - Debian/Ubuntu
-        ```bash
-        sudo apt-get install tyk-mdcb-stable-5.0.0
-        ``` 
-
-### Tyk Pump
-Follow the instructions for component deployment type:
-- **Docker**
-    1. Back up your Pump config file `pump.conf`
-    2. Update the image version in the docker command or script to the target version
-    3. Restart the Tyk Pump
-- **Helm**
-    1. Backup your Pump config file `pump.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
-    2. Update the image version in your `values.yaml` to the target version
-    3. Run helm upgrade with the updated `values.yaml` file
-- **Other (Linux)**
-    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-pump](https://packagecloud.io/tyk/tyk-pump) repository.
-    2. Follow the upgrade instructions for your distro
-        - RHEL/CentOS Upgrade
-
-        ```bash
-        sudo yum upgrade tyk-pump-1.8.1
-        ```
-
-        - Debian/Ubuntu
-        ```bash
-        sudo apt-get install tyk-pump-1.8.1
-        ```
-
-### Tyk Dashboard
-Follow the instructions for component deployment type:
-
-- **Docker**
-    1. Backup your Dashboard config file `tyk_analytics.conf`
-    2. Update the image version in the docker command or script to the target version
-    3. Restart the Tyk Dashboard
-- **Helm**
-    1. Backup your Dashboard config file `tyk_analytics.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
-    2. Update the image version in your `values.yaml` to the target version
-    3. Run helm upgrade with the updated `values.yaml` file
-- **Other (Linux)**
-    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-dashboard](https://packagecloud.io/tyk/tyk-dashboard) repository.
-    2. Follow the upgrade instructions for your distro
-        - RHEL/CentOS Upgrade
-        
-        ```bash
-        sudo yum upgrade tyk-pump-5.2.5
-        ```
-
-        - Debian/Ubuntu
-        
-        ```bash
-        sudo apt-get install tyk-pump-5.2.5 
-        ```
-### Management Gateway
-Follow the instructions for component deployment type:
-- **Docker**
-    1. Backup your Gateway config file `tyk.conf`
-    2. Update the image version in the docker command or script to the target version
-    3. Restart the Gateway
-- **Helm**
-    1. Backup your Gateway config file `tyk.conf`. Note this step may not be relevant if you’re exclusively using the environment variables from the `values.yaml` to define your configuration.
-    2. Update the image version in your `values.yaml` to the target version
-    3. Run helm upgrade with the updated `values.yaml` file
-- **Other (Linux)**
-    1. Find the target version you want to upgrade in the [packagecloud.io/tyk/tyk-gateway](https://packagecloud.io/tyk/tyk-gateway)
-    2. Follow the upgrade instructions for your distro
-        - RHEL/CentOS Upgrade
-        
-        ```bash
-        sudo yum upgrade tyk-gateway-5.2.5
-        ```
-
-        - Debian/Ubuntu
-
-        ```bash
-        sudo apt-get install tyk-gateway-5.2.5 
-        ```
----
 ## 2. Upgrade your Go Plugins
 
  | Upgrade Path | Current Version | Target Version |
@@ -161,7 +60,7 @@ Follow the instructions for component deployment type:
 4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
 5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes the newly compiled version
 
-    {{< img src="img/developer-support/bundle_files_example.png" alt="Bundle ZIP example" width="800">}}
+    {{< img src="img/developer-support/path1-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
     Your manifest.json will look something like this:
 
@@ -190,9 +89,9 @@ Follow the instructions for component deployment type:
     ```
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured bundled server.
-> Before executing the next step, upgrade your Hybrid Gateways to the target version.  Otherwise, your Gateway(s) will pull down this bundle that was built with the target version and your plugin(s) will not load due to a version mismatch.
-7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-8. Validate that your plugin is working per your expectations. 
+7. Proceed with [Upgrading your Hybrid Gateway(s)](#upgrading-data-plane-hybrid-gateways)
+8. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in the previous step.
+9. Validate that your plugin is working per your expectations. 
 
 ### Path 2 - Current Version < 4.1.0 and Target Version >= 4.1.0 {#path-2}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -220,9 +119,9 @@ Follow the instructions for component deployment type:
     ```
 3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler) for available versions. 
 4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
-5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version
+5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both, your current version's plugin along with the newly compiled version
 
-    {{< img src="img/developer-support/bundle_files_example.png" alt="Bundle ZIP example" width="800">}}
+    {{< img src="img/developer-support/path2-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
     Your manifest.json will look something like this:
 
@@ -252,14 +151,16 @@ Follow the instructions for component deployment type:
     }
     ```
 
-    In this example,  the CustomGoPlugin.so in the file list would be the filename of your current version’s plugin.  You will already have this on hand as this is what has been running in your environment.  The *CustomGoPlugin_v4.3.3_linux_amd64.so* is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler.
+    In this example, the CustomGoPlugin.so in the file list would be the filename of the plugin you're using with your current version.  You will already have this file available as this is what has been running in your environment.  The *CustomGoPlugin_v4.3.3_linux_amd64.so* is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler.
 
     Your bundle zip file should include both the current version and target versions of the plugin.
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured bundle server.  
 7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-8. Validate that your plugin is working per your expectations.  
-9. Proceed with upgrading your [Tyk Data Plane (Hybrid Gateway(s))](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
+8. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.  
+> This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect. 
+9. Proceed with upgrading your [Tyk Data Plane (Hybrid Gateway(s))](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin ahead of time in step 7, this version will be loaded automatically once you upgrade.
+10. Validate that your plugin is working per your expectations, as the Gateway now should have loaded the plugin for the target version automatically.
 
 ### Path 3 - Current Version >= 4.1.0 and Target Version >= 5.1.0 {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
@@ -277,16 +178,18 @@ Follow the instructions for component deployment type:
     # In Gateway version 5.1, the Gateway and plugins transitioned to using # Go modules builds and don't use Go mod vendor anymore
     go mod tidy
     ```
-3. Download the plugin compiler for the target version you’re upgrading to (e.g. 4.3.3).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags) for available versions. 
+3. Download the plugin compiler for the target version you’re upgrading to (e.g. 5.1.0).  See the Tyk Docker Hub [repo](https://hub.docker.com/r/tykio/tyk-plugin-compiler/tags) for available versions. 
 4. [Compile]({{< ref "plugins/supported-languages/golang#building-the-plugin">}}) your plugin using this compiler
-5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) with the newly compiled version
+5. [Create a plugin bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles" >}}) that includes both your current version’s plugin along with the newly compiled version.
+  {{< img src="img/developer-support/path3-step5-bundle-contents.png" alt="Bundle ZIP example" width="800">}}
 
     Your manifest.json will look something like this:
 
     ```json
     {
       "file_list": [
-	      "CustomGoPlugin_v4.3.3_linux_amd64.so"
+	      "CustomGoPlugin_v4.3.3_linux_amd64.so",
+        "CustomGoPlugin_v5.1.0_linux_amd64.so"
       ],
       "custom_middleware": {
       "pre": [
@@ -307,15 +210,15 @@ Follow the instructions for component deployment type:
     }
     ```
 
-    In this example, the CustomGoPlugin_v4.3.3_linux_amd64.so is the plugin compiled for the target version.  The “_v4.3.3_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
+    In this example, the CustomGoPlugin_v5.1.0_linux_amd64.so is the plugin compiled for the target version.  The “_v5.1.0_linux_amd64” is generated automatically by the compiler.  If your target version was 5.2.0, then “_v5.2.0_linux_amd64” would be appended to the shared object file output by the compiler. 
 
 6. [Upload this bundle]({{< ref "tyk-cloud/configuration-options/using-plugins/uploading-bundle" >}}) to your configured bundle server.  
-7. Proceed with upgrading your [Tyk Data Plane (Gateway)](#upgrading-data-plane-hybrid-gateways). 
-8. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
-9. Validate that your plugin is working per your expectations.  
-10. Proceed with upgrading your [Tyk Data Plane (Hybrid Gateway(s))](#upgrading-data-plane-hybrid-gateways).  Given that you loaded your target version plugin ahead of time, this version will be loaded automatically once you upgrade.
+7. Update the [custom_middleware_bundle]({{< ref "plugins/how-to-serve-plugins/plugin-bundles#per-api--local-parameters" >}}) field in the API Definitions of all APIs that use your plugin. The field should be updated to use the new bundle file you created in step 5.
+8. Validate that your plugin is working per your expectations as at this stage, your Gateway will be running the plugin for your current version still.  
+> This step is a sanity check to catch any potential issues with the bundle for the current version and will ensure that any requests that your Gateway processes prior to being upgraded are able to invoke the plugin as you expect. 
+9. Proceed with upgrading your [Tyk Data Plane (Gateway)](#upgrading-data-plane-hybrid-gateways). Given that you loaded your target version plugin in step 7, this version will be loaded automatically once you upgrade.
+10. Validate that your plugin is working per your expectations.  
 
----
 ## 3. Upgrade your Data Plane Hybrid Gateway(s){#upgrading-data-plane-hybrid-gateways}
 Follow the instructions for component deployment type:
 - **Docker**
