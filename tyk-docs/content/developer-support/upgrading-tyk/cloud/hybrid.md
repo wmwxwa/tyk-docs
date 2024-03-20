@@ -165,14 +165,6 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
 ### Path 3 - Current Version >= 4.1.0 and Target Version >= 5.1.0 {#path-3}
 1. Open a terminal/command prompt in the directory of your plugin source file(s)  
 2. Based on your Target Version run the appropriate commands to initialize your plugin:
-    - **Target Version > v4.20 and < v5.1.0**
-    ```bash
-    go get github.com/TykTechnologies/tyk@54e1072a6a9918e29606edf6b60def437b273d0a
-    # For Gateway versions earlier than 5.1 using the go mod vendor tool is required
-    go mod tidy
-    go mod vendor
-    ```
-    - **Target Version >= v5.1.0**
     ```bash
     go get github.com/TykTechnologies/tyk@ffa83a27d3bf793aa27e5f6e4c7106106286699d
     # In Gateway version 5.1, the Gateway and plugins transitioned to using # Go modules builds and don't use Go mod vendor anymore
