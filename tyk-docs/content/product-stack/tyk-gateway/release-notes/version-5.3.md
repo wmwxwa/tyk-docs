@@ -15,7 +15,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 
 **This page contains all release notes for version 5.3.X displayed in a reverse chronological order**
 
-### Support Lifetime
+## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
 Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
 
@@ -23,9 +23,9 @@ Our minor releases are supported until our next minor comes out. This would be <
 
 ## 5.3.0 Release Notes
 
-##### Release Date DD Mon YYYY <<update>>
+### Release Date DD Mon YYYY <<update>>
 
-#### Breaking Changes
+### Breaking Changes
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully.**
 
@@ -43,14 +43,14 @@ We try to avoid making changes to our log messages, especially at error and crit
 Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
 <!-- #### Planned Breaking Changes -->
 
-#### Dependencies
+### Dependencies
 <!--Required. Use this section to announce the following types of dependencies compatible with the release:
 
 Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 
 3rd party dependencies and tools -->
 
-##### Compatibility Matrix For Tyk Components
+### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
@@ -63,7 +63,7 @@ An illustrative example is shown below. -->
 | | | Pump vX - vY |
 | | | TIB vX - vY |
 
-#### 3rd Party Dependencies & Tools
+### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -79,7 +79,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 
 Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
-#### Deprecations
+### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
 In 5.3.0, we have simplified the configuration of response transform middleware. We encourage users to embrace the ‘global_headers’ mechanism as the ‘response_processors.header_injector’ is now an optional setting and will be removed in a future release.
 
@@ -89,16 +89,16 @@ Once you put an item in this section, we must keep this item listed in all the f
 <!-- ##### Future deprecations
 -->
 
-#### Upgrade instructions
+### Upgrade instructions
 <!-- Required. For patches release (Z>0) use this:
 For users currently on vX.Y.Z, we strongly recommend promptly upgrading to the latest release. If you are working with an older version (lower major), it is advisable to bypass version X.Y.0 and proceed directly to this latest patch release.
 <br/>
 Go to the [Upgrading Tyk](#upgrading-tyk) section for detailed upgrade Instructions.
 -->
-If you are upgrading to 5.3.0, please follow the detailed upgrade instructions here: [Upgrading Tyk](#upgrading-tyk)
+If you are upgrading to 5.3.0, please follow the detailed [upgrade instructions](#upgrading-tyk).
 
 
-#### Release Highlights
+### Release Highlights
 <!-- Required. Use similar ToV to previous release notes. For example for a patch release:
 This release primarily focuses on bug fixes.
 For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
@@ -106,7 +106,7 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 We’re thrilled to announce the release of 5.3.0, an update packed with exciting features and significant fixes to elevate your experience with Tyk Gateway. For a comprehensive list of changes, please refer to the detailed [changelog](#Changelog-v5.3.0) below.
 
 
-##### Tyk OAS Feature Maturity
+#### Tyk OAS Feature Maturity
 Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features, which are ready for adoption in Tyk Gateway.
 
 In Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
@@ -132,26 +132,26 @@ In Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk 
 - Mock Responses (automatically configurable from the OpenAPI description)
 
 
-##### Implemented KV Store for API Definition Fields
+#### Implemented KV Store for API Definition Fields
 In this release, we have implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
 
 
-##### Gateway and Component Upgrades
+#### Gateway and Component Upgrades
 We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
-#### Downloads
+### Downloads
 - [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
 - <<Helm charts links>>
 - [source code tarball for oss projects]()
 
-#### Changelog {#Changelog-v5.3.0}
+### Changelog {#Changelog-v5.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
 
 Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
 "...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
 "New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
 
-##### Added
+#### Added
 <!-- This section should be a bullet point list of new features. Explain:
 
 - The purpose of the new feature
@@ -317,7 +317,7 @@ Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://githu
 </li>
 </ul>
 
-##### Changed
+#### Changed
 <!-- This should be a bullet-point list of updated features. Explain:
 
 - Why was the update necessary?
@@ -359,7 +359,7 @@ Previously, when operating in a slave configuration, the Tyk Gateway fetched ses
 
 </ul>
  
-##### Fixed
+#### Fixed
 <!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
 
 - What problem the issue caused
@@ -468,7 +468,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
 
-##### Comunity Contributions
+#### Comunity Contributions
 <!-- This section should thank external contributors and include a linked reference to their GitHub username with a summary of their contribution.
 
 Example
