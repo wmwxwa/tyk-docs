@@ -55,15 +55,15 @@ Version compatibility with other components in the Tyk stack. This takes the for
 ### Compatibility Matrix For Tyk Components
 <!-- Required. Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
 An illustrative example is shown below. -->
-| Gateway Version | Recommended Compatibility | Backwards Compatibility |
+| Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3 | Helm v2.2     | Helm vX - vY |
-|         | MDCB v2.5     | MDCB v1.7 - v2.4 |
-|         | Operator v1.8 | Operator vX - vY |
-|         | Sync v2.4.1   | Sync vX - vY |
-| | | EDP vX - vY |
-| | | Pump vX - vY |
-| | | TIB vX - vY |
+| x.x LTS | MDCB v2.5     | MDCB v2.4.2 |
+|         | Operator v0.17 | Operator v0.16 |
+|         | Sync v1.4.3   | Sync v1.4.3 |
+|         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
+| | EDP v1.8.3 | EDP all versions |
+| | Pump v1.9.0 | Pump all versions |
+| | TIB (if using standalone) v1.5.1 | TIB all versions |
 
 ### 3rd Party Dependencies & Tools
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
@@ -242,7 +242,7 @@ We've added OpenTelemetry semantic conventions for GraphQL spans. Spans will now
 </li>
 <li>
 <details>
-<summary>Added support for *detailed_tracing* to be configured via GQL API definitions</summary>
+<summary>Added support for detailed_tracing to be configured via GQL API definitions</summary>
 
 GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces, which can get large for GraphQL APIs. Furthermore, this gives users an option to customise the level of tracing detail to suit their monitoring needs.
 </details>
@@ -256,14 +256,14 @@ This release introduces an enhanced trace generation system for Universal Data G
 </li>
 <li>
 <details>
-<summary>Disabled *normalise* and *validate* in GraphQL Engine</summary>
+<summary>Disabled normalise and validate in GraphQL Engine</summary>
 
 For GraphQL requests normalisation and validation has been disabled in the GraphQL engine. Both of those actions were performed in the Tyk Gateway and were unnecessary to be done again in the engine. This enhances performance slightly and makes detailed OTel traces concise and easier to read.
 </details>
 </li>
 <li>
 <details>
-<summary>Added *introspection_config* to Tyk Classic API definition</summary>
+<summary>Added introspection_config to Tyk Classic API definition</summary>
 
 Added a new set of settings in the API definition called *introspection_config*. This enables users to have more control over introspection on a single GQL API level.
 </details>
@@ -277,7 +277,7 @@ The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handle
 </li>
 <li>
 <details>
-<summary>OAS-to-UDG converter support for *allOf*/*anyOf*/*oneOf* keywords</summary>
+<summary>OAS-to-UDG converter support for allOf/anyOf/oneOf keywords</summary>
 
 The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilise the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
 </details>
