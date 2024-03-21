@@ -3584,7 +3584,7 @@ menu:
             path: /developer-support/upgrading-tyk/cloud/cloud-saas
             category: Page
             show: True
-          - title: "Hybrid"
+          - title: "Hybrid SaaS"
             path: /developer-support/upgrading-tyk/cloud/hybrid
             category: Page
             show: True
