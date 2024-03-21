@@ -1,7 +1,7 @@
 ---
 title: Tyk Gateway 5.3 Release Notes
 date: 2023-09-27T15:49:11Z
-description: "Release notes documenting updates enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
+description: "Release notes documenting updates, enhancements, and changes for Tyk Gateway versions within the 5.3.X series."
 tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 ---
 
@@ -17,7 +17,7 @@ tags: ["Tyk Gateway", "Release notes", "v5.3", "5.3.0", "5.3", "changelog"]
 
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
-Our minor releases are supported until our next minor comes out. This would be <vX.Y+1> scheduled in Q<1-4> if this goes ahead as planned. If not, X.Y will remain in support until our next LTS version comes out in March 2024.
+Our minor releases are supported until our next minor comes out.
 
 ---
 
@@ -29,7 +29,9 @@ Our minor releases are supported until our next minor comes out. This would be <
 <!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
 **Attention: Please read this section carefully.**
 
-As Tyk OAS transitions out of Early Access, we cannot guarantee backward compatibility for versions pre 5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs, however, post migrations, there’s a risk that downgrading to pre 5.3.0 versions may render the API definitions non-functional. We recommend retaining copies of existing TYK OAS API definitions before upgrading.
+As Tyk OAS transitions out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}), we cannot guarantee backward compatibility for versions pre-5.3.0. When upgrading to 5.3.0, Tyk will automatically migrate existing Tyk OAS APIs to the [latest API definition format]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}).
+
+Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions of Tyk Gateway and doing so could provoke unpredictable behaviour including potential crashes. We recommend retaining copies of existing Tyk OAS API definitions before upgrading in case you choose to downgrade later.
 
 Users are strongly advised to follow the recommended upgrade instructions provided by Tyk before applying any updates.
 
@@ -55,7 +57,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Compatibility | Backwards Compatibility |
 |----    |---- |---- |
-| 5.3 LTS | Helm v2.2     | Helm vX - vY |
+| 5.3 | Helm v2.2     | Helm vX - vY |
 |         | MDCB v2.5     | MDCB v1.7 - v2.4 |
 |         | Operator v1.8 | Operator vX - vY |
 |         | Sync v2.4.1   | Sync vX - vY |
@@ -70,14 +72,14 @@ Additionally, a disclaimer statement was added below the table, for customers to
 
 An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
 
-| Third Party Dependency                                     | Tested Versions        | Compatible Versions    | Comments | 
-| ---------------------------------------------------------- | ---------------------- | ---------------------- | -------- | 
-| [GoLang](https://go.dev/dl/)                               | 1.19, 1.20, 1.21       | 1.19, 1.20, 1.21       | All our binaries| 
-| [MongoDB](https://www.mongodb.com/try/download/community)  | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)         | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
-| OpenAPI JSON Schema  | v3.0.0...      | v3.0.0...          | Used by [Tyk OAS API definition](https://swagger.io/specification/)                | [3.0.3](https://spec.openapis.org/oas/v3.0.3)|
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [MongoDB](https://www.mongodb.com/try/download/community)    | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x | Used by Tyk Dashboard | 
+| [PostgreSQL](https://www.postgresql.org/download/)           | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
 
-Given the time difference between your upgrade and the release of this version, we recommend customers verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
@@ -107,42 +109,61 @@ We’re thrilled to announce the release of 5.3.0, an update packed with excitin
 
 
 #### Tyk OAS Feature Maturity
-Tyk OAS is now out of early access as we have reached feature maturity. We have enabled the majority of its features, which are ready for adoption in Tyk Gateway.
+Tyk OAS is now out of [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) as we have reached feature maturity. You are now able to make use of the majority of Tyk Gateway's features from your Tyk OAS APIs, so they are a credible alternative to the legacy Tyk Classic APIs.
 
-In Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
+From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Tyk Gateway:
 
-- API Versioning
-- All Tyk-supported client-gateway authentication methods
-- Automatic configuration of authentication from the OpenAPI description
-- Gateway-upstream mTLS
-- CORS
-- Custom Plugins
-- Open Telemetry tracing
-- Response caching
-- Detailed log recording
-- Do-not-track endpoints
-- API-level rate limits
-- Request Validation - headers and body
-- Request Transformation - method, headers and body
-- Response Transformation - headers and body
-- Allow and block listing of endpoints
-- Circuit breakers
-- Enforced timeouts
-- URL rewrite and internal endpoints
-- Mock Responses (automatically configurable from the OpenAPI description)
+- Security
+    - All Tyk-supported client-gateway authentication methods including custom auth plugins
+    - Automatic configuration of authentication from the OpenAPI description
+    - Gateway-upstream mTLS
+    - CORS    
+
+- API-level (global) middleware including:
+    - Response caching
+    - Custom plugins for PreAuth, Auth, PostAuth, Post and Response hooks
+    - API-level rate limits
+    - Request transformation - headers
+    - Response transformation - headers
+    - Service discovery
+    - Internal API
+
+- Endpoint-level (per-path) middleware including:
+    - Request validation - headers and body (automatically configurable from the OpenAPI description)
+    - Request transformation - method, headers and body
+    - Response transformation - headers and body
+    - URL rewrite and internal endpoints
+    - Mock responses (automatically configurable from the OpenAPI description)
+    - Response caching
+    - Custom Go Post-Plugin
+    - Request size limit
+    - Virtual endpoint
+    - Allow and block listing
+    - Do-not-track
+    - Circuit breakers
+    - Enforced timeouts
+    - Ignore authentication
+
+- Observability
+    - Open Telemetry tracing
+    - Detailed log recording (include payload in the logs)
+    - Do-not-track endpoint
+
+- Governance
+    - API Versioning
 
 
-#### Implemented KV Store for API Definition Fields
-In this release, we have implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
+#### Enhanced KV storage of API Definition Fields
+Tyk is able to store configuration data from the API definition in KV systems, such as Vault and Consul, and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway. Previously this was limited to the Target URL and Listen Path but from 5.3.0 you are able to store any `string` type field from your API definition, unlocking the ability to store sensitive information in a centralised location. For full details check out the [documentation]({{< ref "tyk-configuration-reference/kv-store" >}}) of this powerful feature.
 
 
 #### Gateway and Component Upgrades
-We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
+We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
 
 ### Downloads
-- [docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
+- [Docker image to pull](https://hub.docker.com/layers/tykio/tyk-dashboard/vX.Y.Z/images/blabla)
 - <<Helm charts links>>
-- [source code tarball for oss projects]()
+- [source code tarball for OSS projects]()
 
 ### Changelog {#Changelog-v5.3.0}
 <!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
@@ -163,63 +184,44 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Per-API Rate Limit support in Tyk OAS API Definitions</summary>
+<summary>Additional features now supported when working with Tyk OAS APIs</summary>
 
-Tyk now supports API level rate limit in Tyk OAS API definition.
+The following features have been added in 5.3.0 to bring Tyk OAS to feature maturity:
+ - Detailed log recording (include payload in the logs)
+ - Enable Open Telemetry tracing
+ - Context variables available to middleware chain
+ - API-level header transforms (request and response)
+ - Endpoint-level cache
+ - Circuit breakers
+ - Track endpoint logs for inclusion in Dashboard aggregated data
+ - Do-not-track endpoint
+ - Enforced upstream timeouts
+ - Configure endpoint as Internal, not available externally
+ - URL rewrite
+ - Per-endpoint request size limit
+ - Request transformation - method, header
+ - Response transformation - header
+ - Custom domain certificates
+
 </details>
 </li>
 <li>
 <details>
-<summary>Custom domain certificates support in Tyk OAS API Definitions</summary>
+<summary>Enhanced KV storage for API Definition fields</summary>
 
-Tyk now supports custom domain certificates in Tyk OAS API definitions.
+We have implemented support for all `string` type fields in the Tyk OAS and Tyk Classic API Definitions to be stored in separate KV storage, including Hashicorp Consul and Vault.
 </details>
 </li>
 <li>
 <details>
-<summary>Request method transform middleware support in OAS UI</summary>
+<summary>Support for Redis v7.0.x</summary>
 
-Added support for the Request method transform middleware with Tyk OAS APIs.
+Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9. Subsequently, Tyk 5.3 supports Redis v7.0.x.
 </details>
 </li>
 <li>
 <details>
-<summary>URL rewrite middleware support</summary>
-
-Added support for URL Rewrite middleware with Tyk OAS APIs.
-</details>
-</li>
-<li>
-<details>
-<summary>Request size limit support</summary>
-
-Added request size limit support for Tyk OAS APIs.
-</details>
-</li>
-<li>
-<details>
-<summary>Per-endpoint response header transform middleware support</summary>
-
-Added support for modifying the response and request header middleware per-endpoint.
-</details>
-</li>
-<li>
-<details>
-<summary>Circuit Breaker Middleware support in OAS</summary>
-
-Implemented circuit breaker middleware for Tyk OAS APIs.
-</details>
-</li>
-<li>
-<details>
-<summary>OAS converter support for *allOf*/*anyOf*/*oneOf* keywords</summary>
-
-The OAS-to-UDG converter now seamlessly handles OAS documents that utilise the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OAS documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
-</details>
-</li>
-<li>
-<details>
-<summary>Clearer error messages for invalid variables (JSON Schema)</summary>
+<summary>Clearer error messages from GQL engine for invalid variables (JSON Schema)</summary>
 
 Some of the error messages generated by the GQL engine were unclear for users, especially relating to variable validation. The errors have been changed and are now much more clearer and helpful in cases where engine processing fails.
 </details>
@@ -228,7 +230,7 @@ Some of the error messages generated by the GQL engine were unclear for users, e
 <details>
 <summary>Upgraded GQL Engine's Go version to 1.19</summary>
 
-Upgraded Go version for GQL engine to [1.19](https://go.dev/doc/go1.19).
+Upgraded Go version for GraphQL engine to [1.19](https://go.dev/doc/go1.19).
 </details>
 </li>
 <li>
@@ -240,14 +242,14 @@ We've added OpenTelemetry semantic conventions for GraphQL spans. Spans will now
 </li>
 <li>
 <details>
-<summary>Added support for *detailed_tracing* in API Definitions for GQL APIs</summary>
+<summary>Added support for *detailed_tracing* to be configured via GQL API definitions</summary>
 
 GraphQL APIs can now use the `detailed_tracing` setting in an API definition. With that property set to `true` any call to a GraphQL API will create a span for each middleware involved in request processing. While it is set to `false`, only two spans encapsulating the entire request lifecycle will be generated. This setting helps to reduce the size of traces, which can get large for GraphQL APIs. Furthermore, this gives users an option to customise the level of tracing detail to suit their monitoring needs.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced trace generation for UDG with mixed data sources</summary>
+<summary>Enhanced OpenTelemetry trace generation for UDG with mixed data sources</summary>
 
 This release introduces an enhanced trace generation system for Universal Data Graph (UDG). It consolidates all spans from both Tyk-managed and external data source executions into a single trace when used together. Furthermore, when UDG solely utilises Tyk-managed data sources, trace management is simplified and operational visibility is improved.
 </details>
@@ -261,58 +263,51 @@ For GraphQL requests normalisation and validation has been disabled in the Graph
 </li>
 <li>
 <details>
-<summary>Added *introspection_config* to API Definition</summary>
+<summary>Added *introspection_config* to Tyk Classic API definition</summary>
 
 Added a new set of settings in the API definition called *introspection_config*. This enables users to have more control over introspection on a single GQL API level.
 </details>
 </li>
 <li>
 <details>
-<summary>Enhanced handling of arrays of objects in OpenAPI Documents</summary>
+<summary>Enhanced UDG's handling of arrays of objects in OpenAPI Documents</summary>
 
-The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handles OAS schemas with arrays of objects. This addition means users can now import more complex OAS documents and transform them into UDG configurations.
+The Tyk Dashboard API endpoint */api/data-graphs/data-sources/import* now handles OpenAPI schemas with arrays of objects. This addition means users can now import more complex OpenAPI documents and transform them into UDG configurations.
 </details>
 </li>
 <li>
 <details>
-<summary>Improved handling of unnamed object definitions in OpenAPI Documents</summary>
+<summary>OAS-to-UDG converter support for *allOf*/*anyOf*/*oneOf* keywords</summary>
 
-OAS converter can now create GraphQL types even if an object definition doesn’t have an explicit name.
+The OAS-to-UDG converter now seamlessly handles OpenAPI descriptions that utilise the *allOf*, *anyOf* and *oneOf* keywords, ensuring accurate and comprehensive conversion to a Tyk API definition. The feature expands the scope of OpenAPI documents that the converter can handle and allows our users to import REST API data sources defined in OAS in more complex cases.
+</details>
+</li>
+<li>
+<details>
+<summary>Improved UDG's handling of unnamed object definitions in OpenAPI descriptions</summary>
+
+The OAS-to-UDG converter can now create GraphQL types even if an object's definition doesn’t have an explicit name.
 </details>
 </li>
 <li>
 <details>
 <summary>Refined handling of arrays of objects in endpoint responses by OAS-to-UDG Converter</summary>
 
-The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI Specification (OAS) had no properties defined. This limitation resulted in unexpected behaviour and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
+The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behaviour and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process.
 </details>
 </li>
 <li>
 <details>
-<summary>OAS converter does not handle enums</summary>
+<summary>OAS-to-UDG converter support for enumerated types in OpenAPI descriptions</summary>
 
-Previously OAS-to-UDG converter had limitations in handling enums from OAS documents, leading to discrepancies and incomplete conversions. With the inclusion of enum support, the OAS converter now seamlessly processes enums defined in your OpenAPI Specifications, ensuring accurate and complete conversion to GraphQL schemas.
-</details>
-</li>
-<li>
-<details>
-<summary>Implement KV store for API Definition fields</summary>
-
-Implemented storage for all `string` type APIDefinition fields in separate KV storage, supporting environment variable, Tyk configuration file, Consul and Vault stores.
+Previously OAS-to-UDG converter had limitations in handling enums from OpenAPI descriptions, leading to discrepancies and incomplete conversions. With the inclusion of enum support, the OAS converter now seamlessly processes enums defined in your OpenAPI descriptions, ensuring accurate and complete conversion to GraphQL schemas.
 </details>
 </li>
 <li>
 <details>
 <summary>Expanded handling of HTTP Status Code ranges by OAS-to-GQL converter</summary>
 
-OAS-to-UDG converter can now handle HTTP status code ranges that are defined by the OAS specification. This means that code ranges defined as 1XX, 2XX, etc will be correctly converted by the tool.
-</details>
-</li>
-<li>
-<details>
-<summary>Support Redis v7.0.x</summary>
-
-Tyk 5.3 refactors Redis connection logic by using [storage v1.2.2](https://github.com/TykTechnologies/storage/releases/tag/v1.2.2), which integrates with [go-redis](https://github.com/redis/go-redis) v9. Subsequently, Tyk 5.3 supports Redis v7.0.x.
+OAS-to-UDG converter can now handle HTTP status code ranges that are defined by the OpenAPI Specification. This means that code ranges defined as 1XX, 2XX, etc will be correctly converted by the tool.
 </details>
 </li>
 </ul>
@@ -329,34 +324,30 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Remove `slug` from the Tyk OAS API Definition</summary>
-
-Removed the unnecessary ‘slug’ field from the OAS API Definition and OAS API Designer
-</details>
-</li>
-
-
-<li>
-<details>
 <summary>Set default MongoDB driver to mongo-go</summary>
 
 Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
 </details>
 </li>
-
-
 <li>
 <details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case Gateway is temporarily disconnected from MDCB</summary>
 
-Previously, when operating in a slave configuration, the Tyk Gateway fetched session expiry information from the master layer the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next API consumption attempt would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session fetching operation to time out, as it tried to communicate with the now-inaccessible master layer.
+Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
 
-<br>To mitigate this issue, the PR introduces a proactive fetching strategy. Now, the gateway fetches the session expiry information beforehand, while there is an active connection to MDCB. By doing so, it ensures that this data is already available locally in the event of an MDCB disconnection.
+<br>Now, the worker gateway fetches the session expiry information up front, while there is an active connection to MDCB. This ensures that this data is already available locally in the event of an MDCB disconnection.
 
-<br>This change significantly improves the API response time under MDCB disconnection scenarios. It eliminates the need for the Gateway to wait for a timeout when attempting to fetch session information from the master layer, thus avoiding the previous 30-second delay. This optimisation enhances the resilience and efficiency of Tyk Gateway in distributed environments.
+<br>This change significantly improves the API response time under MDCB disconnection scenarios by removing the need for the Gateway to wait for a timeout when attempting to fetch session information from the control plane, avoiding the previous 30-second delay. This optimisation enhances the resilience and efficiency of Tyk Gateway in distributed environments.
 </details>
 </li>
+<li>
+<details>
+<summary>Changes to the Tyk OAS API Definition</summary>
 
+We have made some changes to the Tyk OAS API Definition to provide a stable contract that will now be under breaking-change control for future patches and releases as Tyk OAS moves out of Early Access. Changes include the removal of the unnecessary ‘slug’ field and simplification of the custom plugin contract.
+
+</details>
+</li>
 </ul>
  
 #### Fixed
@@ -371,16 +362,16 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Enhanced Redis token management and Gateway efficiency</summary>
+<summary>Improved OAuth token management in Redis</summary>
 
 In this release, we fixed automated token trimming in Redis, ensuring efficient management of OAuth tokens by implementing a new hourly job within the Gateway and providing a manual trigger endpoint. 
 </details>
 </li>
 <li>
 <details>
-<summary>Tyk Gateway validates RFC3339 Date-Time Formats</summary>
+<summary>Tyk Gateway now validates RFC3339 Date-Time Formats</summary>
 
-Tyk Gateway now validates RFC3330 date-time formats with Tyk OAS validate request middleware.
+We fixed a bug in the Tyk OAS Validate Request middleware where we were not correctly validating date-time format schema, which could lead to invalid date-time values reaching the upstream services.
 </details>
 </li>
 <li>
@@ -392,7 +383,7 @@ Fixed an issue when using the Distributed Rate Limiter (DRL) where the Gateway d
 </li>
 <li>
 <details>
-<summary>Duplicate fields added by OAS-to-GQL translator</summary>
+<summary>Duplicate fields added by OAS-to-UDG translator</summary>
 
 Fixed an issue where the OAS-to-UDG converter was sometimes adding the 5.same field to an object type many times. This caused issues with the resulting GQL schema and made it non-compliant with GQL specification.
 </details>
@@ -406,9 +397,9 @@ Fixed an issue where the Gateway attempted to execute a query with GQL engine ve
 </li>
 <li>
 <details>
-<summary>Handling arrays of objects in endpoint responses by OAS/UDG converter</summary>
+<summary>Handling arrays of objects in endpoint responses by OAS-to-UDG converter</summary>
 
-The OAS/UDG converter now effectively handles array of objects within POST paths. Previously, there were instances where the converter failed to accurately interpret and represent these structures in the generated UDG configuration.
+The OAS-to-UDG converter now effectively handles array of objects within POST paths. Previously, there were instances where the converter failed to accurately interpret and represent these structures in the generated UDG configuration.
 </details>
 </li>
 <li>
@@ -420,14 +411,14 @@ An issue was identified where the encoding from the GQL upstream cache was causi
 </li>
 <li>
 <details>
-<summary>OAS Converter issue with "Json" Return Type</summary>
+<summary>OAS-to-UDG Converter issue with "json" Return Type</summary>
 
-OAS-to-UDG converter was unable to correctly process OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in OAS, it will get correctly transformed into a custom scalar in GQL schema.
+OAS-to-UDG converter was unable to correctly process Tyk OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in the OpenAPI description, it will get correctly transformed into a custom scalar in GQL schema.
 </details>
 </li>
 <li>
 <details>
-<summary>OAS Panic during API Edit with Virtual Endpoint middleware configured</summary>
+<summary>Panic during Tyk OAS API edit with Virtual Endpoint middleware configured</summary>
 
 Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
 </details>
@@ -450,7 +441,7 @@ Fixed an issue where the *Disable introspection* setting was not working correct
 <details>
 <summary>Handling of objects without properties in OAS-to-UDG converter</summary>
 
-The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI Specification (OAS) had no properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process
+The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process
 </details>
 </li>
 
@@ -510,7 +501,7 @@ If there were changes in any of Tyk’s API docs:
 - Has a link to the endpoint documentation being included?
 - Has the benefit of the new/updated endpoint been explained in the release highlights and changelog?
 -->
-- [OpenAPI Document]({{<ref "tyk-gateway-api/" >}})
+- [Tyk Gateway API]({{<ref "tyk-gateway-api/" >}})
 - [Postman Collection](https://www.postman.com/tyk-technologies/workspace/tyk-public-workspace/overview)
 
 ### FAQ
