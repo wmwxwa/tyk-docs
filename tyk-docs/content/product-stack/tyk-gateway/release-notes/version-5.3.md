@@ -57,7 +57,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 An illustrative example is shown below. -->
 | Gateway Version | Recommended Releases | Backwards Compatibility |
 |----    |---- |---- |
-| x.x LTS | MDCB v2.5     | MDCB v2.4.2 |
+| 5.3.0 | MDCB v2.5     | MDCB v2.4.2 |
 |         | Operator v0.17 | Operator v0.16 |
 |         | Sync v1.4.3   | Sync v1.4.3 |
 |         | Helm Chart (tyk-stack, tyk-oss, tyk-dashboard, tyk-gateway) v1.3.0 | Helm all versions |
