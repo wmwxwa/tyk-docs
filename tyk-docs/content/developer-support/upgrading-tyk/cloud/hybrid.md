@@ -180,7 +180,7 @@ See Tyk Guide for how to [Upgrade Control Planes]({{< ref "tyk-cloud/environment
     ```json
     {
       "file_list": [
-	      "CustomGoPlugin_v4.3.3_linux_amd64.so",
+        "CustomGoPlugin_v4.3.3_linux_amd64.so",
         "CustomGoPlugin_v5.1.0_linux_amd64.so"
       ],
       "custom_middleware": {

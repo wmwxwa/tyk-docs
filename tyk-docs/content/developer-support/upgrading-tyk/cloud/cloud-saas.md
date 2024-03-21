@@ -168,7 +168,7 @@ This section explains the process for upgrading your custom Go plugins on Tyk Cl
     ```json
     {
       "file_list": [
-	      "CustomGoPlugin_v4.3.3_linux_amd64.so",
+        "CustomGoPlugin_v4.3.3_linux_amd64.so",
         "CustomGoPlugin_v5.1.0_linux_amd64.so"
       ],
       "custom_middleware": {
