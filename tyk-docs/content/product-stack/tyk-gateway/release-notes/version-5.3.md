@@ -75,8 +75,7 @@ An example is given below for illustrative purposes only. Tested Versions and Co
 | Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
 | ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
 | [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
-| [MongoDB](https://www.mongodb.com/try/download/community)    | 4.4.x, 5.0.x and 6.0.x | 4.4.x, 5.0.x and 6.0.x | Used by Tyk Dashboard | 
-| [PostgreSQL](https://www.postgresql.org/download/)           | 11.x - 15.x LTS        | 11.x - 15.x            | Used by Tyk Dashboard | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
 | [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
 
 Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
@@ -156,6 +155,8 @@ From Tyk 5.3.0 we support the following features when using Tyk OAS APIs with Ty
 #### Enhanced KV storage of API Definition Fields
 Tyk is able to store configuration data from the API definition in KV systems, such as Vault and Consul, and then reference these values during configuration of the Tyk Gateway or APIs deployed on the Gateway. Previously this was limited to the Target URL and Listen Path but from 5.3.0 you are able to store any `string` type field from your API definition, unlocking the ability to store sensitive information in a centralised location. For full details check out the [documentation]({{< ref "tyk-configuration-reference/kv-store" >}}) of this powerful feature.
 
+#### Redis v7.x Compatibility
+We have upgraded redis driver [go-redis](https://github.com/redis/go-redis) to v9. Subsequently, Tyk 5.3 is compatible with Redis v7.x.
 
 #### Gateway and Component Upgrades
 We've raised the bar with significant upgrades to our Gateway and components. Leveraging the power and security of Go 1.21, upgrading Sarama to version 1.41.0 and enhancing the GQL engine with Go version 1.19, we ensure improved functionality and performance to support your evolving needs seamlessly.
@@ -324,13 +325,6 @@ Each change log item should be expandable. The first line summarises the changel
 <ul>
 <li>
 <details>
-<summary>Set default MongoDB driver to mongo-go</summary>
-
-Tyk uses `mongo-go` as the default MongoDB driver from v5.3. This provides support for MongoDB 4.4.x, 5.0.x, 6.0.x and 7.0.x. If you are using older MongoDB versions e.g. 3.x, please set MongoDB driver to `mgo`. [MongoDB supported versions]({{<ref "planning-for-production/database-settings/mongodb#supported-versions">}}) page provides details on how to configure MongoDB drivers in Tyk.
-</details>
-</li>
-<li>
-<details>
 <summary>Prefetch session expiry information from MDCB to reduce API call duration in case Gateway is temporarily disconnected from MDCB</summary>
 
 Previously, when operating in a worker configuration (in the data plane), the Tyk Gateway fetched session expiry information from the control plane the first time an API was accessed for a given organisation. This approach led to a significant issue: if the MDCB connection was lost, the next attempt to consume the API would incur a long response time. This delay, typically around 30 seconds, was caused by the Gateway waiting for the session-fetching operation to time out, as it tried to communicate with the now-inaccessible control plane.
@@ -442,6 +436,13 @@ Fixed an issue where the *Disable introspection* setting was not working correct
 <summary>Handling of objects without properties in OAS-to-UDG converter</summary>
 
 The OAS-to-UDG converter was unable to handle a document properly if an object within the OpenAPI description had no properties defined. This limitation resulted in unexpected behavior and errors during the conversion process. The tool will now handle such cases seamlessly, ensuring a smoother and more predictable conversion process
+</details>
+</li>
+<li>
+<details>
+<summary>Fixed memory leak issue in Tyk Gateway v5.2.4</summary>
+
+Addressed a memory leak issue in Tyk Gateway linked to a logger mutex change introduced in v5.2.4. Reverting these changes has improved connection management and enhanced system performance.
 </details>
 </li>
 
