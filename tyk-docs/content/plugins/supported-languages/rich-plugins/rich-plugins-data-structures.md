@@ -101,22 +101,18 @@ Contains the URL scheme, e.g. `http`, `https`.
 
 ### Object (coprocess_object.proto)
 
-The `Coprocess.Object` data structure data structure wraps a `Coprocess.MiniRequestObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
+The `Coprocess.Object` data structure wraps a `Coprocess.MiniRequestObject` and `Coprocess.ResponseObject` It contains additional fields that are useful for users that implement their own request dispatchers, like the middleware hook type and name.
 It also includes the session state object (`SessionState`), which holds information about the current key/user that's used for authentication.
 
-```{.copyWrapper}
+```protobuf
 message Object {
- HookType hook_type = 1;
-
- string hook_name = 2;
-
- MiniRequestObject request = 3;
-
- SessionState session = 4;
-
- map<string, string> metadata = 5;
-
- map<string, string> spec = 6;
+  HookType hook_type = 1;
+  string hook_name = 2;
+  MiniRequestObject request = 3;
+  SessionState session = 4;
+  map<string, string> metadata = 5;
+  map<string, string> spec = 6;
+  ResponseObject response = 7;
 }
 ```
 
@@ -139,6 +135,10 @@ Contains the metadata. This is a dynamic field.
 
 `spec`
 Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
+
+`response`
+Contains information populated from the upstream HTTP response data. See `ResponseObject` for more details.
+
 
 ### ReturnOverrides (coprocess_return_overrides.proto)
 
