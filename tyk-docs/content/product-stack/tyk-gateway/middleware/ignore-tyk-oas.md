@@ -21,18 +21,27 @@ The `ignoreAuthentication` object has the following configuration:
  - `ignoreCase`: if set to `true` then the path matching will be case insensitive
 
 For example:
-```.json {hl_lines=["47-50", "53-56"],linenos=true, linenostart=1}
+```.json {hl_lines=["65-69"],linenos=true, linenostart=1}
 {
-    "components": {},
     "info": {
         "title": "example-ignore-authentication",
         "version": "1.0.0"
     },
     "openapi": "3.0.3",
+    "servers": [
+        {
+            "url": "http://localhost:8181/example-ignore-authentication/"
+        }
+    ], 
+    "security": [
+        {
+            "authToken": []
+        }
+    ],     
     "paths": {
-        "/status/200": {
+        "/anything": {
             "get": {
-                "operationId": "status/200get",
+                "operationId": "anythingget",
                 "responses": {
                     "200": {
                         "description": ""
@@ -41,29 +50,46 @@ For example:
             }
         }
     },
+    "components": {
+        "securitySchemes": {
+            "authToken": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization"
+            }
+        }        
+    },    
     "x-tyk-api-gateway": {
         "info": {
             "name": "example-ignore-authentication",
             "state": {
-                "active": true
+                "active": true,
+                "internal": false
             }
         },
         "upstream": {
             "url": "http://httpbin.org/"
         },
         "server": {
+            "authentication": {
+                "enabled": true,
+                "securitySchemes": {
+                    "authToken": {
+                        "enabled": true
+                    }
+                }
+            },
             "listenPath": {
-                "value": "/example-ignore-authentication/",
-                "strip": true
-            }
+                "strip": true,
+                "value": "/example-ignore-authentication/"
+            }        
         },
         "middleware": {
             "operations": {
-                "status/200get": {
+                "anythingget": {
                     "ignoreAuthentication": {
-                        "enabled": true,
-                        "ignoreCase": false
-                    }                
+                        "enabled": true
+                    }
                 }
             }
         }
@@ -71,12 +97,38 @@ For example:
 }
 ```
 
-In this example the ignore authentication middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - The allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
+In this example the ignore authentication middleware has been configured for requests to the `GET /anything` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
+ - the middleware has been configured to be case sensitive, so calls to `GET /Anything` will not skip authentication
 
-The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the API-level response header transform.
+The configuration above is a complete and valid Tyk OAS API Definition that you can import into Tyk to try out the Ignore Authentication middleware.
 
 ## Configuring the middleware in the API Designer
-Adding Ignore Authentication to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the steps taken in this short video:
 
- < placeholder for video >
+Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
+
+#### Step 1: Add an endpoint for the path
+From the **API Designer** add an endpoint that matches the path you want to rewrite.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-add-endpoint.png" alt="Adding an endpoint to an API using the Tyk OAS API Designer" >}}
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
+
+#### Step 2: Select the Ignore Authentication middleware
+Select **ADD MIDDLEWARE** and choose the **Ignore Authentication** middleware from the *Add Middleware* screen.
+
+{{< img src="/img/dashboard/api-designer/tyk-oas-ignore.png" alt="Adding the Ignore Authentication middleware" >}}
+
+##### Step 2: Optionally configure case-insensitivity
+ If you want to disable case-sensitivity for the path that you wish to skip authentication, then you must select **EDIT** on the Ignore Authentication icon.
+
+ {{< img src="/img/dashboard/api-designer/tyk-oas-ignore-added.png" alt="Ignore Authentication middleware added to endpoint - click through to edit the config" >}}
+
+ This takes you to the middleware configuration screen where you can alter the case sensitivity setting.
+ {{< img src="/img/dashboard/api-designer/tyk-oas-ignore-config.png" alt="Configuring case sensitivity for the path for which to ignore authentication" >}}
+
+ Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
+
+ ##### Step 3: Save the API
+ Select **SAVE API** to apply the changes to your API.

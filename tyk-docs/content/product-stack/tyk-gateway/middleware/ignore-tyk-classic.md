@@ -48,19 +48,19 @@ For example:
 }
 ```
 
-In this example the ignore authentication middleware has been configured for HTTP `GET` requests to the `/status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
- - The allow list has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
+In this example the ignore authentication middleware has been configured for requests to the `GET /status/200` endpoint. Any such calls will skip the authentication step in the Tyk Gateway's processing chain.
+ - the middleware has been configured to be case sensitive, so calls to `GET /Status/200` will not skip authentication
 
 ## Configuring the middleware in the API Designer
 You can use the API Designer in the Tyk Dashboard to configure the Ignore Authentication middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
-From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Ignore** plugin.
+From the **Endpoint Designer** add an endpoint that matches the path for which you want to ignore authentication. Select the **Ignore** plugin.
 
 #### Step 2: Configure the middleware
-Once you have selected the Ignore middleware for the endpoint, the only additional feature that you need to configure is whether to make the middleware case insensitive by selecting **Ignore Case**.
+Once you have selected the Ignore middleware for the endpoint, the only additional feature that you need to configure is whether to make it case-insensitive by selecting **Ignore Case**.
 
 {{< img src="/img/2.10/ignore.png" alt="Ignore options" >}}
 
 #### Step 3: Save the API
-Use the *save* or *create* buttons to save the changes and make the allow list middleware active.
+Use the *save* or *create* buttons to save the changes and activate the middleware.

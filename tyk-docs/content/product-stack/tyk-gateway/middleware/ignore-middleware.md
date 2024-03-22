@@ -16,8 +16,8 @@ When the Ignore Authentication middleware is configured for a specific endpoint,
 
 It is important to exercise caution when using the Ignore Authentication middleware, as it effectively disables Tyk's security features for the ignored paths. Only endpoints that are designed to be public or have independent security mechanisms should be configured to bypass authentication in this way. When combining Ignore Authentication with response transformations be careful not to inadvertently expose sensitive data or rely on authentication or session data that is not present.
 
-#### Case sensitivity
-By default the ignore authentication middleware is case-sensitive. If, for example, you have defined the endpoint `/getuser` in your API definition then only calls to `/getuser` will ignore the authentication step: calls to `getUser` or `GetUser` will require authentication. You can configure the middleware to be case insensitive at the endpoint level.
+### Case sensitivity
+By default the ignore authentication middleware is case-sensitive. If, for example, you have defined the endpoint `GET /ping` in your API definition then only calls to `GET /ping` will ignore the authentication step: calls to `GET /Ping` or `GET /PING` will require authentication. You can configure the middleware to be case insensitive at the endpoint level.
 
 You can also set case sensitivity for the entire Tyk Gateway in its [configuration file]({{< ref "tyk-oss-gateway/configuration#ignore_endpoint_case" >}}) `tyk.conf`. If case insensitivity is configured at the gateway level, this will override the endpoint-level setting.
 
