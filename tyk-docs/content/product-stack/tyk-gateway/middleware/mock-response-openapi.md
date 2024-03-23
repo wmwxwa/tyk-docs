@@ -78,7 +78,7 @@ In this extract from an OpenAPI description, a single `example` has been declare
 ```
 In this extract, the API developer also indicates that a call to `GET /get` could return `HTTP 200` but here provides two example body values `Jeff` and `Laurentiu`, again in plain text format.
 
-The `exampleNames` for these two values have been configured as `first-example` and `second-example` and can be used to [invoke the desired response](product-stack/tyk-gateway/middleware/mock-response-tyk-oas#working-with-multiple-mock-responses-for-an-endpoint) from a mocked endpoint.
+The `exampleNames` for these two values have been configured as `first-example` and `second-example` and can be used to [invoke the desired response]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-oas#working-with-multiple-mock-responses-for-an-endpoint" >}}) from a mocked endpoint.
 
 ### Using `schema` to generate a mock response
 

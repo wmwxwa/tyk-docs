@@ -13,7 +13,7 @@ The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/t
 
 The Mock Response middleware has two modes of operation:
 - in the [manual mode](#manually-configuring-the-middleware-in-the-tyk-oas-api-definition), you can directly configure a response within the middleware in the Tyk extension (`x-tyk-api-gateway`) within the API definition. Tyk will give this response to all valid requests to the endpoint
-- in the [automatic mode](#automatically-configuring-the-middleware-from-the-openapi-document), Tyk will parse the [examples and schema](product-stack/tyk-gateway/middleware/mock-response-openapi) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint)
+- in the [automatic mode](#automatically-configuring-the-middleware-from-the-openapi-document), Tyk will parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint)
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}) page.
 
@@ -366,12 +366,13 @@ From the **API Designer** add an endpoint that matches the path you want to rewr
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
 ##### Step 2: Select the Mock Response middleware
-Select **ADD MIDDLEWARE** and choose the **Mock Response** middleware from the *Add Middleware* screen.
+Select **ADD MIDDLEWARE** and choose **Mock Response** middleware from the *Add Middleware* screen.
+``
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock.png" alt="Adding the Mock Response middleware" >}}
 
 ##### Step 3: Configure the Tyk Classic mock response
-Select the **Tyk Classic mock response**
+Select **Tyk Classic mock response**
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock-added.png" alt="Mock Response middleware added to endpoint - select the configuration method you require" >}}
 
@@ -393,7 +394,8 @@ Select **SAVE API** to apply the changes to your API.
 
 ##### Step 1: Import OpenAPI Document containing sample responses or schema
 Import your OpenAPI Document (from file, URL or by pasting the JSON into the text editor) configuring the **upstream URL** and **listen path**, and selecting **Auto-generate middleware to deliver mock responses**.
-<br>Selecting this option will cause Tyk Dashboard to check for sample responses or schema in the OpenAPI description and will automatically add the Mock Response middleware for any endpoints that have suitable data.
+
+Selecting this option will cause Tyk Dashboard to check for sample responses or schema in the OpenAPI description and will automatically add the Mock Response middleware for any endpoints that have suitable data.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock-auto-options.png" alt="Configuring the OpenAPI document import to create Mock Responses" >}}
 
@@ -414,7 +416,7 @@ Here you can edit the mock response:
 - define headers to be provided with the response (note that these must be defined as a JSON schema)
 - add a schema
 
-You can create and edit mock responses for multiple HTTP status codes by choosing a different state code from the drop down.
+You can create and edit mock responses for multiple HTTP status codes by choosing a different status code from the drop down.
 
 Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration.
 
