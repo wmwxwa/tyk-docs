@@ -12,8 +12,8 @@ When working with Tyk OAS APIs, this middleware is executed at the end of the re
 The middleware is configured in the [Tyk OAS API Definition]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc#operation" >}}). You can do this via the Tyk Dashboard API or in the API Designer.
 
 The Mock Response middleware has two modes of operation:
-- in the [manual mode](#manually-configuring-the-middleware-in-the-tyk-oas-api-definition), you can directly configure a response within the middleware in the Tyk extension (`x-tyk-api-gateway`) within the API definition. Tyk will give this response to all valid requests to the endpoint
-- in the [automatic mode](#automatically-configuring-the-middleware-from-the-openapi-document), Tyk will parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint)
+- with [manual mode](#manually-configuring-the-middleware-in-the-tyk-oas-api-definition), you can directly configure a response within the middleware in the Tyk extension (`x-tyk-api-gateway`) within the API definition. Tyk will give this response to all valid requests to the endpoint
+- with [automatic mode](#automatically-configuring-the-middleware-from-the-openapi-document), Tyk will parse the [examples and schema]({{< ref "product-stack/tyk-gateway/middleware/mock-response-openapi" >}}) in the OpenAPI description and use this to generate responses automatically depending on the [content of the request](#working-with-multiple-mock-responses-for-an-endpoint)
 
 If you're using the legacy Tyk Classic APIs, then check out the [Tyk Classic]({{< ref "product-stack/tyk-gateway/middleware/mock-response-tyk-classic" >}}) page.
 
