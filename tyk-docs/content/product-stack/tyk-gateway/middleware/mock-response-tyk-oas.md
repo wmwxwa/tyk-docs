@@ -367,7 +367,6 @@ From the **API Designer** add an endpoint that matches the path you want to rewr
 
 ##### Step 2: Select the Mock Response middleware
 Select **ADD MIDDLEWARE** and choose **Mock Response** middleware from the *Add Middleware* screen.
-``
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-mock.png" alt="Adding the Mock Response middleware" >}}
 
