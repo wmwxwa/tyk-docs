@@ -137,7 +137,7 @@ Contains the metadata. This is a dynamic field.
 Contains information about API definition, including `APIID`, `OrgID` and `config_data`.
 
 `response`
-Contains information populated from the upstream HTTP response data. See `ResponseObject` for more details.
+Contains information populated from the upstream HTTP response data, for response hooks. See [ResponseObject](#responseobject-coprocess_response_objectproto) for more details. All the field contents can be modified.
 
 
 ### ReturnOverrides (coprocess_return_overrides.proto)
@@ -270,10 +270,11 @@ Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basi
 
 ### ResponseObject (coprocess_response_object.proto)
 
-The `ResponseObject` is used by response hooks, the fields are populated with the upstream HTTP response data.
+The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data.
+
 All the field contents can be modified.
 
-```{.copyWrapper}
+```protobuf
 syntax = "proto3";
 
 package coprocess;
