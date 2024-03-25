@@ -272,7 +272,7 @@ Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basi
 
 ### BasicAuthData (coprocess_session_state.proto) {#basic-auth-data}
 
-The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is used within a [SessionState](#sessionstate-session_stateproto) message.
+The `BasicAuthData` contains a hashed password and the name of the hashing algorithm used. This is represented by the `basic_auth_data` attribute in [SessionState](#sessionstate-session_stateproto) message.
 
 ```yaml
 "basicAuthData": {
