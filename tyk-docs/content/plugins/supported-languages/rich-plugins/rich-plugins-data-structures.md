@@ -270,9 +270,7 @@ Overrides the global session lifetime, see [Physical Token Expiry]({{< ref "basi
 
 ### ResponseObject (coprocess_response_object.proto)
 
-The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data.
-
-All the field contents can be modified.
+The `ResponseObject` exists within an [object](#object-coprocess_objectproto) for response hooks. The fields are populated with the upstream HTTP response data. All the field contents can be modified.
 
 ```protobuf
 syntax = "proto3";
