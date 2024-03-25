@@ -329,4 +329,4 @@ The `BasicAuthData` contains a hashed password and the name of the hashing algor
 A hashed password.
 
 `hash`
-Name of the hashing algorithm used to hash the password.
+Name of the hashing algorithm used to hash the password, e.g. *bcrypt*, *Argon2*.
