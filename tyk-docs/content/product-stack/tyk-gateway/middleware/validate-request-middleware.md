@@ -13,6 +13,7 @@ Requests to your upstream services should meet the contract that you have define
 Request validation enables cleaner backend APIs, better standardisation across consumers, easier API evolution and reduced failure risk leading to higher end-to-end reliability.
 
 ## When to use the Request Validation middleware
+
 #### Improving security of upstream services
 Validating incoming requests against a defined schema protects services from unintended consequences arising from bad input, such as SQL injection or buffer overflow errors, or other unintended failures caused by missing parameters or invalid data types. Offloading this security check to the API Gateway provides an early line of defence as potentially bad requests are not proxied to your upstream services.
 
@@ -23,6 +24,7 @@ You can ensure that client requests adhere to a defined contract specifying mand
 Validation goes hand-in-hand with request [header]({{< ref "transform-traffic/request-headers" >}}) and [body]({{< ref "transform-traffic/request-body" >}}) transformation by ensuring that a request complies with the expected schema prior to transformation. For example, you could validate that a date parameter is present, then transform it into a different date format as required by your upstream API dynamically on each request.
 
 ## How request validation works
+
 The incoming request is compared with a defined schema, which is a structured description of the expected format for requests to the endpoint. This request schema defines the required and optional elements such as headers, path/query parameters, payloads and their data types. It acts as a contract for clients.
 
 If the incoming request does not match the schema, it will be rejected with an `HTTP 422 Unprocessable Entity` error. This error code can be customised if required.

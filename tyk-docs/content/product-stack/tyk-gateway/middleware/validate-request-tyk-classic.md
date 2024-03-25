@@ -16,16 +16,17 @@ This middleware is configured in the Tyk Classic API Definition. You can do this
 If you're using the newer Tyk OAS APIs, then check out the [Tyk OAS]({{< ref "product-stack/tyk-gateway/middleware/validate-request-tyk-oas" >}}) page.
 
 ## Configuring the middleware in the Tyk Classic API Definition
+
 To enable the middleware you must add a new `validate_json` object to the `extended_paths` section of your API definition.
 
 The `validate_json` object has the following configuration:
- - `path`: the path to match on
- - `method`: this method to match on
- - `schema`: the JSON schema against which the request body will be compared
- - `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
+- `path`: the path to match on
+- `method`: this method to match on
+- `schema`: the [JSON schema](https://json-schema.org/understanding-json-schema/basics) against which the request body will be compared
+- `error_response_code`: the HTTP status code that will be returned if validation fails (defaults to `422 Unprocessable Entity`)
 
 For example:
-```.json  {linenos=true, linenostart=1}
+```json  {linenos=true, linenostart=1}
 {
     "extended_paths": {
         "validate_json": [
@@ -34,7 +35,6 @@ For example:
                 "path": "/register",
                 "method": "POST",
                 "schema": {
-                    "$schema": "http://json-schema.org/draft-04/schema#",
                     "type": "object",
                     "properties": {
                         "firstname": {
@@ -45,27 +45,28 @@ For example:
                             "type": "string",
                             "description": "The person's last name"
                         }
-                    },
-                    "error_response_code": 422
-                }
+                    }
+                },
+                "error_response_code": 422
             }
         ]
     }
 }
 ```
 
-In this example the Validate JSON middleware has been configured for HTTP `POST` requests to the `/register` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
+In this example the Validate JSON middleware has been configured for requests to the `POST /register` endpoint. For any call made to this endpoint, Tyk will compare the request body with the schema and, if it does not match, the request will be rejected with the error code `HTTP 422 Unprocessable Entity`.
 
 {{< note success >}}
 
 **Note**  
 
-JSON Schema `draft-04` is required. If you don't specify a schema, `draft-04` is used. Using another version will return an `unsupported schema error, unable to validate` error.
+The Validate JSON middleware supports JSON Schema `draft-04`. Using another version will return an `unsupported schema error, unable to validate` error in the Tyk Gateway logs.
 
 {{< /note >}}
 
 ## Configuring the middleware in the API Designer
-You can use the API Designer in the Tyk Dashboard to configure the internal endpoint middleware for your Tyk Classic API by following these steps.
+
+You can use the API Designer in the Tyk Dashboard to configure the request validation middleware for your Tyk Classic API by following these steps.
 
 #### Step 1: Add an endpoint for the path and select the plugin
 From the **Endpoint Designer** add an endpoint that matches the path for which you want to allow access. Select the **Validate JSON** plugin.
@@ -75,7 +76,7 @@ From the **Endpoint Designer** add an endpoint that matches the path for which y
 #### Step 2: Configure the middleware
 Once you have selected the request validation middleware for the endpoint, you can select an error code from the drop-down list (if you don't want to use the default `422 Unprocessable Entity`) and enter your JSON schema in the editor.
 
-{{< img src="/img/dashboard/system-management/validate-json-schema.png" alt="Validate JSON Schema" >}}
+{{< img src="/img/dashboard/endpoint-designer/validate-json-schema.png" alt="Adding schema to the Validate JSON middleware" >}}
 
 #### Step 3: Save the API
 Use the *save* or *create* buttons to save the changes and activate the Validate JSON middleware.
