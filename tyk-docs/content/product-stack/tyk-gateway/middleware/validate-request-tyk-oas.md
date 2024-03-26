@@ -17,7 +17,7 @@ The OpenAPI Specification supports the definition of a [schema](https://learn.op
 
 Tyk's request validation middleware automatically parses the schema for the request in the OpenAPI description part of the Tyk OAS API Definition and uses this to compare against the incoming request.
 
-OpenAPI schema can reference other schemas defined elsewhere letting you write complex validations very efficiently since you don’t need to re-define the validation for a particular object every time you wish to refer to it. At this time Tyk only supports local references: to schema within the same API Definition.
+An OpenAPI schema can reference other schemas defined elsewhere, letting you write complex validations very efficiently since you don’t need to re-define the validation for a particular object every time you wish to refer to it. Tyk only supports local references to schemas (within the same OpenAPI document).
 
 As explained in the OpenAPI [documentation](https://learn.openapis.org/specification/parameters.html), the structure of an API request is described by two components:
 - parameters (headers, query parameters, path parameters)
