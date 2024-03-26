@@ -82,7 +82,7 @@ Given the potential time difference between your upgrade and the release of this
 
 ### Deprecations
 <!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
-In 5.3.0, we have simplified the configuration of response transform middleware. We encourage users to embrace the ‘global_headers’ mechanism as the ‘response_processors.header_injector’ is now an optional setting and will be removed in a future release.
+In 5.3.0, we have simplified the configuration of response transform middleware. We encourage users to embrace the `global_headers` mechanism as the `response_processors.header_injector` is now an optional setting and will be removed in a future release.
 
 <!-- Optional section!
 Used to share and notify users about our plan to deprecate features, configs etc. 
