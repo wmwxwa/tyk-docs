@@ -43,7 +43,7 @@ The request validation middleware does not require configuration when working wi
 
 ## Enabling the request validation middleware
 
-When you create a Tyk OAS API by importing your OpenAPI description, you can instruct Tyk to enable request validation [automatically](#automatically-enabling-the-request-validation-middleware) for all endpoints with defined schemas. If you are creating your API without import, or if you only want to enable request validation for some endpoints, you can [manually enable](#manually-enabling-athe-request-validation-middleware) the middleware in the Tyk OAS API definition.
+When you create a Tyk OAS API by importing your OpenAPI description, you can instruct Tyk to enable request validation [automatically](#automatically-enabling-the-request-validation-middleware) for all endpoints with defined schemas. If you are creating your API without import, or if you only want to enable request validation for some endpoints, you can [manually enable](#manually-enabling-the-request-validation-middleware) the middleware in the Tyk OAS API definition.
 
 ### Automatically enabling the request validation middleware
 
