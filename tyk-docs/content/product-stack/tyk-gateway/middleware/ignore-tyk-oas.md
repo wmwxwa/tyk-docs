@@ -106,8 +106,8 @@ The configuration above is a complete and valid Tyk OAS API Definition that you 
 
 Adding and configuring the Ignore Authentication middleware to your API endpoints is easy when using the API Designer in the Tyk Dashboard, simply follow the following steps:
 
-#### Step 1: Add an endpoint for the path
-From the **API Designer** add an endpoint that matches the path you want to rewrite.
+##### Step 1: Add an endpoint
+From the **API Designer** add an endpoint to which you want to apply the middleware.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-endpoints.png" alt="Tyk OAS API Designer showing no endpoints created" >}}
 
@@ -115,7 +115,7 @@ From the **API Designer** add an endpoint that matches the path you want to rewr
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-no-middleware.png" alt="Tyk OAS API Designer showing no middleware enabled on endpoint" >}}
 
-#### Step 2: Select the Ignore Authentication middleware
+##### Step 2: Select the Ignore Authentication middleware
 Select **ADD MIDDLEWARE** and choose the **Ignore Authentication** middleware from the *Add Middleware* screen.
 
 {{< img src="/img/dashboard/api-designer/tyk-oas-ignore.png" alt="Adding the Ignore Authentication middleware" >}}
@@ -132,4 +132,5 @@ Select **UPDATE MIDDLEWARE** to apply the change to the middleware configuration
 
 ##### Step 4: Save the API
 Select **SAVE API** to apply the changes to your API.
+
  
