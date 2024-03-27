@@ -18,7 +18,7 @@ The OpenAPI Specification (OAS) is a ‘vendor neutral’ open standard specific
 
 **Warning**
 
-In Tyk Gateway release 5.3.0, Tyk OAS APIs gained feature parity with Tyk Classic APIs. Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions of Tyk Gateway and doing so could provoke unpredictable behaviour including potential crashes. Subsequently, it is not possible to rollback to previous versions after commiting to Tyk OAS 5.3.0 OAS APIs. For further details please refer to release notes for [Tyk Gateway 5.3.0]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}).   
+In Tyk Gateway release `v5.3.0`, Tyk OAS APIs gained feature parity with Tyk Classic APIs. Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions of Tyk Gateway and doing so could provoke unpredictable behaviour including potential crashes. Subsequently, it is not possible to rollback to previous versions after commiting to Tyk OAS 5.3.0 OAS APIs. For further details please refer to the [release notes]({{< ref "product-stack/tyk-gateway/release-notes/overview" >}}) for Tyk Gateway `v5.3.0`.
 
 {{< /warning >}}
 
