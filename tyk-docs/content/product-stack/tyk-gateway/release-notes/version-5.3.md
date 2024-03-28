@@ -412,11 +412,7 @@ OAS-to-UDG converter was unable to correctly process Tyk OAS API definitions whe
 </li>
 <li>
 <details>
-<<<<<<< HEAD
 <summary>Gateway Panic during API Edit with Virtual Endpoint</summary>
-=======
-<summary>Panic during Tyk OAS API edit with Virtual Endpoint middleware configured</summary>
->>>>>>> origin/release-5.3-gateway-rn
 
 Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
 </details>
