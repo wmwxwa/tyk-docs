@@ -419,6 +419,13 @@ An issue was identified where the encoding from the GQL upstream cache was causi
 </li>
 <li>
 <details>
+<summary>Gateway Panic During API Edit with Virtual Endpoint</summary>
+
+Fixed an issue where the Gateway could panic while updating a Tyk OAS API with the Virtual Endpoint middleware configured.
+</details>
+</li>
+<li>
+<details>
 <summary>OAS Converter issue with "Json" Return Type</summary>
 
 OAS-to-UDG converter was unable to correctly process OAS API definitions where "json" was used as one of enum values. This issue is now fixed and whenever "json" is used as one of enums in OAS, it will get correctly transformed into a custom scalar in GQL schema.
