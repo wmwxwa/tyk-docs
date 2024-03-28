@@ -345,7 +345,7 @@ Previously, when operating in a worker configuration (in the data plane), the Ty
 <details>
 <summary>Changes to the Tyk OAS API Definition</summary>
 
-We have made some changes to the Tyk OAS API Definition to provide a stable contract that will now be under breaking-change control for future patches and releases as Tyk OAS moves out of Early Access. Changes include the removal of the unnecessary ‘slug’ field and simplification of the custom plugin contract.
+We have made some changes to the Tyk OAS API Definition to provide a stable contract that will now be under breaking-change control for future patches and releases as Tyk OAS moves out of Early Access. Changes include the removal of the unnecessary `slug` field and simplification of the custom plugin contract.
 
 </details>
 </li>
@@ -466,7 +466,15 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
+</details>
+</li>
+<li>
+<details>
+<summary>High priority CVEs fixed</summary>
 
+Fixed the following high priority CVEs identified in the Tyk Gateway, providing increased protection against security vulnerabilities:
+- [CVE-2023-39325](https://nvd.nist.gov/vuln/detail/CVE-2023-39325)
+- [CVE-2023-45283](https://nvd.nist.gov/vuln/detail/CVE-2023-45283)
 <!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 
