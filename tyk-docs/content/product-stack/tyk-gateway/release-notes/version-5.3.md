@@ -466,6 +466,7 @@ For agreed CVE security fixes, provide a link to the corresponding entry on the 
 - Fixed the following CVEs:
     - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
 -->
+
 </details>
 </li>
 <li>
