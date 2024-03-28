@@ -35,6 +35,11 @@ Tyk OAS APIs using the 5.3.0 API definition may not work with pre-5.3.0 versions
 
 Users are strongly advised to follow the recommended [upgrade instructions](#upgrading-tyk) provided by Tyk before applying any updates.
 
+##### Python plugin support
+
+Starting from Tyk Gateway version v5.3.0, Python is no longer bundled with the official Tyk Gateway Docker image to reduce exposure to security vulnerabilities in the Python libraries.
+
+Whilst the Gateway still supports Python plugins, you must [extend the image]({{< ref "plugins/supported-languages/rich-plugins/python/python#install-the-python-development-packages" >}}) to add the language support.
 <!-- The following "Changed error log messages" section is Optional!
 Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
 <!-- #### Changed error log messages
