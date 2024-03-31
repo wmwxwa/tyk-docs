@@ -36,12 +36,6 @@ We'll show you how to:
 - [Use versioning with Tyk OAS APIs]({{< ref "/getting-started/using-oas-definitions/versioning-an-oas-api" >}})
 - [Export a Tyk OAS API]({{< ref "/getting-started/using-oas-definitions/export-an-oas-api" >}})
 
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "/frequently-asked-questions/using-early-access-features" >}}) and some Tyk features are not yet supported. We are working towards parity with the Tyk Classic API so that you will be able to use this exciting new feature for all use cases. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference" >}}). 
-{{< /note >}}
-
 ### Schemas
 
 We have a schema that will allow you to use a 3rd party editor and IDEs when creating a Tyk OAS API Definition. It is available from our [Tyk Schemas GitHub repo](https://raw.githubusercontent.com/TykTechnologies/tyk-schemas/main/JSON/draft-04/schema_TykOasApiDef_3.0.x.json).
