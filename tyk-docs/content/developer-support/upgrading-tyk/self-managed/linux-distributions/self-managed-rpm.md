@@ -246,6 +246,8 @@ yum history rollback <ID>
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
 
+## Upgrade Guide Video
+
 Please refer to our [video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) for further supporting with upgrading Tyk Self-Managed (RPM).
 
 <div>
