@@ -3900,6 +3900,10 @@ menu:
       path: /upgrading-tyk
       category: Page
       show: True
+    - title: "Backup APIs and Policies"
+      path: /developer-support/backups/backup-apis-and-policies
+      category: Page
+      show: True
     - title: "Latest Tyk Releases"
       path: /developer-support/tyk-release-summary/overview
       category: Page
