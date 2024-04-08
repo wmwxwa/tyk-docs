@@ -11,7 +11,7 @@ weight: 2
 ---
 ## Support Lifetime
 <!-- Required. replace X.Y with this release and set the correct quarter of the year -->
-Please add statement explaining when 5.0.11 is supported until
+Please add statement explaining when 5 LTS is supported until
 
 ---
 
