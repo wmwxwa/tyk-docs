@@ -40,7 +40,7 @@ Version compatibility with other components in the Tyk stack. This takes the for
 
 3rd party dependencies and tools -->
 
-#### 3rd Party Dependencies & Tools
+#### 3rd Party Dependencies & Tools (Please verify and check for 5.0.11 LTS)
 <!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
 
 Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
@@ -63,6 +63,7 @@ Used to share and notify users about our plan to deprecate features, configs etc
 Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
 <!-- ##### Future deprecations
 -->
+There are no deprecations in this release.
 
 ### Upgrade instructions
 If you are upgrading to 5.0.11, please follow the detailed [upgrade instructions](#upgrading-tyk).
@@ -74,9 +75,9 @@ For a comprehensive list of changes, please refer to the detailed [changelog]({{
 -->
 
 ### Downloads
-- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.0.11)
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-dashboard/tags?page=&page_size=&ordering=&name=v5.0.11)
   - ```bash
-    docker pull tykio/tyk-gateway:v5.0.11
+    docker pull tykio/tyk-dashboard:v5.0.11
     ``` 
 - Helm charts
   - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
