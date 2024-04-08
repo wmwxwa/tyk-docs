@@ -1,6 +1,6 @@
 ---
 title: Tyk Dashboard v5.0
-tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10"]
+tags: ["release notes", "Tyk Dashboard", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11"]
 weight: 2
 ---
 
@@ -8,6 +8,138 @@ weight: 2
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
 
+---
+## Support Lifetime
+<!-- Required. replace X.Y with this release and set the correct quarter of the year -->
+Please add statement explaining when 5.0.11 is supported until
+
+---
+
+## 5.0.11 Release Notes
+
+### Release Date N April 2024
+
+### Breaking Changes
+<!-- Required. Use the following statement if there are no breaking changes, or explain if there are -->
+**Attention: Please read this section carefully**
+
+<!-- The following "Changed error log messages" section is Optional!
+Instructions: We should mention in the changelog section ALL changes in our application log messages. In case we made such changes, this section should also be added, to make sure the users don't miss this notice among other changelog lines. -->
+<!-- #### Changed error log messages
+Important for users who monitor Tyk components using the application logs (i.e. Tyk Gateway log, Tyk Dashboard log etc.).
+We try to avoid making changes to our log messages, especially at error and critical levels. However, sometimes it's necessary. Please find the list of changes made to the application log in this release: -->
+
+<!-- The following "|Planned Breaking Changes" section is optional!
+Announce future scheduled breaking changes, e.g. Go version updates, DB driver updates etc. -->
+<!-- #### Planned Breaking Changes -->
+
+### Dependencies
+<!--Required. Use this section to announce the following types of dependencies compatible with the release:
+
+Version compatibility with other components in the Tyk stack. This takes the form of a compatibility matrix and is only required for Gateway and Portal.
+
+3rd party dependencies and tools -->
+
+#### 3rd Party Dependencies & Tools
+<!-- Required. Third-party dependencies encompass tools (GoLang, Helm etc.), databases (PostgreSQL, MongoDB etc.) and external software libraries. This section should be a table that presents the third-party dependencies and tools compatible with the release. Compatible is used in the sense of those versions tested with the releases. Such information assists customers considering upgrading to a specific release.
+
+Additionally, a disclaimer statement was added below the table, for customers to check that the third-party dependency they decide to install remains in support.
+
+An example is given below for illustrative purposes only. Tested Versions and Compatible Versions information will require discussion with relevant squads and QA. -->
+
+| Third Party Dependency                                       | Tested Versions        | Compatible Versions    | Comments | 
+| ------------------------------------------------------------ | ---------------------- | ---------------------- | -------- | 
+| [Go](https://go.dev/dl/)                                     | 1.19 (GQL), 1.21 (GW)  | 1.19 (GQL), 1.21 (GW)  | [Go plugins]({{< ref "plugins/supported-languages/golang" >}}) must be built using Go 1.21 | 
+| [Redis](https://redis.io/download/)  | 6.2.x, 7.x  | 6.2.x, 7.x  | Used by Tyk Gateway | 
+| [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3)| v3.0.x                 | v3.0.x                 | Supported by [Tyk OAS]({{< ref "tyk-apis/tyk-gateway-api/oas/x-tyk-oas-doc" >}}) |
+
+Given the potential time difference between your upgrade and the release of this version, we recommend users verify the ongoing support of third-party dependencies they install, as their status may have changed since the release.
+
+### Deprecations
+<!-- Required. Use the following statement if there are no deprecations, or explain if there are -->
+
+<!-- Optional section!
+Used to share and notify users about our plan to deprecate features, configs etc. 
+Once you put an item in this section, we must keep this item listed in all the following releases till the deprecation happens. -->
+<!-- ##### Future deprecations
+-->
+
+### Upgrade instructions
+If you are upgrading to 5.0.11, please follow the detailed [upgrade instructions](#upgrading-tyk).
+
+### Release Highlights
+<!-- Required. Use similar ToV to previous release notes. For example for a patch release:
+This release primarily focuses on bug fixes.
+For a comprehensive list of changes, please refer to the detailed [changelog]({{< ref "#Changelog-vX.Y.0">}}) below.
+-->
+
+### Downloads
+- [Docker image to pull](https://hub.docker.com/r/tykio/tyk-gateway/tags?page=&page_size=&ordering=&name=v5.0.11)
+  - ```bash
+    docker pull tykio/tyk-gateway:v5.0.11
+    ``` 
+- Helm charts
+  - [tyk-charts GH Repo](https://github.com/TykTechnologies/tyk-charts/releases)
+
+### Changelog {#Changelog-v5.0.11}
+<!-- Required. The change log should include the following ordered set of sections below that briefly summarise the features, updates and fixed issues of the release.
+
+Here it is important to explain the benefit of each changelog item. As mentioned by James in a previous Slack message (https://tyktech.slack.com/archives/C044R3ZTN6L/p1686812207060839?thread_ts=1686762128.651249&cid=C044R3ZTN6L):
+"...it is important to document the customer impact for the work delivered, so we can share it with prospects/install base. For example:
+"New Chart delivers x and y benefit to a and b customer use cases. The business impact for them will be this and that" -->
+
+#### Added
+<!-- This section should be a bullet point list of new features. Explain:
+
+- The purpose of the new feature
+- How does the new feature benefit users?
+- Link to documentation of the new feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+</ul>
+
+#### Changed
+<!-- This should be a bullet-point list of updated features. Explain:
+
+- Why was the update necessary?
+- How does the update benefit users?
+- Link to documentation of the updated feature
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+</ul>
+ 
+#### Fixed
+<!-- This section should be a bullet point list that describes the issues fixed in the release. For each fixed issue explain:
+
+- What problem the issue caused
+- How was the issue fixed
+- Link to (new) documentation created as a result of a fix. For example, a new configuration parameter may have been introduced and documented for the fix
+- For OSS - Link to the corresponding issue if possible on GitHub to allow the users to see further info.
+
+Each change log item should be expandable. The first line summarises the changelog entry. It should be then possible to expand this to reveal further details about the changelog item. This is achieved using HTML as shown in the example below. -->
+<ul>
+</ul>
+
+
+#### Security Fixes
+<!-- This section should be a bullet point list that should be included when any security fixes have been made in the release, e.g. CVEs. For CVE fixes, consideration needs to be made as follows:
+1. Dependency-tracked CVEs - External-tracked CVEs should be included on the release note.
+2. Internal scanned CVEs - Refer to the relevant engineering and delivery policy.
+
+For agreed CVE security fixes, provide a link to the corresponding entry on the NIST website. For example:
+
+- Fixed the following CVEs:
+    - [CVE-2022-33082](https://nvd.nist.gov/vuln/detail/CVE-2022-33082)
+-->
+
+<ul>
+</ul>
+
+<!-- Required. use 3 hyphens --- between release notes of every patch (minors will be on a separate page) -->
 ---
 
 ## 5.0.10 Release Notes
