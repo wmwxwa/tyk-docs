@@ -1,5 +1,5 @@
 ---
-title: Tyk Control Plane Chart (Beta)
+title: Tyk Control Plane Chart
 description: Explains the Tyk Control Plane Chart
 tags: ["Tyk Control Plane chart", "Control Plane Chart", "helm charts", "helm", "charts", "kubernetes", "k8s"]
 ---
@@ -30,12 +30,6 @@ To enable or disable each component, change the corresponding enabled flag.
 
 Also, you can set the version of each component through `image.tag`. You could find the list of version tags available from [Docker hub](https://hub.docker.com/u/tykio).
 
-{{< note success >}}
-**Note**
-
-`tyk-control-plane` chart is currently in Beta. The use of `--devel` flag in helm installation and upgrade is required.
-{{< /note >}}
-
 ## Prerequisites
 
 - [Kubernetes 1.19+](https://kubernetes.io/docs/setup/)
@@ -56,7 +50,7 @@ To install the chart from Helm repository in namespace `tyk` with the release na
 ```bash
 helm repo add tyk-helm https://helm.tyk.io/public/helm/charts/
 helm repo update
-helm show values tyk-helm/tyk-control-plane --devel > values.yaml
+helm show values tyk-helm/tyk-control-plane > values.yaml
 ```
 
 For further documentation relating to *helm* command usage, please refer to the [helm docs](https://helm.sh/docs/helm/).
@@ -73,7 +67,7 @@ If you would like to use Developer Portal, an additional license is required:
 
 Then just run:
 ```bash
-helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml --devel
+helm install tyk-control-plane tyk-helm/tyk-control-plane -n tyk --create-namespace -f values.yaml
 ```
 
 ### Uninstalling The Chart
@@ -86,7 +80,7 @@ This removes all the Kubernetes components associated with the chart and deletes
 ### Upgrading Chart
 
 ```bash
-helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml --devel
+helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml
 ```
 
 ## Configuration
@@ -94,7 +88,7 @@ helm upgrade tyk-control-plane tyk-helm/tyk-control-plane -n tyk -f values.yaml 
 To get all configurable options with detailed comments, issue the following command:
 
 ```bash
-helm show values tyk-helm/tyk-control-plane --devel > values.yaml
+helm show values tyk-helm/tyk-control-plane > values.yaml
 ```
 
 You can update any value in your local `values.yaml` file and use `-f [filename]` flag to override default values during installation. 
