@@ -232,3 +232,10 @@ Follow the instructions for component deployment type:
         ```bash
         sudo apt-get install tyk-gateway-5.2.5 
         ```
+## Upgrade Guide Video
+
+Please refer to our [video](https://tyk-1.wistia.com/medias/4nf9fggatz) for further supporting with upgrading Tyk Self-Managed (RPM).
+
+<div>
+<iframe src="https://fast.wistia.net/embed/iframe/?" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+</div>

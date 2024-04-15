@@ -212,3 +212,11 @@ sudo apt-get install tyk-dashboard=<previous version>
 **Note**  
 These commands are provided as general guidelines and should be used with caution. It's advisable to consult with your system administrator or seek assistance from a qualified professional before executing any system-level commands
 {{< /note >}}
+
+## Upgrade Guide Video
+
+Please refer to our [video](https://tyk-1.wistia.com/medias/dcyna9zwqf) for further supporting with upgrading Tyk Self-Managed (RPM).
+
+<div>
+<iframe src="https://fast.wistia.net/embed/iframe/?" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+</div>

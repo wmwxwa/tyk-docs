@@ -251,5 +251,5 @@ These commands are provided as general guidelines and should be used with cautio
 Please refer to our [video](https://tyk-1.wistia.com/medias/p2c7gjzsk6) for further supporting with upgrading Tyk Self-Managed (RPM).
 
 <div>
-<iframe src="https://fast.wistia.net/embed/iframe/t0oamm63ae" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
+<iframe src="https://fast.wistia.net/embed/iframe/?" title="Wistia video player" allowfullscreen frameborder="0" scrolling="no" class="responsive-frame" name="wistia_embed" ></iframe>
 </div>
