@@ -13,8 +13,8 @@ Tyk Gateway allows analytics to be recorded and stored in a persistent data stor
 Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
 The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
-- Displaying [analytics]({{< ref "tyk-dashboard-analytics" >}}) based on the aggregated data.
-- Browsing logs for the [raw transaction records]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
+- [Aggregated analytics]({{< ref "tyk-dashboard-analytics" >}}) - Displaying analytics based on the aggregated data.
+- [Log Browser]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}) to display raw transaction records.
 
 ## How Do Analytics Impact Performance?
 
@@ -22,12 +22,12 @@ Analytics may introduce the problem of increased CPU load and a decrease in the 
 
 In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
 
-- **track**: Analytics are tracked for an API, i.e. *do_not_track* is false.
-- **notrack**: Analytics are not tracked for an API, i.e. *do_not_track* is true.
+- **track**: Traffic to this API is tracked, i.e. transaction records are generated for each request/response.
+- **notrack**: Traffic to this API is not tracked, i.e. transaction records are not generated for each request/response.
 
 {{< img src="img/faq/do-not-track-usage-scenario/dashboard_apis_measured.png" alt="apis measured in Tyk Dashboard" width="864">}}
 
-100,000 requests were sent to each API and the total number of requests per second was measured. The results for the *tracked* API are displayed in the left pane terminal window; with the right pane showing the results for the *untracked* API.
+100,000 requests were sent to each API and the rate at which Tyk was able to handle those requests (number of requests per second) was measured. The results for the *tracked* API are displayed in the left pane terminal window; with the right pane showing the results for the *untracked* API.
 
 {{< img src="img/faq/do-not-track-usage-scenario/do_not_track_performance_impact.png" alt="measuring do_not_track API performance impact" >}}
 
@@ -37,7 +37,7 @@ We can see that **19,253.75** RPS was recorded for the *untracked* API; with **1
 
 Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
 
-Users can [selectively control]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) the generation of analytics :
+Users can [selectively prevent]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) the generation of analytics:
 
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
