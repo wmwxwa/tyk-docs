@@ -9,17 +9,9 @@ menu:
 weight: 4
 ---
 
-### Introduction
-
 Tyk supports importing [OpenAPI Documents]({{< ref "/getting-started/using-oas-definitions/oas-glossary#openapi-document" >}}) (in JSON format, OAS version 3.0.x) using the Tyk Gateway API, the Tyk Dashboard API or the [Tyk Dashboard GUI]({{< ref "#tutorial-7-using-the-tyk-dashboard-ui" >}}).
 
 In the following tutorials, we provide the flows and commands you can use to get Tyk to generate the respective Tyk OAS API definitions from your OpenAPI Documents.
-
-{{< note success >}}
-**Note**  
-
-Tyk OAS API support is currently in [Early Access]({{< ref "/content/frequently-asked-questions/using-early-access-features.md" >}}) and some Tyk features are not yet supported. You can see the status of what is and isn't yet supported [here]({{< ref "/getting-started/using-oas-definitions/oas-reference.md" >}}). 
-{{< /note >}}
 
 #### Differences between using the Tyk Dashboard API and Tyk Gateway API
 
@@ -845,7 +837,7 @@ You’ll see that Tyk has populated the `middleware` section within the `x-tyk-a
 
 For more information on how Tyk builds the `middleware.operations` structure to configure middleware, see [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}).
 
-For more information on mock responses, see the dedicated [page]({{< ref "/getting-started/using-oas-definitions/mock-response" >}}).
+For more information on mock responses, see the dedicated [page]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}).
 
 ```.json
 {
@@ -933,7 +925,7 @@ When importing OpenAPI Documents using the Dashboard, Tyk detects the version of
 
 #### Automatic Configuration options
 
-- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "/content/getting-started/key-concepts/request-validation.md" >}}) for more details.
+- **Generate Validate Request Middleware**: You can automatically validate paths that have the `requestBody` and `schema` fields configured. This allows your Tyk Gateway to validate your request payload against the schema provided in your definition. See [Request Validation]({{< ref "product-stack/tyk-gateway/middleware/validate-request-middleware" >}}) for more details.
 - **Apply Detected Authentication**: You can automatically apply the authentication specified in the `security` and `securitySchemes` sections of your definition. See [Authentication]({{< ref "/content/getting-started/key-concepts/authentication.md" >}}) for more details.
 - **Allow access only to defined paths**: You can restrict access to the paths documented in your definition. See [Paths]({{< ref "/content/getting-started/key-concepts/paths.md" >}}) for more details.
 

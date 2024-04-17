@@ -17,13 +17,13 @@ This page provides guidance for upgrading your Tyk installation. When upgrading 
 All our components adhere to a few common standards:
 
 - We do not introduce breaking changes unless specifically stated in the release notes (and it rarely happens).
-- Check our [versioning and long-term-support policies]({{< ref "frequently-asked-questions/long-term-support-releases/" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
+- Check our [versioning and long-term-support policies]({{< ref "developer-support/long-term-support-releases" >}}) for more details on the way we release major and minor features, patches and the support dates for each release.
 - Make sure you follow our [comprehensive guide for backing up Tyk]({{< ref "frequently-asked-questions/how-to-backup-tyk" >}}) before starting the upgrade 
 - If you experience any issues with the new version you pulled, please contact Tyk Support or [Tyk community forum](https://community.tyk.io/)
 
 
 ## Upgrade Tyk components in Tyk Cloud 
-Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. You can upgrade Tyk Dashboard and the gateways in the Cloud Data Planes using this console. Please read about [editing control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#edit-control-planes" >}}) to learn more!
+Tyk Cloud users manage Tyk deployments via the Tyk Cloud Console. You can upgrade Tyk Dashboard and the gateways in the Cloud Data Planes using this console. Please read about [upgrading control planes]({{< ref "tyk-cloud/environments-&-deployments/managing-control-planes#upgrade-control-planes" >}}) to see the exact upgrade steps!
 
 ---
 

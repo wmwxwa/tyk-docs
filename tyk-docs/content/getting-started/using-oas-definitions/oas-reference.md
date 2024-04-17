@@ -9,9 +9,9 @@ menu:
 weight: 8
 ---
 
-### Introduction
+Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the [Early Access]({{< ref "frequently-asked-questions/using-early-access-features" >}}) phase, we gradually rolled out support for the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format.
 
-Tyk Gateway is extremely flexible with a great many features that you can use to configure and optimise the handling of requests to your APIs. During the Early Access phase, we are gradually rolling out support for all of the configuration that is available through Tyk Classic API definitions into the new Tyk OAS API Definition format. Unfortunately we are not quite there yet, though popular requested features have been implemented.
+From Tyk Gateway and Dashboard v5.3.0 we have reached feature maturity, however there are still a few features to be added before we reach and surpass feature parity with Tyk Classic API.
 
 In the tables below, *Implemented* means that the feature is available for use with Tyk OAS APIs while using the Tyk Gateway API or Tyk Dashboard API; the *API Designer* column shows the features that can be configured using the Tyk Dashboard UI.
 
@@ -24,9 +24,9 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 |---------------------------------------|------------------|---------------|
 | API Name                              | ✅               | ✅            |
 | Status (draft/active)                 | ✅               | ✅            |
-| API Categories                        | ❌️               | ❌️            |
+| API Categories                        | ✅               | ✅            |
 | API ID/API URL(s)                     | ✅               | ✅            |
-| API Ownership                         | ❌️               | ❌️            |
+| API Ownership                         | ✅               | ✅            |
 | API Versioning                        | ✅               | ✅            |
 
 ### Traffic Routing
@@ -48,8 +48,7 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 | mTLS                                  | ✅               | ✅            |
 | HMAC                                  | ✅               | ✅            |
 | Basic Authentication                  | ✅               | ✅            |
-| Plugin Auth (Go)                      | ✅               | ✅            |
-| Custom Auth                           | ✅               | ✅            |
+| Custom Authentication Plugin          | ✅               | ✅            |
 | Multiple Authentication               | ✅               | ✅            |
 | IP Allowlist                          | ❌️               | ❌️            |
 | IP Blocklist                          | ❌️               | ❌️            |
@@ -60,28 +59,31 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
-| Public Key Certificate Pinning        | ✅               | ❌️            |
 | Upstream Certificates (mTLS)          | ✅               | ✅            |
+| Public Key Certificate Pinning        | ✅               | ❌️            |
 | Upstream Request Signing              | ❌️               | ❌️            |
 
 ### API-level (Global) Features
 
 | Feature                               | Implemented      | API Designer  |
 |---------------------------------------|------------------|---------------|
+| Detailed recording (in Log Browser)   | ✅               | ✅            |
+| Config Data                           | ✅               | ✅            |
+| Context Variables                     | ✅               | ✅            |
+| CORS                                  | ✅               | ✅            |
+| Service Discovery                     | ✅               | ✅            |
+| Segment Tags                          | ✅               | ✅            |
+| Internal API (not exposed by Gateway) | ✅               | ✅            |
+| Global Header Transform               | ✅               | ✅            |
+| API-level Rate Limit                  | ✅               | ✅            |
+| Plugin Bundles                        | ✅               | ✅            |
+| Custom Request Plugins (pre/preAuth/post) | ✅               | ✅            |
+| Custom Response Plugin                    | ✅               | ✅            |
+| Custom Analytics Plugin                   | ❌️               | ❌️            |
+| Batch Requests                        | ❌️               | ❌️            |
 | Analytics API Tagging (tag_headers)   | ❌️               | ❌️            |
 | expire_analytics_after                | ❌️               | ❌️            |
 | Do not track Analytics (per API)      | ❌️               | ❌️            |
-| Detailed recording (in Log Browser)   | ❌️               | ❌️            |
-| Config Data                           | ✅               | ✅            |
-| Context Variables                     | ❌️               | ❌️            |
-| CORS                                  | ✅               | ✅            |
-| Service Discovery                     | ✅               | ✅            |
-| Plugin Bundles                        | ✅               | ✅            |
-| Batch Requests                        | ❌️               | ❌️            |
-| Segment Tags                          | ✅               | ✅            |
-| Internal API (not exposed by Gateway) | ✅               | ✅            |
-| Global Header Transform               | ❌️               | ❌️            |
-| API-level Rate Limit                  | ❌️               | ❌️            |
 | Webhooks                              | ❌️               | ❌️            |
 | Preserve Host Header                  | ❌️               | ❌️            |
 | Transport (proxy.transport)           | ❌️               | ❌️            |
@@ -92,20 +94,20 @@ If there's a feature you're looking to use that isn't yet implemented, let us kn
 |---------------------------------------|------------------|---------------|
 | Allow                                 | ✅               | ✅            |
 | Block                                 | ✅               | ✅            |
-| Cache                                 | ✅               | ❌️            |
-| Circuit Breaker                       | ❌️               | ❌️            |
-| Track Endpoint                        | ❌️               | ❌️            |
-| Do Not Track                          | ❌️               | ❌️            |
-| Enforced Timeout                      | ✅               | ❌️            |
+| Cache                                 | ✅               | ✅            |
+| Circuit Breaker                       | ✅               | ✅            |
+| Track Endpoint                        | ✅               | ✅            |
+| Do Not Track                          | ✅               | ✅            |
+| Enforced Timeout                      | ✅               | ✅            |
 | Ignore Authentication                 | ✅               | ✅            |
-| Internal Endpoint                     | ❌️               | ❌️            |
-| URL Rewrite                           | ❌️               | ❌️            |
+| Internal Endpoint                     | ✅               | ✅            |
+| URL Rewrite                           | ✅               | ✅            |
 | Validate Request                      | ✅               | ✅            |
-| Request Size Limit                    | ❌️               | ❌️            |
-| Request Method Transform              | ✅               | ❌️            |
-| Request Header Transform              | ❌️               | ❌️            |
+| Request Size Limit                    | ✅               | ✅            |
+| Request Method Transform              | ✅               | ✅            |
+| Request Header Transform              | ✅               | ✅            |
 | Request Body Transform                | ✅               | ✅            |
-| Response Header Transform             | ❌️               | ❌️            |
+| Response Header Transform             | ✅               | ✅            |
 | Response Body Transform               | ✅               | ✅            |
 | Mock Response                         | ✅               | ✅            |
 | Virtual Endpoint                      | ✅               | ✅            |
