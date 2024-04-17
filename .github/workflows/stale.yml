@@ -20,6 +20,7 @@ jobs:
     steps:
     - uses: actions/stale@v9.0.0
       with:
+        ref: letz-stale
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         stale-issue-message: 'Stale issue message'
         stale-pr-message: 'Stale pull request message'
