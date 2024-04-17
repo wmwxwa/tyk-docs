@@ -22,7 +22,7 @@ Analytics may introduce the problem of increased CPU load and a decrease in the 
 
 In the *Tyk Dashboard API* screen below, there are two APIs, *track* and *notrack*. The APIs were created to conduct a simple load test, to show the gateway's RPS (requests per second) for each API:
 
-- **track**: Analytics are tracked for an API, i.e. *do_not_track* is false.
+- **track**: Traffic to this API is tracked, i.e. transaction records are generated for each request/response.
 - **notrack**: Traffic to this API is not tracked, i.e. transaction records are not generated for each request/response.
 
 {{< img src="img/faq/do-not-track-usage-scenario/dashboard_apis_measured.png" alt="apis measured in Tyk Dashboard" width="864">}}
