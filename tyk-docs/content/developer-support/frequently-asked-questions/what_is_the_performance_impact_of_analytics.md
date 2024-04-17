@@ -40,7 +40,7 @@ Tyk is configurable, allowing fine grained control over which information should
 Users can [selectively control]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) the generation of analytics :
 
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
-- **Per Endpoint**: Tyk Gateway will not record analytics for requests for a specific endpoint. Other endpoints will be tracked as normal.
+- **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
 When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen data sink. It's worth noting that the "track" middleware exclusively influences the generation of *endpoint popularity* aggregated data by *Tyk Pump*.
 
