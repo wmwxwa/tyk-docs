@@ -42,7 +42,7 @@ Users can [selectively control]({{<ref "product-stack/tyk-gateway/middleware/do-
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the ["track" middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the [track middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
 ## Conclusion
 
