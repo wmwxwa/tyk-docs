@@ -37,7 +37,7 @@ We can see that **19,253.75** RPS was recorded for the *untracked* API; with **1
 
 Tyk is configurable, allowing fine grained control over which information should be recorded and which can be skipped, thus reducing CPU cycles, traffic and storage.
 
-Users can selectively disable analytics using the [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint">}}) configuration parameter. This can configured:
+Users can [selectively control]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}}) the generation of analytics :
 
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not record analytics for requests for a specific endpoint. Other endpoints will be tracked as normal.
