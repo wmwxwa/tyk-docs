@@ -46,7 +46,7 @@ When set, this prevents Tyk Gateway from generating the transaction records. Wit
 
 ## Conclusion
 
-Enabling [do_not_track]({{<ref "advanced-configuration/transform-traffic/endpoint-designer#do-not-track-endpoint">}}) disables recording of analytics per API or endpoint. This helps reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
+[Disabling]({{<ref "product-stack/tyk-gateway/middleware/do-not-track-middleware">}})  the creation of analytics (either per API or for specific endpoints) helps to reduce CPU cycles and network requests for systems that exhibit high load and traffic, e.g. social media platforms, streaming, financial services and trading platforms.
 
 Application decisions need to be made concerning which endpoints are non critical and can thus have analytics disabled. Furthermore, benchmarking and testing will be required to evaluate the actual benefits for the application specific use case.
 
