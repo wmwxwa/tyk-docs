@@ -8,11 +8,11 @@ description: "This FAQ explains how analytics impacts system performance and how
 This FAQ explains how analytics may impact performance relating to high CPU load and reduced Requests Per Second (RPS). Subsequently, it describes how to configure Tyk to reduce this performance impact for platforms that exhibit high volumes of traffic.
 
 ## What Are Analytics?
-Tyk Gateway allows analytics to be recorded and stored in backend storage (MongoDB/SQL) for all APIs by default, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}).
+Tyk Gateway allows analytics to be recorded and stored in a persistent data store (MongoDB/SQL) for all APIs by default, via [Tyk Pump]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}).
 
 Tyk Gateway generates transaction records for each API request and response, containing [analytics data]({{< ref "tyk-stack/tyk-pump/tyk-analytics-record-fields" >}}) relating to: the originating host (where the request is coming from), which Tyk API version was used, the HTTP method requested and request path etc.
 
-The transaction records are transmitted to Redis and subsequently transferred to a [data sink]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) this data (using different data keys - API ID, access key, endpoint, response status code, location) and write to persistent storage. Tyk Dashboard uses this data for:
+The transaction records are transmitted to Redis and subsequently transferred to a persistent [data store]({{< ref "tyk-stack/tyk-pump/other-data-stores" >}}) of your choice via Tyk Pump. Furthermore, Tyk Pump can also be configured to [aggregate]({{< ref "tyk-dashboard-analytics#aggregated-analytics" >}}) the transaction records (using different data keys - API ID, access key, endpoint, response status code, location) and write to a persistent data store. Tyk Dashboard uses this data for:
 - Displaying [analytics]({{< ref "tyk-dashboard-analytics" >}}) based on the aggregated data.
 - Browsing logs for the [raw transaction records]({{< ref "tyk-stack/tyk-manager/analytics/log-browser" >}}).
 
@@ -42,7 +42,7 @@ Users can [selectively control]({{<ref "product-stack/tyk-gateway/middleware/do-
 - **Per API**: Tyk Gateway will not create records for requests/responses for any endpoints of an API.
 - **Per Endpoint**: Tyk Gateway will not create records for requests/responses for specific endpoints.
 
-When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen data sink. It's worth noting that the ["track" middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
+When set, this prevents Tyk Gateway from generating the transaction records. Without transaction records, Tyk Pump will not transfer analytics to the chosen persistent data store. It's worth noting that the ["track" middleware]({{< ref "product-stack/tyk-dashboard/advanced-configurations/analytics/activity-by-endpoint" >}}) exclusively influences the generation of *endpoint popularity* aggregated data by Tyk Pump.
 
 ## Conclusion
 
