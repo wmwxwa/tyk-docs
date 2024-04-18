@@ -1,7 +1,7 @@
 ---
 title: Tyk Gateway 5.0 Release Notes
 description: Tyk Gateway v5.0 release notes
-tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10"]
+tags: ["release notes", "Tyk Gateway", "v5.0", "5.0", "5.0.0", "5.0.1", "5.0.1", "5.0.2", "5.0.3", "5.0.4", "5.0.5", "5.0.6", "5.0.7", "5.0.8", "5.0.9", "5.0.10", "5.0.11"]
 aliases:
     - /release-notes/version-5.0/
 ---
@@ -9,6 +9,11 @@ aliases:
 **Open Source** ([Mozilla Public License](https://github.com/TykTechnologies/tyk/blob/master/LICENSE.md))
 
 **This page contains all release notes for version 5.0.X displayed in reverse chronological order**
+
+---
+
+## 5.0.11 Release Notes
+Please refer to our GitHub [release notes](https://github.com/TykTechnologies/tyk/releases/tag/v5.0.11).
 
 ---
 
@@ -121,7 +126,7 @@ Tyk’s OSS users can now make use of extensive [custom middleware](https://tyk.
 
 [Versioning your Tyk OAS APIs]({{< ref "getting-started/key-concepts/oas-versioning" >}}) is easier than ever, with the Tyk OSS Gateway now looking after the maintenance of the list of versions associated with the base API for you; we’ve also added a new endpoint on the Tyk API that will return details of the versions for a given API.
 
-We’ve improved support for [OAS Mock Responses]({{< ref "getting-started/using-oas-definitions/mock-response" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
+We’ve improved support for [OAS Mock Responses]({{< ref "product-stack/tyk-gateway/middleware/mock-response-middleware" >}}), with the Tyk OAS API definition now allowing you to register multiple Mock Responses in a single API, providing you with increased testing flexibility.
 
 Of course, we’ve also addressed some bugs and usability issues as part of our ongoing ambition to make Tyk OAS API the best way for you to create and manage your APIs.
 
